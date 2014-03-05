@@ -1,0 +1,1808 @@
+%% LyX 2.0.5.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,a4paper,english,czech,12pt]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={1PDE13ZS},
+ pdfauthor={Martin Holi Holecek}}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxcode}
+{\par\begin{list}{}{
+\setlength{\rightmargin}{\leftmargin}
+\setlength{\listparindent}{0pt}% needed for AMS classes
+\raggedright
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+\normalfont\ttfamily}%
+ \item[]}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{amsthm,amsmath,amssymb,amscd,mathrsfs,url}
+%\usepackage[czech]{babel}
+\usepackage{verbatim}
+\usepackage{showkeys}
+\usepackage{xcolor}
+\usepackage{stackengine}
+\usepackage{lipsum}
+\usepackage{comment}
+%%\usepackage{MNsymbol} NIKDY!
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{marginnote}
+\usepackage{esint}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\newcommand{\opdiv}{\mathop{\mathrm{div}}}
+\newcommand{\oprot}{\mathop{\mathrm{rot}}}
+
+\newcommand*\mnote[3][0pt]{%
+  \if l#2\reversemarginpar\def\pointer{\filledmedtriangleright}%
+    \def\stackalignment{r}\fi%
+  \if r#2\normalmarginpar\def\pointer{\filledmedtriangleleft}%
+    \def\stackalignment{l}\fi%
+  \marginpar{%
+    \topinset{%
+      \scalebox{1.5}{\textcolor{blue}{$\pointer$}}}{%
+      \belowbaseline[-1.5\baselineskip-#1]{%
+        \stackengine%
+          {-5pt}%
+          {\fcolorbox{blue}{white}{\parbox{1.8cm}%
+            {\vspace{3pt}\raggedright#3}}}%
+          {~\colorbox{white}{\sffamily Pozn.}}%
+          {O}%
+          {l}%
+          {F}%
+          {F}%
+          {S}%
+        }%
+      }{%
+      3ex+#1}{%
+      -2ex}%
+  }%
+}
+
+\makeatother
+
+\begin{document}
+
+\title{P{\footnotesize{izza}} D{\footnotesize{om\r{u}}} R{\footnotesize{ychle}}
+I ZS}
+
+\maketitle
+
+\subsection*{Sobolev\r{u}v prostor $W^{k,p}(\Omega)$}
+
+
+\paragraph*{Multiindex}
+
+$\alpha\in\mathbb{N}_{0}^{d}$, tedy vektor p\v{r}irozených \v{c}ísel
+s nulou. Vý¨ka multiindexu je sou\v{c}et jeho slo¸ek.
+
+
+\paragraph*{Mno¸ina}
+
+$\Omega$ je otev\v{r}ená (kv\r{u}li definici slabé derivace).
+
+
+\paragraph*{Deriva\v{c}ní operátor $D^{\alpha}$:}
+
+funkce $u\in C^{k}(\Omega),\forall\alpha,|\alpha|\leq k$ : 
+
+\[
+D^{\alpha}u=\frac{\partial^{|\alpha|}u}{\partial x^{\alpha}}=(\frac{\partial^{\alpha_{1}}}{\partial x_{1}^{\alpha_{1}}}...\frac{\partial^{\alpha_{d}}}{\partial x_{n}^{\alpha_{d}}})u
+\]
+
+
+
+\paragraph*{Slabá derivace}
+
+Nech\v{t} $\Omega\subset\mathbb{R}^{d}$ otev\v{r}ená, $u\in L_{loc}^{1}(\Omega)$,
+pak $v\in L_{loc}^{1}(\Omega)$ je $\alpha$-slabá derivace $u$ práv\v{e}
+tehdy kdy¸
+
+\[
+\forall\varphi\in\mathcal{D}(\Omega):\,\int_{\Omega}v\varphi\, dx=(-1)^{|\alpha|}\int_{\Omega}uD^{\alpha}\varphi\, dx
+\]
+
+
+$\mathcal{D}(\Omega)$ - hladké funkce s kompaktním nosi\v{c}em na
+$\Omega$.
+
+Pokud $u\in C^{k},|\alpha|\leq k\Rightarrow v=D^{\alpha}u$ je $\alpha$-slabá
+derivace. Nazv\v{e}me $D^{\alpha}u$ slabou derivací v¸dy.
+
+
+\paragraph*{Sobolev\r{u}v prostor}
+
+Nech\v{t} $\Omega\subset\mathbb{R}^{d}$ otev\v{r}ená, $k\in\mathbb{N},p\in[1,\infty]$,
+definujeme $W^{k,p}(\Omega)$:
+
+\[
+W^{k,p}(\Omega):=\{u\in L^{p}(\Omega),\forall|\alpha|\leq k:\, D^{\alpha}u\in L^{p}(\Omega)\}
+\]
+
+
+S normou pro $p<\infty$:
+
+\[
+||u||_{k,p}=(\sum_{|\alpha|\leq k}||D^{\alpha}u||_{p}^{p})^{1/p}
+\]
+
+
+a pro $p=\infty$:
+
+\[
+||u||_{k,\infty}=\sum_{|\alpha|\leq k}||D^{\alpha}u||_{\infty}
+\]
+
+\begin{itemize}
+\item $W^{k,p}(\Omega)$ je normovaný lineární prostor.
+\item $W^{k,p}(\Omega)$ je Banach\r{u}v prostor
+\item $W^{k,p}(\Omega)$ je Separabilní $\Leftrightarrow p\in[1,\infty)$
+\item $W^{k,p}(\Omega)$ je Reflexivní $\Leftrightarrow p\in(1,\infty)$
+\item $W^{k,2}(\Omega)$ je Hilbert\r{u}v $\Leftrightarrow p=2$, $(u,v)_{k,2}=\sum_{|\alpha|\leq k}\int_{\Omega}D^{\alpha}u\, D^{\alpha}v\, dx$
+\end{itemize}
+
+\subsection*{Holderovsky spojité funkce}
+
+Funkce je $\lambda$-holderovsky spojitá, na uzáv\v{e}ru otev\v{r}ené
+$\Omega$: 
+
+\[
+C^{0,\lambda}(\bar{\Omega})\,:=\{u\in C(\bar{\Omega}),\exists c>0\,:\,\forall x,y\in\Omega,\, x\neq y:\,\frac{|u(x)-u(y)|}{|x-y|^{\lambda}}\leq c\}
+\]
+
+
+S normou:
+
+\[
+||u||_{C^{0,\lambda}}=||u||_{C}+\sup_{x\neq y}\frac{|u(x)-u(y)|}{|x-y|^{\lambda}}
+\]
+
+
+Arzela-Ascoli: $C^{0,\alpha}\hookrightarrow\hookrightarrow C^{0,\beta}$
+pro $\alpha>\beta$ (``v\v{e}t¨í do men¨ího'').
+
+{\footnotesize{Pozor na to, ¸e $x\neq y$, $\bar{\Omega}$ uzáv\v{e}r!}}{\footnotesize \par}
+
+
+\subsection*{Funkce t\v{r}ídy $C^{k,\lambda}$}
+
+$a\in C^{k,\lambda}(\bar{\Omega})\iff a\in C^{k}(\bar{\Omega})\,\&\,\forall|\beta|\leq k\, D^{\beta}u\in C^{0,\lambda}(\bar{\Omega})$
+\begin{itemize}
+\item {\footnotesize{Spojitá ... $C^{0,0}$}}{\footnotesize \par}
+\item {\footnotesize{Lipschitzovská ... $C^{0,1}$}}{\footnotesize \par}
+\end{itemize}
+
+\subsection*{Mno¸ina t\v{r}ídy $C^{k,\lambda}$}
+
+Otev\v{r}ená omezená $\Omega$ je t\v{r}ídy $C^{k,\lambda}$, $k\in\mathbb{N}_{0},\lambda\in[0,1]$,
+práv\v{e} tehdy, kdy¸ existuje $M\in\mathbb{N}$ koordinátových systém\r{u}
+a \v{c}ísla $\alpha,\beta\in\mathbb{R}^{+}$, a funkce $a_{n}:\,(-\alpha,\alpha)^{d-1}\rightarrow\mathbb{R},\, a_{n}\in C^{k,\lambda},\, n=1...M$,
+¸e platí p\v{r}i zna\v{c}ení $x=(x_{1}...x_{d})=(x',x_{d})$ následující:
+
+\[
+\Omega_{n}^{+}:=\{x,|x'|<\alpha,a_{n}(x')<x_{d}<a_{n}(x')+\beta\}\subset\Omega
+\]
+
+
+\[
+\Omega_{n}^{-}:=\{x,|x'|<\alpha,a_{n}(x')-\beta<x_{d}<a_{n}(x')\}\subset(\mathbb{R}^{d}\backslash\bar{\Omega})
+\]
+
+
+\[
+\delta_{n}\Omega:=\{x,|x'|<\alpha,a_{n}(x')=x_{d}\}\subset\delta\Omega
+\]
+
+
+\[
+\bigcup_{n=1}^{M}\delta_{n}\Omega=\delta\Omega
+\]
+
+
+{\footnotesize{Nezapomenout z jakých prostor\r{u} jsou $k,\lambda,\alpha,\beta$
+a na def. obor $a_{n}$.}}{\footnotesize \par}
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Lokální aproximace}
+
+Pro $p\in[1,\infty)$, $\Omega\subseteq\mathbb{R}^{d}$ otev\v{r}ená:
+$\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\Omega)$,
+¸e pro ka¸dou $\Omega'\subset\subset\Omega$ posloupnost $u^{n}\longrightarrow u$
+konverguje ve $W^{k,p}(\Omega')$.
+
+Dokonce bude platit $u^{n}\in C^{\infty}(\mathbb{R}^{d})$.
+
+{\footnotesize{Zapisuje se také jako ``$u^{n}\longrightarrow u$
+konverguje ve $W_{loc}^{k,p}(\Omega)$''.}}{\footnotesize \par}
+
+
+\subsubsection*{Vlastnosti konvolu\v{c}ního zhlazení}
+
+Fakt - konvolu\v{c}n\v{e} zhlazená funkce - pro $u\in L^{p}(\mathbb{R}^{d})$
+máme
+
+$u_{\epsilon}:=\rho_{\epsilon}*u=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)u(y)\, dy$
+a ta jde k p\r{u}vodní funkci - $||u_{\epsilon}-u||_{L^{p}(\mathbb{R}^{d})}\rightarrow0$.
+
+Konvolu\v{c}ní zhlazení navíc zv\v{e}t¨í o $\epsilon$ nosi\v{c},
+tedy je pot\v{r}eba volit dostate\v{c}n\v{e} malé, abychom v d\r{u}kazech
+nevybo\v{c}ili z mno¸in.
+
+\v{C}asto p\v{r}i konvolu\v{c}ním zhlazení pot\v{r}ebujeme funkci
+definovat mimo mno¸inu, kde je definvoaná p\r{u}vodn\v{e}, dodefinováváme
+tedy nulou. Zhlazení pak zhladí funkci, která je nespojitá se skokem
+na hranici na $C^{\infty}$ funkci.
+
+
+\subsubsection*{Lemma o zám\v{e}n\v{e} zhlazení a $D^{\alpha}$}
+
+$\Omega\subset\mathbb{R}^{d}$ otev\v{r}ená, pak pro ka¸dé $u\in W_{(loc)}^{k,1}(\Omega)$
+platí skoro v¨ude v $\Omega_{\epsilon}:=\{x\in\Omega,dist(x,\delta\Omega)>\epsilon\}$
+rovnost $D^{\alpha}(u{}_{\epsilon})=(D^{\alpha}u)_{\epsilon}$, tu
+\v{c}teme (doká¸eme) tak, ¸e slabá derivace $u{}_{\epsilon}$ na levé
+stran\v{e} je pravá strana.
+
+
+\paragraph*{D\r{u}kaz }
+
+- p\v{r}ehodíme pomocí perpartes a fubiniho derivaci z $\varphi$
+p\v{r}ez zhlazovací jádro na $u$.
+
+\[
+\int_{\Omega}u_{\epsilon}(x)D^{\alpha}\varphi(x)\, dx=\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)u(y)\, dy\, D^{\alpha}\varphi(x)\, dx=
+\]
+
+
+...a fubi:
+
+\[
+=\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)D^{\alpha}\varphi(x)\, dx\, u(y)\, dy=
+\]
+
+
+...perpartes pro dv\v{e} hladké funkce s kompaktním nosi\v{c}em (proto
+¸ádné okrajové \v{c}leny):
+
+\[
+=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}D_{x}^{\alpha}\rho_{\epsilon}(x-y)\varphi(x)\, dx\, u(y)\, dy=
+\]
+
+
+...fubi:
+
+\[
+=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}D_{x}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=
+\]
+...proto¸e je $\rho_{\epsilon}$ symetrická, je to jako derivovat
+dle y:
+
+\[
+=(-1)^{2|\alpha|}\int_{\Omega}\int_{\Omega}D_{y}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=
+\]
+
+
+... vy\v{r}e¨íme sudý exponent a pak pou¸ijeme znovu perparets, \v{c}ím¸
+se p\v{r}enese derivace k $u$:
+
+\[
+=\int_{\Omega}\int_{\Omega}D_{y}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)D_{y}^{\alpha}u(y)\, dy\,\varphi(x)\, dx
+\]
+
+
+\[
+=(-1)^{|\alpha|}\int_{\Omega}(D^{\alpha}u)_{\epsilon}(x)\varphi(x)\, dx
+\]
+
+
+Tedy lze zam\v{e}nit derivace a zhlazení.
+
+
+\paragraph*{Jak to pou¸ijeme v d\r{u}kazu?}
+
+Máme zadáno $u\in W^{k,p}(\Omega)$, polo¸íme $u(x)=0$ mimo $\Omega$.
+Posloupnost zkonstruujeme jako $u_{\epsilon}=\rho_{\epsilon}*u\,\in C^{\infty}(\mathbb{R}^{d})$
+(pro n\v{e}jaké $\epsilon=\epsilon_{n}\rightarrow0_{+}$).
+
+Platí skute\v{c}n\v{e} po¸adovaná konvergence? Zafixujeme $\Omega'\subset\subset\Omega$
+a najdeme $\epsilon_{0}>0$ takové, aby $\forall x'\in\Omega':\, B_{\epsilon_{0}}(x')\subseteq\Omega$
+(tzn zhlazené budou od tohoto $\epsilon_{0}$ kompaktn\v{e} supportem
+v $\Omega$, to je p\v{r}edpoklad lemmatu, proto to d\v{e}láme). Volbou
+$\epsilon_{0}$ odstraníme maximáln\v{e} kone\v{c}n\v{e} \v{c}len\r{u}
+posloupnosti, co¸ neovlivní konvergenci.
+
+Pak v posloupnosti doká¸u pro v¨echny \v{c}leny $\epsilon<\epsilon_{0}$,
+¸e $||u_{\epsilon}-u||_{k,p(\Omega')}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}0$
+- to je definice konvergence ve $W^{k,p}(\Omega')$. 
+
+Nu a to bude spln\v{e}no, pokud normy v¨ech derivací p\r{u}jdou k
+nule:
+
+\[
+\Leftrightarrow\forall|\alpha|\leq k:\,||D^{\alpha}(u_{\epsilon})-D^{\alpha}u||_{L^{p}(\Omega')}\rightarrow0
+\]
+
+
+...pou¸ijeme lemma a tím p\v{r}etvo\v{r}íme ekvivalenci:
+
+\[
+\Leftrightarrow\forall|\alpha|\leq k:\,||(D^{\alpha}u)_{\epsilon}-D^{\alpha}u||_{L^{p}(\Omega')}\rightarrow0
+\]
+
+
+A dostali jsme známý fakt pro zhlazené funkce $D^{\alpha}u$.
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Globální aproximace s $C^{\infty}(\Omega)$}
+
+Pro $p\in[1,\infty),\,\Omega\subseteq\mathbb{R}^{d}$ otev\v{r}ená:
+
+$\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\Omega)\cap W^{k,p}(\Omega)$,
+¸e posloupnost $u^{n}\longrightarrow u$ konverguje ve $W^{k,p}(\Omega)$.
+
+
+\paragraph*{D\r{u}kaz}
+
+Celou dobu budeme mít na z\v{r}eteli cíl, tedy najít posloupnost $u^{\delta}\in C^{\infty}(\Omega)$,
+aby platilo $||u^{\delta}-u||_{k,p(V)}\leq\delta$ pro libovolné $V\subset\subset\Omega$.
+Toto je ekvivalentní s tvrzením v\v{e}ty, proto¸e norma lze rozepsat
+na supréma p\v{r}ez $V\subset\subset\Omega$ a to díky spojité závislosti
+na oboru integrace, tedy $||u^{\delta}-u||_{k,p(\Omega)}=\sup_{V\subset\subset\Omega}||u^{\delta}-u||_{k,p(V)}$.
+M\v{e}jme tedy zadané $\delta$ libovolné, ale pevné.
+
+Nejprve zkonstruujeme otev\v{r}ené pokrytí mno¸iny takto:
+
+\[
+i\in\mathbb{N}:\,\Omega_{i}=\{x\in\Omega,dist(x,\delta\Omega)>1/i\}
+\]
+
+
+$U_{i}=\Omega_{i+5}-\bar{\Omega}_{i}$ budou pásy zhu¨\v{t}ující se
+k hranici.
+
+Dodefinujeme $U_{0}$ otev\v{r}enou, aby platilo $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$.
+
+Pou¸ijeme rozklad jedni\v{c}ky $\xi_{j}$ vzhledem k $U_{j}$, m\r{u}¸eme,
+proto¸e $U$ mají kone\v{c}né po\v{c}ty pr\r{u}nik\r{u}. Dostaneme
+také $\forall x\in\Omega\,\exists j,\,\xi_{j}(x)=1$.
+
+Díky úvahám vý¨e máme nástroje na nalezení posloupnosti $u^{\delta}$
+od $u$. Nejprve rozlo¸íme zadané $u$ rozkladem jednotky:
+
+$u_{i}:=u*\xi_{i}$. Nutno \v{r}íct, ¸e platí $u(x):=\sum u_{i}(x)$,
+$u_{i}$ jsou te\v{d} funkce, jejich¸ nosi\v{c} se p\v{r}ibli¸uje
+hranici omegy.
+
+Te\v{d} ka¸dou $u_{i}$ zhladíme:
+
+$u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}$, jsme dost blízko hranice
+a proto volíme $\epsilon\leq1/(i+5)$. Proto¸e máme $u_{i}^{\epsilon}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}u$,
+nalezneme $\epsilon(\delta,i)$, aby $||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(U_{i})}\leq\delta/2^{i}$.
+
+P\v{r}esn\v{e} polo¸íme $u^{\delta}:=\sum_{i=0}^{\infty}u_{i}^{\epsilon(\delta,i)}\left(=\sum_{i=0}^{\infty}\rho_{\epsilon(\delta,i)}u_{i}=\sum_{i=0}^{\infty}\rho_{\epsilon(\delta,i)}(u\xi_{i})\right)$,
+no a konstruovali jsme to tak, aby $u^{\delta}\in C^{\infty}(\Omega)$
+(mimochodem ale neplatí $u^{\delta}\in C^{\infty}(\bar{\Omega})$).
+
+Ov\v{e}\v{r}íme, ¸e posloupnost spl\v{n}uje po¸adavek $||u^{\delta}-u||_{k,p(V)}\leq\delta$
+(tzn ¸e konverguje k zadané $u$):
+
+\[
+||u^{\delta}-u||_{k,p(V)}\leq||\sum_{i=0}^{\infty}u_{i}^{\epsilon(\delta,i)}-\sum_{i=0}^{\infty}u_{i}||_{k,p(V)}=
+\]
+ ...D\r{u}vod pro\v{c} jsme d\v{e}lali rozklad jednotky, je, ¸e te\v{d}
+na $V$ bude nenulový jen kone\v{c}ný po\v{c}et $u_{i}$ (a tedy i
+$u_{i}^{\epsilon(\delta,i)}$), na kone\v{c}ný po\v{c}et funguje troj\r{u}helníková
+nerovnost:
+
+\[
+=||\sum_{i=0}^{M}u_{i}^{\epsilon(\delta,i)}-\sum_{i=0}^{M}u_{i}||_{k,p(V)}\leq\sum_{i=0}^{M}||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(V)}=
+\]
+...Te\v{d} máme normy funkcí, co mají nenulový nosi\v{c} pouze na
+$U_{i}$:
+
+\[
+=\sum_{i=0}^{M}(||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(U_{i})})\leq\sum_{i=0}^{M}\frac{\delta}{2^{i+1}}\leq\delta
+\]
+...P\v{r}esn\v{e} dle volby $\epsilon(\delta,i)$ a zv\v{e}t¨ením
+na sou\v{c}et nekone\v{c}né sumy.
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Globální aproximace s $C^{\infty}(\bar{\Omega})$}
+
+Pro $p\in[1,\infty),\,\Omega\in C^{0,0}$ otev\v{r}ená:
+
+$\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\bar{\Omega})$,
+¸e posloupnost $u^{n}\longrightarrow u$ konverguje ve $W^{k,p}(\Omega)$.
+
+
+\paragraph*{D}
+
+Z definice $C^{0,0}$ máme krabice $\Omega_{r}=\Omega_{r}^{+}\cup\Omega_{r}^{-}\cup\delta_{n}\Omega$,
+$r=1...M$, otev\v{r}ené, pokrývají okolí hranice. Dodefinujeme $\Omega_{0}\subset\subset\Omega$
+otev\v{r}enou, aby platilo $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$.
+Mám pokrytou $\mbox{\ensuremath{\Omega}}$ otev\v{r}enými mno¸inami,
+najdu rozklad jedni\v{c}ky - $u_{i}:=u\xi_{i}$, pak $u(x):=\sum u_{i}(x)$.
+Proto $||u_{i}||_{k,p(\Omega_{i})}\leq||u||_{k,p(\Omega)}$ a tedy
+sta\v{c}í aproximovat jen $u_{i}$ - chceme najít $u_{i}^{n}\in C^{\infty}(\bar{\Omega})$,
+$u_{i}^{n}\rightarrow u$ ve $W^{k,p}(\Omega)$.
+
+
+\paragraph*{Na \textmd{$\Omega_{0}$:}}
+
+Najdeme $\epsilon_{0}=dist(\delta\Omega_{0},\delta\Omega)$ a $\forall\epsilon<\epsilon_{0}:\, u_{0}^{\epsilon}:=\rho_{\epsilon}*u_{0}\in C^{\infty}(\bar{\Omega})$,
+potom $||u_{0}^{\epsilon}-u_{0}||_{k,p(\Omega_{i})}\rightarrow0$.
+
+
+\paragraph*{Na \textmd{$\Omega_{i>0}$:}}
+
+Budeme konvolutit posunutou funkci! $u_{i}^{\delta}(x):=u_{i}(x',x_{d}+\delta)$.
+Posunuli jsme jí aby p\v{r}e\v{c}nívala mimo $\Omega$ (Zna\v{c}íme
+$x=(x_{1}...x_{d})=(x',x_{d})$ jako v definici.)
+
+Hledaná posloupnost je $u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}^{\delta}\in C^{\infty}(\bar{\Omega})$,
+platí po¸adované $||u_{i}^{\epsilon}-u_{0}||_{k,p(\Omega)}\rightarrow0$,
+proto¸e 
+\begin{itemize}
+\item $||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}\overset{\delta\rightarrow0_{+}}{\rightarrow}0$
+...proto¸e je to jen posunutí, které se pro $\delta=0$ rovná p\r{u}vodní
+funkci a
+\item $||\rho_{\epsilon}*u_{i}^{\delta}-u_{i}^{\delta}||_{k,p(\Omega)}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}0$
+...co¸ je vlastnost zhlazení (od jistého $\epsilon_{0}$, $\epsilon\leq\epsilon_{0}$).
+\end{itemize}
+Dohromady tedy trojúhelníková nerovnost dává:
+
+\[
+||u_{i}^{\epsilon}-u_{i}||_{k,p(\Omega)}\leq||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}+||\rho_{\epsilon}*u_{i}^{\delta}-u_{i}^{\delta}||_{k,p(\Omega)}\rightarrow0
+\]
+
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Charakterizace soboleva diferen\v{c}ními kvocienty (characterization
+of Sobolev spaces with the help of dierence quotients)}
+
+Pro $\Omega\subseteq\mathbb{R}^{d}$ otev\v{r}enou a $u\in L^{p}(\Omega)$
+definujeme (``seminormu na $W^{1,p}$''):
+
+\[
+|u|_{p}:=\sup_{V\subset\subset\Omega}\,\sup_{i=1...d}\,\sup_{0<h<1/4\mathrm{dist}(V,\delta\Omega)}||\frac{u(x+he_{i})-u(x)}{h}||_{L^{p}(x\in V)}
+\]
+
+
+Platí v\v{e}ta pro $\Omega\subseteq\mathbb{R}^{d}$ otev\v{r}ená a
+omezená - pak:
+\begin{enumerate}
+\item Pokud $p\in[1,\infty)$, pak $u\in W^{1,p}(\Omega)\Rightarrow|u|_{p}<\infty$,
+dokonce $|u|_{p}\leq c||u||_{1,p,\Omega}$.
+\item Pokud $p\in(1,\infty]$, pak $|u|_{p}<\infty\Rightarrow u\in W^{1,p}(\Omega)$,
+dokonce $||u||_{1,p,\Omega}\leq c(|u|_{p}+||u||_{p})$.
+\end{enumerate}
+{\footnotesize{Zapamatovat si $p<\infty$ u }}$\leq c||u||_{1,p,\Omega}${\footnotesize{,
+pt¸e to vy¸adují aproxima\v{c}ní v\v{e}ty.}}{\footnotesize \par}
+
+
+\paragraph*{D\r{u}kaz}
+
+1. Doká¸eme na lib. fixním $V\subset\subset\Omega$ nerovnost $\int_{V}\frac{u(x+he_{i})-u(x)}{h}dx\leq c||u||_{1,p,\Omega}$
+pro aproximující posloupnost hladkých funkcí, nerovnost bude zachovaná
+pro limitní p\v{r}echod. Aproximujeme, proto¸e pro hladké umíme d\v{e}lat
+operace, co je pot\v{r}eba v d\r{u}kazu. Proto je $p<\infty$, vy¸adují
+to aproxima\v{c}ní v\v{e}ty.
+
+Rozepí¨eme hladkou funkci jako integrál z derivace (výraz má smysl,
+proto¸e $h$ má omezenou vzdálenost k hranici): 
+
+\[
+|u^{n}(x+he_{i})-u^{n}(x)|=|\int_{0}^{h}\frac{d}{dt}u^{n}(x+te_{i})\, dt|=
+\]
+
+
+...zderivováním, troj\r{u}helníkovou nerovností a zv\v{e}t¨ením na
+normu gradientu:
+
+\[
+=|\int_{0}^{h}\frac{\partial u^{n}(x+te_{i})}{\partial x_{i}}\, dt|\leq\int_{0}^{h}|\nabla u^{n}(x+te_{i})|\cdot1\, dt\leq
+\]
+
+
+...Holderovou nerovností (jedni\v{c}ka je z $p'$, gradient z p\v{r}edpokladu
+z $p$):
+
+\[
+\leq(\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt)^{1/p}\cdot h^{1/p'}
+\]
+
+
+Díky tomu se $h$ v \v{c}itateli diferen\v{c}ního kvocientu zkrátí
+takto ($p/p'-p=-1$):
+
+\[
+|\frac{u^{n}(x+he_{i})-u^{n}(x)}{h}|^{p}\leq\frac{h^{p/p'}}{h^{p}}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt=\frac{1}{h}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt
+\]
+
+
+A kone\v{c}n\v{e} lze tedy odhadnout p\v{r}ímo integrál z diferen\v{c}ního
+kvocientu:
+
+\[
+\int_{V}|\frac{u^{n}(x+he_{i})-u^{n}(x)}{h}|^{p}\leq\frac{1}{h}\int_{V}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt\, dx=
+\]
+
+
+...zám\v{e}nou integrál\r{u} a zv\v{e}t¨ním na celé omega (lze, proto¸e
+funkce má kompaktní nosi\v{c} ve $V$) dostaneme odhad normy gradientu
+v $L^{p}$ (který je odhadlý normou):
+
+\[
+=\frac{1}{h}\int_{0}^{h}\int_{V}|\nabla u^{n}(x+te_{i})|^{p}\, dx\, dt\leq\frac{1}{h}\int_{0}^{h}\int_{\Omega}|\nabla u^{n}(x)|^{p}\, dx\, dt\leq||\nabla u^{n}||_{p}^{p}\,(\leq||u^{n}||_{1,p}^{p})
+\]
+
+
+Dokázali jsme pot\v{r}ebnou nerovnost pro ka¸dý \v{c}len posloupnosti
+aproximujících funkcí, tedy limitou se nerovnost p\v{r}enese na limitní
+funkci.
+
+2. Víme $||\frac{u(x+he_{i})-u(x)}{h}||_{L^{p}(x\in V)}\leq|u|_{p}$
+(pro v¨echny $V,h,i$), ozna\v{c}íme $v_{i}^{h}:=\frac{u(x+he_{i})-u(x)}{h}$,
+budeme chtít ukázat, ¸e $v_{i}^{h}$ má limitu a ¸e ta limita se rovná
+parciálním derivacím $u$, pak budou tyto parciální derivace omezené
+a bude platit zn\v{e}ní v\v{e}ty.
+
+Pro $1<p<\infty$ máme z reflexivity slab\v{e} konvergující podposloupnost,
+proto¸e $v$ je omezená:
+
+\[
+v_{i}^{h_{n}}\overset{h_{n}\rightarrow0}{\rightharpoonup}v_{i}\textrm{ v }L^{p}(V)
+\]
+
+
+Pro $p=\infty$ máme jen $w*$ konvergující podposloupnost:
+
+\[
+v_{i}^{h_{n}}\overset{h_{n}\rightarrow0}{\rightharpoonup^{\star}}v_{i}\textrm{ v }L^{\infty}(V)
+\]
+
+
+V obou p\v{r}ípadech ale platí:
+
+\[
+||v_{i}||_{p}\leq\liminf_{h_{n}\rightarrow0}||v_{i}^{h_{n}}||_{p}\leq|u|_{p}
+\]
+
+
+Kdy¸ doká¸eme, ¸e $v_{i}=\frac{\partial u}{\partial x_{i}}$ ve $V$,
+budeme hotovi. Uká¸eme ¸e je p\v{r}ímo slabou derivací, proto¸e díky
+slabým konvergencím budeme moct p\v{r}ejít k limitám v integrálech
+(integrál tu hraje roli lineárního funkcionálu pro slabou konvergenci):
+
+\[
+\forall\varphi\in\mathcal{D}(V):\,\int_{V}v_{i}\varphi\, dx=\lim_{h\rightarrow0}\int_{V}v_{i}^{h}(x)\varphi(x)\, dx=
+\]
+
+
+...lze p\v{r}ejít k integrálu p\v{r}ez $\mathbb{R}^{d}$, proto¸e
+$\varphi$ má kompaktní support pouze ve $V$. D\v{e}láme to proto,
+¸e chceme p\v{r}ehodit deriva\v{c}ní podíl z $u$ na $\varphi$ a
+to ve dvou krocích - nejprve substitucí (s jednotkovým jakobiánem
+a nem\v{e}nící nekone\v{c}né meze) $x_{new}=x_{old}-he_{i}$:
+
+\[
+=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{u(x+he_{i})-u(x)}{h}\varphi(x)\, dx=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{u(x)-u(x-he_{i})}{h}\varphi(x-he_{i})\, dx=
+\]
+
+
+... druhým krokem bude rozd\v{e}lení (aritmetikou limit a integrál\r{u})
+na dva integrály, zp\v{e}tnou substitucí na jednom z nich a zp\v{e}tném
+se\v{c}tení:
+
+\[
+=\lim_{h\rightarrow0}\frac{1}{h}\int_{\mathbb{R}^{d}}u(x)\varphi(x-he_{i})-u(x-he_{i})\varphi(x-he_{i})\, dx=\lim_{h\rightarrow0}\frac{1}{h}\int_{\mathbb{R}^{d}}u(x)\varphi(x-he_{i})-u(x)\varphi(x)\, dx=
+\]
+
+
+...co¸ vyústilo ve faktické prohození role $u$ a $\varphi$ (bez
+p\v{r}echodu k $\mathbb{R}^{d}$ by to mimochodem nebylo mo¸né):
+
+\[
+=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=
+\]
+
+
+...nakonec zam\v{e}níme limitu a integrál -tím získáme derivaci- a
+p\v{r}ejdeme zp\v{e}t k oblasti $V$ (co¸ stále lze, proto¸e mimo
+ní je v¨e nulové):
+
+\[
+=\int_{\Omega}\lim_{h\rightarrow0}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=\int_{\Omega}\frac{\partial\varphi(x)}{\partial x_{i}}u(x)\, dx
+\]
+
+
+Hotovo, ov\v{e}\v{r}ený vztah pro slabou derivaci (platí na ka¸dé
+$V\subset\subset\Omega$).
+
+\pagebreak{}
+
+
+\subsection*{Extension Theorem}
+
+Nech\v{t} $\Omega\subseteq\mathbb{R}^{d}$ otev\v{r}ená omezená $C^{0,1}$
+lipschitzovská. Pak existuje $\Omega\subseteq\Omega'\subseteq\mathbb{R}^{d}$,
+¸e $\forall p\in[1,\infty)\,\exists E:\, W^{1,p}(\Omega)\rightarrow W^{1,p}(\mathbb{R}^{d})$,
+které je lineární, omezené spojité, ¸e $Eu(x)=u(x)$ s.v v $\Omega$
+a $Eu(x)=0$ s.v. v $\mathbb{R}^{d}\backslash\Omega'$.
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Gagliardo-Nirenberg inequality}
+
+
+\paragraph*{
+\[
+\forall u\in\mathcal{D}(\mathbb{R}^{d}):\,||u||_{L^{\frac{d}{d-1}}(\mathbb{R}^{d})}\leq||\triangledown u||_{L^{1}(\mathbb{R}^{d})}
+\]
+D}
+
+Proto¸e je $u$ hladká funkce s kompaktním supportem:
+
+\[
+\forall i=0...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
+\]
+
+
+\[
+|u(x)|\leq|\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds|\leq\int_{-\infty}^{x_{i}}|\nabla u(x)|
+\]
+
+
+\[
+U_{i}(x_{1}...x_{i-1},x_{i+1}...x_{d}):=\int_{-\infty}^{\infty}|\nabla u(x)|\, dx_{i}...\Rightarrow|u(x)|\leq U_{i}(x_{1}...x_{d})\,(\forall i)
+\]
+
+
+\[
+\Rightarrow|u(x)|^{1/(d-1)}\leq U_{i}^{1/(d-1)}\Rightarrow|u(x)|^{d/(d-1)}\leq\prod_{i=1}^{d}U_{i}^{1/(d-1)}
+\]
+
+
+...zintegrujeme nerovnost $dx_{1}$:
+
+\[
+\int_{-\infty}^{\infty}|u(x)|^{d/(d-1)}\, dx_{1}\leq\int_{-\infty}^{\infty}\prod_{i=1}^{d}U_{i}^{1/(d-1)}\, dx_{1}=
+\]
+
+
+...a proto¸e $U_{1}$ nezávisí na $x_{1}$:
+
+\[
+=U_{1}^{1/(d-1)}\int_{-\infty}^{\infty}\prod_{i=2}^{d}U_{i}^{1/(d-1)}\, dx_{1}\leq
+\]
+
+
+...zavedeme $p_{i}$, $i=2...d$, aby $\sum_{i=2}^{d}1/p_{i}=1$,
+potom Holderem:
+
+\[
+\leq U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}^{p_{i}/(d-1)}\, dx_{1})^{1/p_{i}}=
+\]
+
+
+...zvolíme $p_{i}=d-1$:
+
+\[
+=U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}
+\]
+
+
+...dostali jsme novou nerovnost, znovu zintegrujeme dle $x_{2}$:
+
+\[
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}|u(x)|^{d/(d-1)}\, dx_{1}\, dx_{2}\leq\int_{-\infty}^{\infty}U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}\, dx_{2}=
+\]
+
+
+...$U_{2}$ nezávisí na $x_{2}$:
+
+\[
+=(\int_{-\infty}^{\infty}U_{2}\, dx_{1})^{1/(d-1)}\int_{-\infty}^{\infty}U_{1}^{1/(d-1)}\prod_{i=3}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}\, dx_{2}\leq
+\]
+
+
+...a zase Holdera na $d-2$ \v{c}len\r{u} (ano, i na \v{c}len s $U_{1}$):
+
+\[
+\leq(\int_{-\infty}^{\infty}U_{2}\, dx_{1})^{1/(d-1)}(\int_{-\infty}^{\infty}U_{1}\, dx_{2})^{1/(d-1)}\prod_{i=3}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1}\, dx_{2})^{1/(d-1)}
+\]
+
+
+Opakováním, indukcí:
+
+\[
+\int_{\mathbb{R}^{d}}|u(x)|^{d/(d-1)}\, dx\leq\prod_{i=1}^{d}(\int_{\mathbb{R}^{d-1}}U_{i}dx_{1}...dx_{i-1}dx_{i+1}...dx_{d})^{1/(d-1)}=
+\]
+
+
+...proto¸e jde o sou\v{c}in t\v{e}ch samých \v{c}ísel:
+
+\[
+=\prod_{i=1}^{d}(\int_{\mathbb{R}^{d-1}}\int_{\mathbb{R}}|\nabla u(x)|\, dx)^{1/(d-1)}=||\nabla u||_{L^{1}(\mathbb{R}^{d})}^{d/(d-1)}
+\]
+
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Morrey lemma}
+
+\[
+\forall u\in\mathcal{D}(\mathbb{R}^{d}):\,|u(x)-u(y)|\leq\frac{c(d)}{\alpha}|x-y|^{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u|}{R^{d-1+\alpha}}
+\]
+
+
+
+\paragraph*{D}
+
+Budeme sm\v{e}\v{r}ovat k cíli cestou tohoto odhadu:
+
+\[
+|u(x)-u(y)|\leq|u(x)-\fintop_{B_{R}(0)}u(z)\, dz|+|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|
+\]
+
+
+Soustavu sou\v{r}adnou si BÚNO volíme tak, aby úse\v{c}ka $xy$ le¸ela
+na bázovém vektoru $e_{d}$, st\v{r}ed $xy$ byl v po\v{c}átku a $R$
+voleno jako vzdálenost bodu $y$ od po\v{c}átku.
+
+Odvodíme nerovnost pro jeden \v{c}len $|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|$,
+druhá bude kv\r{u}li symetrickým podmínkám stejná. Zapí¨eme rozdíl
+pomocí rovnosti, která platí pro spojité funkce díky primitivním funkcím:
+
+\[
+u(y)-\fintop_{B_{R}(0)}u(z)\, dz=-\int_{0}^{R}\frac{d}{dr}\fintop_{B_{r}((R-r)e_{d})}u(z)\, dz\, dr=
+\]
+
+
+...zbavíme se pr\r{u}m\v{e}rového integrálu,$\kappa^{d}$ je míra
+jednotkové koule v $\mathbb{R}^{d}$:
+
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{d}{dr}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}u(z)\, dz\, dr=
+\]
+
+
+...pomocí substituce $z=rx+(R-r)e_{d}\Rightarrow rx=z-(R-r)e_{d}$,
+$J=r^{d}$:
+
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{d}{dr}\int_{B_{1}(0)}u(rx+(R-r)e_{d})\, dx\, dr=
+\]
+
+
+...te\v{d} mno¸ina nezávisí na $r$, m\r{u}¸eme derivovat:
+
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\int_{B_{1}(0)}\frac{\partial u(rx+(R-r)e_{d})}{\partial x_{i}}(x_{i}-\delta_{id})\, dx\, dr=
+\]
+
+
+...te\v{d} zp\v{e}t substituci. $e_{d}$ se zm\v{e}ní na $\delta_{i,d}$,
+proto¸e ud\v{e}láme operaci po slo¸kách:
+
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}\sum_{i=1}^{d}\frac{\partial u(z)}{\partial z_{i}}(\frac{z_{i}-(R-r)\delta_{id}}{r}-\delta_{id})\, dz\, dr=
+\]
+
+
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}\sum_{i=1}^{d}\frac{\partial u(z)}{\partial z_{i}}(\frac{z_{i}-R\delta_{id}}{r})\, dz\, dr
+\]
+
+
+Odhadem absolutních hodnot, se\v{c}tením parciálních derivací na gradient
+a vyu¸itím faktu, ¸e \v{c}len $(\frac{z_{i}-R\delta_{id}}{r})$ lze
+schovat do konstanty, dostáváme nerovnost:
+
+\[
+|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|\leq2c(d)\int_{0}^{R}\frac{r^{d-1+\alpha}}{r^{d}}\int_{B_{r}((R-r)e_{d})}\frac{|\nabla u(z)|}{r^{d-1+\alpha}}\, dz\, dr\leq
+\]
+
+
+...kde sta\v{c}í p\v{r}ejít k suprému integrandu (suprému p\v{r}ez
+v¨echny koule a v¨echny po\v{c}átky), \v{c}ím¸ se stane z hlediska
+integrálu $dr$ konstantou a lze vytknout mimo tento integrál:
+
+\[
+\leq2c(d)\int_{0}^{R}r^{\alpha-1}\, dr\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u(z)|}{R^{d-1+\alpha}}\, dz=\frac{2c(d)}{\alpha}R^{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u(z)|}{R^{d-1+\alpha}}
+\]
+
+
+Výslednou nerovnost aplikujeme na oba dva \v{c}leny a to tak, ¸e posuneme
+problém aby $x$ a $y$ bylo vyst\v{r}ed\v{e}né do po\v{c}átku soustavy
+sou\v{r}adné, kde pou¸ijeme spole\v{c}ný polom\v{e}r $R=\frac{|x-y|}{2}$.
+(Je to jednodu¨¨í postup, ne¸ se v nerovnostech a odvození naho\v{r}e
+tahat s jiným po\v{c}átkem ne¸ nulou.) Dostaneme:
+
+\[
+|u(x)-u(y)|\leq|u(x)-\fintop_{B_{R'}(0)}u(z)dz|+|u(y)-\fintop_{B_{R}(0)}u(z)dz|\leq\frac{4c(d)}{\alpha}R^{\alpha}S\leq\frac{c(d)}{\alpha}S|x-y|^{\alpha}
+\]
+
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Continuous and compact embedding of Sobolev spaces into Lebesgue
+spaces or into Hoder spaces}
+
+
+\paragraph*{Spojité vno\v{r}ení}
+\begin{lyxcode}
+$X\hookrightarrow Y\Leftrightarrow X\subset Y\,\&\&\,\exists c>0:\,\forall u\in X\,||u||_{Y}\leq c||u||_{X}$
+\end{lyxcode}
+
+\paragraph*{Kompaktní vno\v{r}ení}
+
+$X\hookrightarrow\hookrightarrow M$ banachových prostor\r{u}: $\{x_{n}\}_{n=1}^{\infty},||x_{n}||_{X}\leq c\Rightarrow\exists\{u_{m}\}_{m=1}^{\infty}\subseteq\{x_{n}\}_{n=1}^{\infty}:\, u_{n}\rightarrow u$
+v $M$.
+
+
+\paragraph*{V\v{e}ta vno\v{r}ení}
+
+Nech\v{t} $\Omega\in C^{0,1}$ (Lipschitzovská):
+
+\[
+W^{1,p}(\Omega)\hookrightarrow L^{p*}(\Omega),\, p^{\star}=\frac{dp}{d-p}\,...\, p<d
+\]
+
+
+\[
+W^{1,p}(\Omega)\hookrightarrow L^{p*}(\Omega),\, p^{\star}\in(1,\infty)\,...\, p=d
+\]
+
+
+\[
+W^{1,p}(\Omega)\hookrightarrow C^{0,\alpha}(\bar{\Omega}),\,\alpha=1-d/p\,...\, p>d
+\]
+
+
+Pokud bychom cht\v{e}li $\Omega=\mathbb{R}^{d}$, musíme se v uvedených
+vztazích omezit na prostor $W_{0}^{1,p}(\mathbb{R}^{d})$.
+
+
+\subparagraph*{Navíc platí Kompaktní vno\v{r}ení pro ostré nerovnosti:}
+
+\[
+W^{1,p}(\Omega)\hookrightarrow\hookrightarrow L^{q}(\Omega),\,\forall q<p^{\star}
+\]
+
+
+\[
+W^{1,p}(\Omega)\hookrightarrow C^{0,\beta}(\bar{\Omega}),\,\forall0\leq\beta<\alpha=1-d/p
+\]
+
+
+{\footnotesize{Pozor na $\bar{\Omega}$ a Lipschitzovskost kv\r{u}li
+roz¨í\v{r}ení.}}{\footnotesize \par}
+
+
+\paragraph*{D\r{u}kaz}
+
+Proto¸e je $\Omega$ lipschitzovská, lze ka¸dá funkce $u$ z $W^{1,p}(\Omega)$
+roz¨í\v{r}it na $\mathbb{R}^{d}$ (se zachováním normy a¸ na násobek
+konstanty) aby m\v{e}la roz¨í\v{r}ená $Eu$ kompaktní nosi\v{c} v
+$\mathbb{R}^{d}$. V takovém prostoru jsou husté hladké funkce s kompaktním
+nosi\v{c}em, tak¸e sta\v{c}í jen pro tyto funkce dokázat následující
+nerovnost, která omezuje velikost norem v cílovém prostoru vno\v{r}ení.
+Proto¸e lze tato nerovnost dokázat pro funkce s kompaktním nosi\v{c}em
+$\forall u\in\mathcal{D}(\mathbb{R}^{d})$, platí vno\v{r}ení i pro
+$W_{0}^{1,p}(\mathbb{R}^{d})$. Chci dokázat:
+
+\[
+\exists c(p,d),\,||u||_{L^{p^{\star}}(\mathbb{R}^{d})}\leq c(p,d)||\nabla u||_{L^{p}(\mathbb{R}^{d})}\forall u\in\mathcal{D}(\mathbb{R}^{d})
+\]
+
+
+Pokud je $p=1$, je to p\v{r}ímo Gagliardo Niranberg, pro v\v{e}t¨í
+$p$:
+
+\[
+\int_{\mathbb{R}^{d}}|u|^{p^{\star}}dx=\int_{\mathbb{R}^{d}}\left(|u|^{\frac{p^{\star}(d-1)}{d}}\right)^{\frac{d}{d-1}}dx=||\,|u|^{\frac{p^{\star}(d-1)}{d}}||_{\frac{d}{d-1}}^{d/(d-1)}\leq
+\]
+
+
+...dle Gagliardo Nirenberga máme te\v{d} ve tvaru kdy lze pou¸ít odhad:
+
+\[
+\leq\left(\int_{\mathbb{R}^{d}}|\,\nabla|u|^{\frac{p^{\star}(d-1)}{d}}|dx\right)^{\frac{d}{d-1}}\leq
+\]
+
+
+...derivujeme slou¸enou funkci $\nabla|u|$ umocn\v{e}nou. Konstanta
+vysko\v{c}í derivováním mocniny $c(p,d)=\frac{p^{\star}(d-1)}{d}$:
+
+\[
+\leq c(p,d)\left(\int_{\mathbb{R}^{d}}|u|^{\frac{p^{\star}(d-1)}{d}-1}|\nabla u|dx\right)^{\frac{d}{d-1}}\leq
+\]
+
+
+...Holderova nerovnost! První násobitel v integrálu je $L^{p'}$ (duál),
+druhý je $L^{p}$:
+
+\[
+\leq c(p,d)||\nabla u||_{p}^{d/(d-1)}\left(\int_{\mathbb{R}^{d}}|u|^{\frac{p^{\star}(d-1)-d}{d}\frac{p}{p-1}}dx\right)^{\frac{p-1}{p}\frac{d}{d-1}}
+\]
+
+
+Dostali jsme jistou nerovnost, kterou upravíme - jednak z levé strany
+ud\v{e}láme normu v $L^{p^{\star}}$ prostoru odmocn\v{e}ním obou
+stran a pravou stranu také upravíme na normu $L^{p^{\star}}$, proto¸e
+$\frac{p^{\star}(d-1)-d}{d}\frac{p}{p-1}=p^{\star}$.
+
+Druhý koeficient lze také upravit do tvaru, ve kterém bude lépe vid\v{e}t
+co se stane v následujícím kroku $\frac{p-1}{p}\frac{d}{d-1}\frac{1}{p^{\star}}=1-\frac{d}{(d-1)p^{\star}}$
+(je to p\v{r}esn\v{e} $1$ mínus koeficient u durhého \v{c}lenu pravé
+strany)...
+
+\[
+||u||_{L^{p^{\star}}}\leq c(p,d)||\nabla u||_{p}^{\frac{1}{p^{\star}}\frac{d}{d-1}}||u||_{L^{p^{\star}}}^{1-\frac{d}{(d-1)p^{\star}}}
+\]
+
+
+...proto¸e te\v{d} rovnost vyd\v{e}líme, p\v{r}evedeme normu $L^{p^{\star}}$
+na levou stranu a odmocníme:
+
+\[
+||u||_{L^{p^{\star}}}\leq c(p,d)||\nabla u||_{p}
+\]
+
+
+
+\paragraph*{P\v{r}ípad $C^{0,\alpha}$}
+
+Dle Morayova lemmatu:
+
+\[
+\frac{|u(x)-u(y)|}{|x-y|^{\alpha}}\leq\frac{c(d)}{\alpha}S=\frac{c(d)}{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u|\cdot1}{R^{d-1+\alpha}}dx\leq
+\]
+
+
+...pou¸itím Holderovy nerovnosti na integrál (proto jsme si tam p\v{r}ipravili
+$1$, ta bude z $L^{p'}$, gradient z $L^{p}$):
+
+\[
+\leq\frac{c(d)}{\alpha}\sup_{B_{R}(x_{0})}\frac{1}{R^{d-1+\alpha}}\left(\int_{B_{R}(x_{0})}|\triangledown u|\, dx\right)^{1/p}\cdot|B_{R}(x_{0})|^{1/p'}\leq
+\]
+
+
+...upravíme oba \v{c}leny: \v{c}len $B_{R}(x_{0})$ je roven objemu
+jednotkové koule (vytkneme ze supréma do konstanty) krát zv\v{e}t¨ení
+dané objemem v prostoru $R^{\frac{d}{p'}}$ (necháme v suprému), \v{c}len
+s gradientem zv\v{e}t¨íme na normu $W^{1,p}$ p\v{r}ez celý prostor
+- tím se zbaví závislosti na $R$ a lze dát pry\v{c} ze supréma. Co
+zbyde:
+
+\[
+\leq\frac{c(d,\alpha)}{\alpha}||u||_{1,p}\sup_{R}\frac{R^{\frac{d}{p'}}}{R^{d-1+\alpha}}\leq
+\]
+
+
+...vzpomeneme, ¸e $p'=p/(p-1)$ a $\alpha=1-d/p$ a dosadíme. Vyjde
+p\v{r}esn\v{e} exponent nula, tedy suprémum má v¸dy hodnotu jedna:
+
+\[
+\leq\frac{c(d,\alpha)}{\alpha}||u||_{1,p}\sup_{R}R^{\frac{d(p-1)}{p}-(d-1+1-d/p)}=\frac{c(d,\alpha)}{\alpha}||u||_{1,p}
+\]
+
+
+Tedy Holderovská norma je kontrolovaná Sobolevovskou normou, co¸ dokazuje
+spojité vno\v{r}ení.
+
+
+\paragraph*{Pro\v{c} kompaktní?}
+
+P\v{r}ípad $C^{0,\alpha}$ - proto¸e Arzela-Ascoli: $C^{0,\alpha}\hookrightarrow\hookrightarrow C^{0,\beta}$
+pro $\alpha>\beta$.
+
+
+\paragraph*{P\v{r}ípad $L^{q}$:}
+
+
+\subparagraph*{Krok 1}
+
+Chceme dokázat $W^{1,1}(\Omega)\hookrightarrow\hookrightarrow L^{1}(\Omega)$.
+
+Víme $W^{1,1}\hookrightarrow L^{d/(d-1)}$, co¸ je reflexivní prostor,
+tedy pro zadanou $u^{n}\in W^{1,p}(\Omega),\,||u^{n}||_{1,1}\leq c$
+máme ze spojitého vno\v{r}ení $||u^{n}||_{L^{d/(d-1)}}\leq c$, kde
+zas máme z reflexivity $u^{n}\rightharpoonup u\textrm{ v }L^{d/(d-1)}(\Omega)$
+(búno s p\v{r}echodem k podposloupnosti). Proto¸e je $\Omega$ omezená,
+konverguje $u^{n}$ slab\v{e} i v $L^{1}$.
+
+Te\v{d} uká¸eme, ¸e $||u^{n}-u||_{1}\leq\epsilon$, co¸ potvrdí kompaktní
+vno\v{r}ení. Uká¸eme to odhadnutím této normy pro fixní libovolné
+$\epsilon>0$:
+
+\[
+||u^{n}-u||_{1}\leq||u^{n}-\rho_{\epsilon}*u^{n}||_{1}+||\rho_{\epsilon}*(u^{n}-u)||_{1}+||u-\rho_{\epsilon}*u||_{1}
+\]
+
+
+...t\v{r}etí \v{c}len upravíme do podoby limity díky slabé zdola polospojitosti
+normy $||u-\rho_{\epsilon}*u||_{1}\leq\lim||u^{n}-\rho_{\epsilon}*u^{n}||_{1}$:
+
+\[
+||u^{n}-u||_{1}\leq2||u^{n}-\rho_{\epsilon}*u^{n}||_{1}+||\rho_{\epsilon}*(u^{n}-u)||_{1}
+\]
+
+
+První \v{c}len ($u^{n}-\rho_{\epsilon}*u^{n}=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u^{n}(y))\, dy$).
+Pro jeho odhad v $L^{1}$ norm\v{e} platí: 
+\[
+||u^{n}-\rho_{\epsilon}*u^{n}||_{1}\leq\int_{\mathbb{R}^{d}}\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u^{n}(y))\, dy\, dx=
+\]
+
+
+...substitucí $x-y=z$:
+
+\[
+=\int_{\mathbb{R}^{d}}\int_{\mathbb{R}^{d}}|z|\rho_{\epsilon}(z)\frac{(u^{n}(y+z)-u^{n}(y))}{|z|}\, dy\, dz\leq
+\]
+
+
+...zlomek lze odhadnout $W^{1,1}$ normou (v\v{e}ta o diferen\v{c}ních
+kvocientech):
+
+\[
+=||u^{n}||_{1,1}\int_{\mathbb{R}^{d}}|z|\rho_{\epsilon}(z)\, dz\leq
+\]
+
+
+...proto¸e zmen¨ováním $\epsilon$ se zmen¨uje i nosi\v{c} $|z|$,
+který lze odhadnout p\v{r}ímo $\epsilon$, zatímco tam zbyde integrál
+ze zhlazovací funkce, který je roven jedné, lze integrál vzít libovoln\v{e}
+malý:
+
+\[
+\leq||u^{n}||_{1,1}\epsilon\int_{\mathbb{R}^{d}}\rho_{\epsilon}(z)\, dz\leq\epsilon||u^{n}||_{1,1}
+\]
+
+
+Druhý \v{c}len ($\rho_{\epsilon}*(u^{n}-u)=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u(y))\, dy$).
+
+Proto¸e $u^{n}-u$ jde slab\v{e} k nule a násobí se jen omezenou funkcí,
+tak celek jde k nule. 
+
+Tedy celkov\v{e} $||u^{n}-u||_{1}\rightarrow0$, proto¸e pravá strana
+nerovnosti jde k nule.
+
+
+\subparagraph*{Krok 2}
+
+Máme $W^{1,p}(\Omega)\hookrightarrow L^{p^{\star}}(\Omega)\,\&\&\, W^{1,1}(\Omega)\hookrightarrow\hookrightarrow L^{1}(\Omega)$.
+Vezm\v{e}me posloupnost $u^{n}\in W^{1,p}(\Omega),\,||u^{n}||_{1,p}\leq c$.
+
+Díky tomu platí:
+\begin{itemize}
+\item $||u^{n}||_{1,1}\leq c$ ... proto¸e je $\Omega$ omezená
+\item $||u^{n}||_{L^{p^{\star}}}\leq c$ ... ze spojitého vno\v{r}ení
+\item máme i podposloupnost $u^{m}\subseteq u^{n},\, u^{m}\rightharpoonup u\textrm{ v }L^{p^{\star}}$
+(slab\v{e}), proto¸e máme reflexivní prostor.
+\item $u^{m}\rightarrow u\textrm{ v }L^{1}$ ... kv\r{u}li kompaktnímu vno\v{r}ení
+\end{itemize}
+Te\v{d} lze pou¸ít interpola\v{c}ní nerovnost pro d\r{u}kaz kompaktního
+vno\v{r}ení:
+
+
+\subparagraph*{Interpola\v{c}ní nerovnost}
+
+\[
+||u||_{L^{q}}\leq||u||_{L^{p}}^{\alpha}\,||u||_{L^{r}}^{1-\alpha}\textrm{ pro }p\leq q\leq r\textrm{, kde }1/q=\alpha/p+(1-\alpha)/r
+\]
+
+
+{\footnotesize{(Dokazuje se $\int|u|^{q}=\int|u|^{q\gamma}|u|^{(1-\gamma)q}$
+a pak Holdera)}}{\footnotesize \par}
+
+
+\paragraph*{Aplikujeme }
+
+ji na ná¨ p\v{r}ípad, tzn $p=1\leq q\leq r=p^{\star}$:
+
+\[
+||u^{n}-u||_{L^{q}}\leq||u^{n}-u||_{L^{1}}^{\alpha}\,||u^{n}-u||_{L^{p^{\star}}}^{1-\alpha}
+\]
+
+
+Na pravé stran\v{e} máme díky odvozeným konvergen\v{c}ním a slab\v{e}
+konvergen\v{c}ním vztah\r{u}m sou\v{c}in nulová krát omezená (v tomto
+po\v{r}adí), tedy levá strana jde k nule, co¸ je tvrzení silné konvergence
+z kompaktního vno\v{r}ení.
+
+\begin{comment}
+
+
+\paragraph*{Komentá\v{r}}
+
+Umím to pro $\mathbb{R}^{d}$, platí to i tam, kde hladké fce $u$
+jsou hladké, nap\v{r}íklad v W01,1. Obecn\v{e} pro W01,1(Omega) ne
+- musím extension theorem. Pokud neni 0 ve W01,1, tak tam uz fce nejsou
+husté, proto chci aby omega byla C0, pak uz kazda sobolevovska fubkce
+lze natahnout na cele Rn a normy jsou ekvivalentni.
+
+Ten odhad co mam pouziju na rozsirenou funkci ktera je nula mimo Omega0.
+
+\end{comment}
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Trace theorem}
+
+Nech\v{t} $\Omega\in C^{0,1}$ (lipschitzovská), pak existuje spojitý
+lineární operátor $T$: $W^{1,p}(\Omega)\rightarrow L^{q}(\delta\Omega)$,
+(resp. do $C(\delta\Omega)$), takový ¸e
+
+$\forall u\in W^{1,p}(\Omega)\cap C^{\infty}(\bar{\Omega}):\textrm{ }Tu=u|_{\delta\Omega}$
+
+Pro $p\in[1,d)$ je $q\leq p^{\#}$, $p^{\#}=\frac{dp-p}{d-p}$.
+
+Pro $p=d$ je $q\in[1,\infty)$ libovolné
+
+Pro $p>d$ je $q\in[1,\infty)$ libovolné, dokonce máme vno\v{r}ení
+$W^{1,p}(\Omega)\hookrightarrow C^{0,\alpha}(\bar{\Omega})$.
+
+
+\paragraph*{D}
+
+
+\paragraph*{BÚNA}
+
+P\v{r}ípad $p>d$ je jasný dokonce z vno\v{r}ení do spojitých funkcí.
+P\v{r}ípad $p=d$ má stejný d\r{u}kaz jako $p<d$, sta\v{c}í tedy
+dokázat jen tento.
+
+BÚNO sta\v{c}í uva¸ovat $q=p^{\#}$, proto¸e z p\v{r}edpokladu kone\v{c}nosti
+hranice máme vno\v{r}ení prostor\r{u} do sebe.
+
+
+\paragraph*{Jak operátor zadefinujeme}
+
+Zadanou funkci m\r{u}¸eme v\v{e}tou Globální aproximace a¸ do hranice
+aproximovat pomocí $u_{n}\rightarrow u\textrm{, }u_{n}\in W^{1,p}(\Omega)\cap C^{\infty}(\bar{\Omega})$.
+Kdybychom um\v{e}li ukázat Cauchyovskost posloupnosti $u_{n}|_{\delta\Omega}$
+v prostoru $L^{p^{\#}}(\delta\Omega)$, m\v{e}la by posloupnost $u_{n}|_{\delta\Omega}$
+limitu a tu bychom zadefinovali jako výsledek p\r{u}sobení operátoru
+na zadanou funkci $Tu:=\lim_{n\rightarrow\infty}u_{n}|_{\delta\Omega}$.
+
+Z cauchyovskosti by pak také plynulo, ¸e je nezávislá na aproximující
+posloupnosti.
+
+Cauchyovskost v prostoru $L^{p^{\#}}(\delta\Omega)$ dostaneme, pokud
+uká¸eme nerovnost (ta p\v{r}enese cauchyovskost $u_{n}$ na $u_{n}|_{\delta\Omega}$):
+
+\[
+\forall v\in C^{\infty}(\bar{\Omega})\textrm{: }||v||_{L^{p^{\#}}(\delta\Omega)}\leq c(p,\Omega)||v||_{W^{1,p}(\Omega)}
+\]
+
+
+
+\paragraph*{Redukce na krabi\v{c}ky}
+
+Díky lipschitzovskosti hranice, sta\v{c}í dokázat tuhle nerovnost
+na libovolném okolí hranice. Pro\v{c} - z $\Omega\in C^{0,1}$ existuje
+toti¸ pokrytí hranice, danou funkci $v$ lze rozlo¸it rozkladem jednotky
+a pokud bude tahle nerovnost platit pro libovolnou komponentu rozlo¸ené
+funkce, se\v{c}te se p\v{r}íslu¨ný (kone\v{c}ný) po\v{c}et nerovností
+na celý prostor. 
+
+M\v{e}jme tedy z definice (ve správných sou\v{r}adnicích) okolí hranice
+$\Omega^{+}$, funkci $a$, tlou¨\v{t}ku $\beta$, ¨í\v{r}ku $\alpha$
+defini\v{c}ního oboru $\triangle=\{x',|x'|<\alpha\}$ funkce $a$
+a zadanou funkci $v$ s nosi\v{c}em kompaktn\v{e} uvnit\v{r} $\Omega^{+}$
+(z rozkladu jednotky):
+
+Napí¨eme si funkci prom\v{e}nné $x'=(x_{1}...x_{d-1})$, která je
+hladká a tedy lze zapsat jako integrál z derivace:
+
+\[
+|u(x',a(x'))|^{\frac{dp-p}{d-p}}=-\int_{a(x')}^{a(x')+\beta}\frac{\partial}{\partial\eta}\left(|u(x',\eta)|^{\frac{dp-p}{d-p}}\right)d\eta
+\]
+
+
+...dal¨ím rozderivováním (konstanta bude koeficient z derivování mociny,
+v¨imn\v{e}me si i zm\v{e}ny exponentu ode\v{c}tením jedni\v{c}ky)
+a zv\v{e}t¨ením $|\partial u/\partial\eta|\leq|\nabla u|$:
+
+\[
+|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)\int_{a(x')}^{a(x')+\beta}|\nabla u(x',\eta)|\,|u(x',\eta)|^{\frac{dp-d}{d-p}}d\eta
+\]
+
+
+...zintegrujeme p\v{r}ez $\triangle$, tím dostaneme integraci p\v{r}ez
+celou d-dimenzionální oblast (díky u¸ existujícímu integrálu $d\eta$)
+a pou¸ijeme Holderovu nerovnost (TODOD?? jak???): 
+
+\[
+\int_{\triangle}|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)||\nabla u(x',\eta)||_{L^{p}(\Omega^{+})}||u||_{L^{\frac{dp}{d-p}}(\Omega^{+})}^{\frac{d(p-1)}{d-p}}d\eta
+\]
+
+
+...pravou stranu upravíme na normu $W^{1,p}$. Toho docílíme odhadem
+gradientu na pravé stran\v{e} $||\nabla u||_{L^{p}(\Omega^{+})}\leq||u||_{W^{1,p}(\Omega^{+})}$
+a v\v{e}tou o vno\v{r}ení na \v{c}len $||u||_{L^{\frac{dp}{d-p}}(\Omega^{+})}^{\frac{d(p-1)}{d-p}}\leq c||u||_{W^{1,p}}^{\frac{d(p-1)}{d-p}}$
+:
+
+\[
+\int_{\triangle}|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)||u||_{W^{1,p}(\Omega^{+})}^{1+\frac{d(p-1)}{d-p}}
+\]
+
+
+...levou stranu upravíme na normu $L^{...}$ , toho docílíme odmocn\v{e}ním
+celé rovnice (kv\r{u}li norm\v{e} vlevo). To se hodí i kv\r{u}li pravé
+stran\v{e}, exponent u $||u||_{W^{1,p}(\Omega^{+})}$ je toti¸ p\v{r}ímo
+roven $1+\frac{d(p-1)}{d-p}=\frac{p(d-1)}{d-1}$, co¸ je p\v{r}esn\v{e}
+hodnota, kterou celou rovnici odmoc\v{n}ujeme. Z\r{u}stane tedy mocnina
+$1$:
+
+\[
+||u||_{L^{\frac{dp-p}{d-p}}(\delta\Omega^{+})}\leq c(p,d)||u||_{W^{1,p}(\Omega^{+})}
+\]
+
+
+Co¸ je nerovnost kterou jsme cht\v{e}li na p\v{r}íslu¨né \v{c}ásti
+hranice.
+
+
+\subsection*{\pagebreak{}}
+
+
+\subsection*{Linear and nonlinear Lax-Milgram lemma}
+
+
+\paragraph*{Lineární LaxMilgram}
+
+Nech\v{t} $V$ je $\mathbb{R}$-Hilbertprostor. Nech\v{t} $B$ je
+bilineární forma $V\times V\rightarrow\mathbb{R}$, která je navíc
+\begin{itemize}
+\item V-Omezená $\exists M>0:\,\forall x,y\in V:\,|B(x,y)|\leq M||x||\,||y||$
+\item V-Eliptická $\exists\alpha>0:\,\forall x\in V:\, B(x,x)\geq\alpha||x||^{2}$
+\end{itemize}
+Pak pro ka¸dou $F\in V^{\star}$ existuje $u\in V$, ¸e $B(u,v)=<F,v>\,(\forall v\in V)$.
+
+Navíc platí apriorní odhad $||u||_{V}\leq1/\alpha\,||f||_{V^{\star}}$.
+
+
+\paragraph*{D}
+
+P\v{r}i\v{r}azení $u\rightarrow B(u,.)$ dává pevnému $u$ lineární
+spojité zobrazení na $V$. To je Rieszovou v\v{e}tou o reprezentaci
+reprezentováno n\v{e}jakým prvkem prostoru $V$. Tento prvek ozna\v{c}íme
+$A(u)$, proto¸e zále¸í na volb\v{e} $u$. Tedy z Riesze máme $(A(u),v)=B(u,v)\,\forall v\in V$.
+
+Kdy¸ doká¸eme, ¸e operátor $A$ je lineární, omezený a na $V$, pak
+umíme pro ka¸dé zadané $F\in V^{\star}$ najít Rieszem nejprve $f\in V,\,<F,v>=(f,v)\,\forall v\in V$
+a pak hledané $u$ je p\v{r}esn\v{e} vzor p\v{r}i zobrazení $A$ -
+$Au=f$.
+
+Linearita $A$ - doká¸eme linearitu na skalárních sou\v{c}inech se
+v¨emi $v\in V$, bude A lineární:
+
+\[
+(A(\alpha u_{1}+\beta u_{2}),v)=B(\alpha u_{1}+\beta u_{2},v)=\alpha B(u_{1},v)+\beta B(u_{2},v)=\alpha A(u_{1},v)+\beta A(u_{2},v)
+\]
+
+
+Omezenost $A$ - dostaneme pou¸itím V-Omezenosti $B$ a vyd\v{e}lením
+následující rovnosti:
+
+\[
+||Au||^{2}=B(u,Au)\leq M||u||\,||Au||
+\]
+
+
+Surjektivnost $A$ ve dvou krocích. Nejprve uká¸eme, ¸e Range $A$
+je uzav\v{r}ený a následn\v{e}, ¸e na range je kolmá jen $0\in V$:
+
+Máme tedy konvergentní posloupnost prvk\r{u} range $Au^{n}\rightarrow v$
+a chceme ukázat, ¸e $v\in Rng\, A\Leftrightarrow\exists u:\, Au=v$.
+Doká¸eme Cauchyovskost vzor\r{u} $u^{n}$ pomocí V-elipticity:
+
+\[
+\alpha||u^{n}-u^{m}||^{2}\leq B(u^{n}-u^{m},u^{n}-u^{m})=(A(u^{n}-u^{m}),u^{n}-u^{m})\leq M||u^{n}-u^{m}||\,||Au^{n}-Au^{m}||
+\]
+
+
+Vyd\v{e}líme a máme normu omezenou normou $||Au^{n}-Au^{m}||\rightarrow0$,
+ta konverguje k nule, z p\v{r}edpokladu.
+
+Máme Cauchyovskost, tak¸e existuje $\exists u:\, u^{n}\rightarrow u$.
+Proto¸e je $A$ spojitá a z p\v{r}edpokladu platí $Au^{n}\rightarrow v$,
+máme rovnost $Au=v$, Range je tudí¸ uzav\v{r}ený.
+
+Poslední krok - kdyby existoval nenulový prvek $v$, který je kolmý
+na celý range:
+
+\[
+\exists v\in V:\,\forall u\in V:\,0=(Au,v)
+\]
+
+
+Tak by ¨lo zvolit $u=v$ a dostali bychom spor s elipticitou:
+
+\[
+0=(Av,v)\geq\alpha||v||^{2}>0
+\]
+
+
+Na Range je kolmá tedy pouze vektorová nula. Co¸ dokon\v{c}uje d\r{u}kaz
+surjektivity $A$.
+
+
+\paragraph*{Nelineární LaxMilgram}
+
+Nech\v{t} $V$ je $\mathbb{R}$-Hilbertprostor. Nech\v{t} $B$ je
+spojité zobrazení $V\times V\rightarrow\mathbb{R}$, lineární v druhé
+slo¸ce (testovacích funkcích), které je navíc:
+\begin{itemize}
+\item Lipschitzovsky spojité (v 1. slo¸ce) $\exists M>0:\,\forall u_{1},u_{2},v\in V:\,|B(u_{1},v)-B(u_{2},v)|\leq M||u_{1}-u_{2}||_{V}\,||v||_{V}$
+(...za omezenost)
+\item Uniform\v{e} monotónní (v 2. slo¸ce) $\exists\alpha>0:\,\forall u_{1},u_{2}\in V:\, B(u_{1},u_{1}-u_{2})-B(u_{2},u_{1}-u_{2})\geq\alpha||u_{1}-u_{2}||_{V}^{2}$
+(...za elipticitu)
+\end{itemize}
+Pak pro ka¸dou $F\in V^{\star}$ existuje $u\in V$, ¸e $B(u,v)=<F,v>\,(\forall v\in V)$.
+
+{\footnotesize{V obou po¸adavcích je $u_{1},u_{2}$ v první slo¸ce,
+proto¸e v druhé slo¸ce je zále¸itost lineární.}}{\footnotesize \par}
+
+\pagebreak{}
+
+
+\subsection*{Caratheodory mapping}
+
+
+\paragraph*{Caratheodoryova $f\textrm{ : }\Omega\times\mathbb{R}^{L}\rightarrow\mathbb{R}\Leftrightarrow$}
+\begin{itemize}
+\item $f(.,u)$ je m\v{e}\v{r}itelná v 1. slo¸ce $x$ pro $\forall u\in\mathbb{R}^{L}$
+(v p\v{r}ípad\v{e} t\v{r}íargumentové funkce je $u$ poslední dva
+argumenty)
+\item $f(x,.)$ je spojitá v 2. slo¸ce $u$ pro s.v $x\in\Omega$
+\end{itemize}
+
+\subsection*{Fundamental theorem of the calculus of variations}
+
+
+\paragraph*{Zadání:}
+
+$\Omega\in C^{0,1}\textrm{(lipschitzovská), }u_{0}\in W^{1,p}(\Omega,\mathbb{R}^{L})\textrm{, }f\in(W_{0}^{1,p}(\Omega,\mathbb{R}^{L}))^{\star}$
+
+$F\textrm{: }\Omega\times\mathbb{R}^{L}\times\mathbb{R}^{d\times L}\rightarrow\mathbb{R}$
+Caratheodoryova
+
+
+\paragraph*{Varia\v{c}ní problém:}
+
+Najít $u,\, u-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$ které
+minimalizuje funkcionál (na zmín\v{e}né zadané mno¸in\v{e} $v-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$).
+
+\[
+J(u):=\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+
+Respektive - najít $u,\, u-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$
+, ¸e
+
+\[
+\int_{\Omega}F(x,u,\nabla u)\leq\int_{\Omega}F(x,v,\nabla v)-<f,v-u>\,\forall v\in W^{1,p}(\Omega,\mathbb{R}^{L}),\, v|_{\delta\Omega}=u_{0}
+\]
+
+
+
+\paragraph*{Minimální po¸adavky:}
+\begin{enumerate}
+\item P-koercivita $F(x,u,\eta)\geq\alpha|\eta|^{p}+g(x)$, $g\in L^{1}(\Omega)$
+\item P-r\r{u}st $|F(x,u,\eta)|\leq c|\eta|^{p}+g(x)$
+\end{enumerate}
+{\footnotesize{Pozor, koercivita nemá abs. hodnotu! Pamatovat si t\v{r}eba
+podle t\v{r}ídy ekvivalence s polynomem p. Napsat existenci konstant!
+TODOD je to to samy p co v definici zadani?}}{\footnotesize \par}
+
+
+\paragraph*{Slabá zdola polospojitost}
+
+Pro operátor spl\v{n}ující minimální po¸adavky definujeme slabou zdola
+polospojitost: 
+\[
+\Leftrightarrow\forall u^{n}\rightharpoonup u\textrm{ v }W^{1,p}(\Omega,\mathbb{R}^{L})\textrm{ platí }\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\geq\int_{\Omega}F(.,u,\nabla u)
+\]
+
+
+{\footnotesize{Pro\v{c} liminf v\v{e}t¨í? Proto¸e polospojitost, kdyby
+celá spojitost, je omezené i limsup.}}{\footnotesize \par}
+
+
+\paragraph*{Základní v\v{e}ta varia\v{c}ního kalkulu}
+
+Nech\v{t} $F$ ze zadání spl\v{n}uje minimální po¸adavky a je slab\v{e}
+zdola polospojitá.
+
+Pak existuje $u$ \v{r}e¨ící varia\v{c}ní problém s daným zadáním.
+
+
+\paragraph*{D}
+
+Vezmeme varia\v{c}ní problém a p\v{r}i\v{c}teme nulu:
+
+\[
+\int_{\Omega}F(x,u,\nabla u)-<f,u-u_{0}>\leq\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+
+definujeme 
+\[
+J(v):=\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+
+tím je vid\v{e}t, ¸e ob\v{e} formulace jsou toto¸né, m\v{e}jme tedy
+$I=\inf_{v\in W^{1,p}(\Omega,\mathbb{R}^{L}),v|_{\delta\Omega}=u_{0}}J(v)$.
+Budeme chtít ukázat, ¸e infimum se nabývá a ov\v{e}\v{r}it varia\v{c}ní
+nerovnost.
+
+Z koercivity plyne, ¸e infimum není $-\infty$: 
+
+\[
+J(v)\geq\alpha||\nabla v||_{p}^{p}-c-||f||\,||\nabla v-\nabla u_{0}||_{p}\geq\alpha||\nabla v||_{p}^{p-1}(||\nabla v||_{p}-c)
+\]
+
+
+Z existence infima $I$ máme posloupnost $u^{n},\, I=\lim_{n\rightarrow\infty}J(u^{n})$
+
+Proto¸e jsem v infimu, porovnám s prvkem prostoru, nap\v{r} $u_{0}$.
+Pak zmizí \v{c}ást s $f$ a díky p-r\r{u}stu dostaneme následující
+nerovnost (druhou konstantu dostaneme jako normu $g$ a zv\v{e}t¨íme,
+abychom mohli konstantu vytknout):
+
+\[
+I\leq J(u_{0})=\int_{\Omega}F(x,u_{0},\nabla u_{0})-0\leq c(1+||\nabla u_{0}||_{p}^{p})
+\]
+
+
+...a na druhou stranu ta posloupnost k tomu infimu b\v{e}¸í, tedy
+z koercivity:
+
+\[
+I=\lim_{n\rightarrow\infty}J(u^{n})\geq\alpha\liminf_{n\rightarrow\infty}(||\nabla u^{n}||_{p}^{p}-c)
+\]
+
+
+Tedy se jedná o omezenou posloupnost:
+
+\[
+||\nabla u^{n}||_{p}\leq c(f,u_{0})
+\]
+
+
+Proto¸e stopa nulová, tak je omezená celá norma $||u^{n}||_{1,p}\leq c(f,u_{0},\Omega)$.
+(Je pak na sob. prostoru se zafixovanou stopou ekvivalentní seminorma
+a norma. Tedy máme li omezenou seminormu -co¸ máme-, máme omezenou
+i sobolevovskou normu.)
+
+Díky tomu z reflexivity dostaneme (búno s p\v{r}echodem k podposloupnosti)
+$u^{n}\rightharpoonup u$ ve $W^{1,p}(\Omega,\mathbb{R}^{L})$. Tohle
+$u$ prohlásíme za \v{r}e¨ení a ov\v{e}\v{r}íme, ¸e tomu tak skute\v{c}n\v{e}
+je.
+
+Proto¸e je $I$ infimum, tak pro ka¸dé $v$ odhaduje funkcionál $I$,
+který z infima dával posloupnost $u^{n}$, tedy máme:
+
+\[
+\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>\ge I=\lim_{n\rightarrow\infty}J(u^{n})\geq\liminf_{n\rightarrow\infty}J(u^{n})=
+\]
+
+
+...z definice funkcionálu pak rozepí¨eme liminf a ze slabé konvergence
+a díky p\v{r}edpokládáné slabé zdola polospojitosti dostaneme:
+
+\[
+=\liminf_{n\rightarrow\infty}J(u^{n})=\liminf_{n\rightarrow\infty}\int_{\Omega}F(x,u^{n},\nabla u^{n})-<f,u^{n}-u_{0}>\geq\int_{\Omega}F(x,u,\nabla u)-<f,u-u_{0}>
+\]
+
+
+Ov\v{e}\v{r}ili jsme pro nalezené $u$, ¸e pro libovolné $v$ je varia\v{c}ní
+nerovnost spln\v{e}na.
+
+
+\subsection*{weak lower-semicontinuity theorem for convex functions}
+
+Nech\v{t} $F$ spl\v{n}uje minimální p\v{r}edpoklady. Navíc, nech\v{t}
+$F$:
+\begin{itemize}
+\item konvexní v poslední prom\v{e}nné a
+\item $A_{i}^{\nu}(.,u,\eta):=\frac{\partial F(.,u,\eta)}{\partial\eta_{i}^{\nu}}$
+je Caratheodoryho a
+\item $|A(.,u,\eta)|\leq c(g(x)+|\eta|^{p-1})$ pro n\v{e}jaké $g\in L^{p'}(\Omega)$
+\end{itemize}
+Pak F je slab\v{e} zdola polospojitá.
+
+
+\paragraph*{D}
+
+Máme tedy $u^{n}\rightharpoonup u$ v $W^{1,p}(\Omega,\mathbb{R}^{L})$
+a chceme $\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\geq\int_{\Omega}F(.,u,\nabla u)$.
+
+Nejprve odvodíme z konvexity nerovnost:
+\[
+A_{i}^{\nu}(.,u,a)\cdot(b-a)\leq F(.,u,b)-F(.,u,a)
+\]
+
+
+Jak? Za\v{c}neme definicí konvexity:
+
+\[
+F(u,\lambda b+(1-\lambda)a))-F(u,a)\leq\lambda(F(u,b)+(1-\lambda)F(u,a))
+\]
+
+
+\[
+F(u,a+\lambda(b-a))-F(u,a)\leq\lambda(F(u,b)-F(ua))
+\]
+
+
+Pod\v{e}líme $\lambda$ a po¨leme do nuly. Pravá strana bude rovná
+pravé stran\v{e} dokazované nerovnosti a levou je¨t\v{e} trochu upravíme:
+
+\[
+1/\lambda\,(F(u,a+\lambda(b-a))-F(u,a))=1/\lambda\,\int_{0}^{1}\frac{d}{dt}F(u,a+t\lambda(b-a))\, dt=
+\]
+
+
+...rozderivováním zmizí $\lambda$:
+
+\[
+=\sum\int_{0}^{1}\frac{\partial F}{\partial\eta_{i}^{\nu}}(b_{i}^{\nu}-a_{i}^{\nu})\, dt=\sum\int_{0}^{1}A_{i}^{\nu}(b_{i}^{\nu}-a_{i}^{\nu})\, dt
+\]
+
+
+Tedy nerovnost $1/\lambda\, F(u,a+\lambda(b-a))-F(u,a)\leq(F(u,b)-F(u,a))$
+p\v{r}ejde limitn\v{e} k 
+
+\[
+A(u,a)\cdot(b-a)\leq F(.,u,b)-F(.,u,a)
+\]
+
+
+...co¸ jsme cht\v{e}li dokázat. (Anebo lze \v{r}íct, ¸e pro konvexní
+funkci je derivace neklesající, tak¸e derivace v bod\v{e} a je nejmen¨í
+z celého intervalu + v\v{e}ta o st\v{r}ední hodnot\v{e}?)
+
+Slabá zdola polospojitost te\v{d} vyjde z t\v{e}chto úprav:
+
+\[
+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\, dx=\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})-F(.,u^{n},\nabla u)\, dx+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u)\, dx\geq
+\]
+
+
+...dle odvozené konvexní nerovnosti:
+
+\[
+\geq\liminf_{n\rightarrow\infty}\int_{\Omega}A(.,u^{n},\nabla u^{n})\cdot(\nabla u^{n}-\nabla u)\, dx+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u)\, dx
+\]
+
+
+Kdy¸ v pravé stran\v{e} této nerovnosti p\v{r}ejdeme k limit\v{e},
+pak první \v{c}len p\r{u}jde k nule (proto¸e $\nabla u^{n}-\nabla u$
+jde z p\v{r}edpokladu slab\v{e} k nule v $L^{p}$) a druhý \v{c}len
+jde k $\int_{\Omega}F(.,u,\nabla u)$.
+
+TODOD m\r{u}¸u takhle beztrestn\v{e} jít k limit\v{e} jen na jedný
+stran\v{e} nerovnosti?
+
+\pagebreak{}
+
+
+\subsection*{V\v{e}ta Nemytskii operator}
+
+Nech\v{t} $f:\,\Omega\times\mathbb{R}^{L}\rightarrow\mathbb{R}$ je
+Caratheodoryova a p\v{r}edpokládáme, ¸e pro n\v{e}jaké $1\leq q_{1},...,q_{L},p<\infty$
+platí
+
+\[
+|f(x,u)|\leq g(x)+\sum_{i=1}^{L}|u_{i}|^{q_{i}/p}\textrm{ s }g\in L^{p}(\Omega)\textrm{ pro s.v. }x\textrm{ a }\forall u\in\mathbb{R}^{L}
+\]
+
+
+Pak zobrazení $(u_{1}(x)...u_{L}(x))\rightarrow f(x,u(x))$ je spojité
+z $L^{q_{1}}(\Omega)\times...\times L^{q_{L}}(\Omega)\rightarrow L^{p}(\Omega)$.
+
+{\small{(Na první \v{r}ádce je $u$ prom\v{e}nná, pak je to funkce.
+Nezapomenout na p\v{r}edpoklady rovnosti.)}}{\small \par}
+
+
+\paragraph*{D}
+
+Zobrazení $f(x,u(x))$ bude m\v{e}\v{r}itelné v $\Omega$, jako slo¸ení
+spojité a m\v{e}\v{r}itelné.
+
+
+\subparagraph*{Norma}
+
+Dále chceme ukázat, ¸e bude mít kone\v{c}nou $L^{p}$ normu:
+
+\[
+\int_{\Omega}|f(x,u(x))|^{p}\leq\int_{\Omega}|g(x)+\sum_{i=1}^{L}|u_{i}|^{q_{i}/p}\,|^{p}\, dx\leq
+\]
+
+
+... v¨echny \v{c}leny po roznásobení lze schovat do konstantního násobku
+\v{c}len\r{u} s nejv\v{e}t¨ími exponenty:
+
+\[
+\leq c(p)(\int_{\Omega}|g(x)|^{p}+\sum_{i=1}^{L}|u_{i}|^{q_{i}}\, dx)\leq c(p)(||g(x)||_{p}^{p}+\sum_{i=1}^{L}||u_{i}||_{q_{i}}^{q_{i}})
+\]
+
+
+
+\subparagraph*{Spojitost}
+
+Poslední v\v{e}c, která zbývá je spojitost. Budeme chtít pro $u_{i}^{n}\rightarrow u\textrm{ v }L^{q_{i}}(\Omega)$
+aby $0=\limsup_{n\rightarrow\infty}\int_{\Omega}|f(x,u^{n}(x))-f(x,u(x))|^{p}$.
+Cíl tedy bude najít podposloupnost, kde se limsup nabývá.
+
+Pou¸ijeme Lemma: Pokud $g^{n}\rightarrow g$ v $L^{s}(\Omega)$, pak
+existuje podposloupnost $g^{n_{k}}$ a $M\in L^{s}$, ¸e $|g^{n_{k}}|+|g|\leq M$
+s.v. v $\Omega$.
+
+Tohle lemma nám dá takto omezenou podposloupnost. Tu vyu¸ijeme k nalezení
+majoranty, která Lebegovou v\v{e}tou ospravedlní zám\v{e}nu limsup
+a integrálu, \v{c}ím¸ bude dokázáno, ¸e limsup se nabývá.
+
+Máme tedy $u_{i}^{n}\rightarrow u\textrm{ v }L^{q_{i}}(\Omega),\,|u_{i}^{n}|+|u_{i}|\leq M_{i}\in L^{q_{i}}$(búno
+s p\v{r}echodem k podposloupnosti).
+
+Odhad majorantou:
+
+\[
+|f(x,u^{n}(x))-f(x,u(x))|^{p}\leq c(|f(x,u^{n}(x))|^{p}+|f(x,u(x))|^{p})\leq
+\]
+
+
+...podobn\v{e} jako vý¨e p\v{r}i odhadu normy:
+
+\[
+\leq c(|g(x)|^{p}+\sum_{i=1}^{L}(|u_{i}^{n}|^{q_{i}}+|u_{i}|^{q_{i}})\leq
+\]
+
+
+...co¸ je dle lemmatu (s nerovností na dva s\v{c}ítance s exponentem):
+
+\[
+\leq c(|g(x)|^{p}+\sum_{i=1}^{L}(|M_{i}(x)|^{q_{i}})
+\]
+
+
+...a to platí skoro v¨ude. Tedy celý výsledek je v $L^{1}$ a je tedy
+integrovatelnou majorantou, lze zam\v{e}nit v na¨í podposloupnosti
+limsup a integrál a tedy se suprémum nabývá a zále¸itost je spojitá.
+
+
+\subsection*{Strictly (+nonstrictly) monotone mapping, Minty method}
+
+\v{R}ekneme, ¸e $A:\,\Omega\times\mathbb{R}^{L}\times\mathbb{R}^{L\times d}\rightarrow\mathbb{R}^{L\times d}$
+je 
+\begin{enumerate}
+\item monotónní vzhledem k t\v{r}etí prom\v{e}nné $\eta$ $\Leftrightarrow$
+pro s.v. $x\in\Omega\,\forall u\in\mathbb{R}^{L},\,\forall\eta_{1},\eta_{2}\in\mathbb{R}^{L\times d}$:
+\[
+(A(x,u,\eta_{1})-A(x,u,\eta_{2}))\cdot(\eta_{1}-\eta_{2})\geq0
+\]
+
+\item striktn\v{e} monotónní vzhledem k t\v{r}etí prom\v{e}nné $\eta$ $\Leftrightarrow$
+pro s.v. $x\in\Omega\,\forall u\in\mathbb{R}^{L},\,\forall\eta_{1},\eta_{2}\in\mathbb{R}^{L\times d}$:
+\[
+|A(x,u,\eta_{1})-A(x,u,\eta_{2})|\,|\eta_{1}-\eta_{2}|>0
+\]
+
+\end{enumerate}
+
+\paragraph{Trik s mátou:}
+
+Máme operátor $A$, operátor $\overline{A}$, který spl\v{n}uje slabou
+formulaci a víme z apriorních odhad\r{u}, ¸e pro v¨echny $w$ platí:
+
+\[
+0\leq\int_{\Omega}(\overline{A}-A)(.,u,\nabla w)\cdot(\nabla u-\nabla w)\,\forall w\in W^{1,p}(\Omega,\mathbb{R}^{L})
+\]
+
+
+Kdy¸ to platí pro v¨echny, tak volíme speciální volbu $w=u\pm\lambda v,\, v\in W^{1,p}(\Omega,\mathbb{R}^{L}),\,\lambda>0$.
+Pak:
+
+\[
+0\leq\pm\lambda\int_{\Omega}(\overline{A}-A)(.,u,\nabla u+\lambda\nabla v)\cdot\nabla v
+\]
+
+
+... pod\v{e}lím $\lambda$ a jdu s $\lambda$ k nule:
+
+\[
+0\leq\pm\int_{\Omega}(\overline{A}-A)(.,u,\nabla u)\cdot\nabla v
+\]
+
+
+Ze spojitosti Nimického operátoru a lebegovy konvergen\v{c}ní v\v{e}ty
+(a $\pm$) plyne, ¸e se rovná nule $0=\int_{\Omega}(\overline{A}-A)(.,u,\nabla u)\cdot\nabla v$,
+¸e se operátory rovnají.
+
+\pagebreak{}
+
+
+\paragraph*{Poznámka, nelinearity:}
+
+0) napí¨u si rovnici $-div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
+
+1) Vidim, ¸e p\v{r}ímo s tim nic nejde, aproximativní \v{r}e¨ení.
+Galerkinova aproximace. u ma být W1,p to je slo¸ité, místo toho \v{c}ást
+W1,p aby nakonec sjednocení \v{c}ástí W1,p. Pou¸iju \v{r}e¨ení ¸ijící
+v linobalu w1...wn, slo¸í celé W1,p proto¸e budou hustý. A argument
+- to je pevný bod ``f(a){*}a\char`\"{} un je \v{r}e¨ení na uzáv\v{e}ru
+linobalu w1...wn.
+
+2) Mam un, mají limitu? Z omezen0 posloupnosti v reflexivním lze vzít
+slab\v{e} konvergentní. Musím dokázat, ¸e un omezené v Reflex pr.
+Doká¸u to ve W1,p. Proto apriorní odhady - un omezená ve W1,p. Tedy
+un slab\v{e} k u v W1,p.
+
+3) Ptáme se, jestli rovnice spln\v{e}ná slab\v{e} -$div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
+
+$\int A(\nabla u)\nabla v=\int f\nabla v\,\forall v\in W^{1,p}$
+
+Ale nevim jak e to pro moje u chová, to A grad u. Co s tim? nevim
+jestli je to pslneny.
+
+Ale z apriornich odhadu dokazu vykoukat nejen un omez, ale i A(nabla
+u\_n) omezena pro vsechny n, v Lp', to je zase reflexivni prostor,
+takze lze predpokladat, ze A grad un jde slabe k A s pruhem. A vim
+pouze ze A s pruhem lezi v Lp' a ze slaby konvergence vim, ze slaba
+formulace je splnena pro A s pruhem.
+
+Chci tam ale misto A s pruhem primo A! Pointa bodu 3 je dokazat A=A
+s pruhem.
+
+A k dukazu mintyho trik. Monotonie a spojitost A. Pomoci mintyho triku
+a jakmile to mam, mam vsechno.
+
+
+\subsection*{Todo}
+
+-k cemu jsou minimalni predpoklady, caratheodoryovskost a omezenost
+shora u Konvexni=\textgreater{} slabe zdola polospojita?
+
+Staci tam to odvozeni? Lze k nerovnosti z konvexniho pouzit ze prostek
+onvexni ma neklesavou derivac ia vetu o stradni hodnote?
+\end{document}

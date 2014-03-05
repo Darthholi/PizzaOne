@@ -1,0 +1,6847 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{amsthm,amsmath,amssymb,amscd,mathrsfs,url}
+%\usepackage[czech]{babel}
+\usepackage{verbatim}
+\usepackage{showkeys}
+\usepackage{xcolor}
+\usepackage{stackengine}
+\usepackage{lipsum}
+\usepackage{comment}
+%%\usepackage{MNsymbol} NIKDY!
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{marginnote}
+\usepackage{esint}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\newcommand{\opdiv}{\mathop{\mathrm{div}}}
+\newcommand{\oprot}{\mathop{\mathrm{rot}}}
+
+\newcommand*\mnote[3][0pt]{%
+  \if l#2\reversemarginpar\def\pointer{\filledmedtriangleright}%
+    \def\stackalignment{r}\fi%
+  \if r#2\normalmarginpar\def\pointer{\filledmedtriangleleft}%
+    \def\stackalignment{l}\fi%
+  \marginpar{%
+    \topinset{%
+      \scalebox{1.5}{\textcolor{blue}{$\pointer$}}}{%
+      \belowbaseline[-1.5\baselineskip-#1]{%
+        \stackengine%
+          {-5pt}%
+          {\fcolorbox{blue}{white}{\parbox{1.8cm}%
+            {\vspace{3pt}\raggedright#3}}}%
+          {~\colorbox{white}{\sffamily Pozn.}}%
+          {O}%
+          {l}%
+          {F}%
+          {F}%
+          {S}%
+        }%
+      }{%
+      3ex+#1}{%
+      -2ex}%
+  }%
+}
+\end_preamble
+\options a4paper,english,czech,12pt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "1PDE13ZS"
+\pdf_author "Martin Holi Holecek"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+P
+\size footnotesize
+izza
+\size default
+ D
+\size footnotesize
+omů
+\size default
+ R
+\size footnotesize
+ychle
+\size default
+ I ZS
+\end_layout
+
+\begin_layout Subsection*
+Sobolevův prostor 
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Multiindex
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha\in\mathbb{N}_{0}^{d}$
+\end_inset
+
+, tedy vektor přirozených čísel s nulou.
+ Výška multiindexu je součet jeho složek.
+\end_layout
+
+\begin_layout Paragraph*
+Množina
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Omega$
+\end_inset
+
+ je otevřená (kvůli definici slabé derivace).
+\end_layout
+
+\begin_layout Paragraph*
+Derivační operátor 
+\begin_inset Formula $D^{\alpha}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+funkce 
+\begin_inset Formula $u\in C^{k}(\Omega),\forall\alpha,|\alpha|\leq k$
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D^{\alpha}u=\frac{\partial^{|\alpha|}u}{\partial x^{\alpha}}=(\frac{\partial^{\alpha_{1}}}{\partial x_{1}^{\alpha_{1}}}...\frac{\partial^{\alpha_{d}}}{\partial x_{n}^{\alpha_{d}}})u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Slabá derivace
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Nechť 
+\begin_inset Formula $\Omega\subset\mathbb{R}^{d}$
+\end_inset
+
+ otevřená, 
+\begin_inset Formula $u\in L_{loc}^{1}(\Omega)$
+\end_inset
+
+, pak 
+\begin_inset Formula $v\in L_{loc}^{1}(\Omega)$
+\end_inset
+
+ je 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-slabá derivace 
+\begin_inset Formula $u$
+\end_inset
+
+ právě tehdy když
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall\varphi\in\mathcal{D}(\Omega):\,\int_{\Omega}v\varphi\, dx=(-1)^{|\alpha|}\int_{\Omega}uD^{\alpha}\varphi\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{D}(\Omega)$
+\end_inset
+
+ - hladké funkce s kompaktním nosičem na 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pokud 
+\begin_inset Formula $u\in C^{k},|\alpha|\leq k\Rightarrow v=D^{\alpha}u$
+\end_inset
+
+ je 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+-slabá derivace.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Nazvěme 
+\begin_inset Formula $D^{\alpha}u$
+\end_inset
+
+ slabou derivací vždy.
+\end_layout
+
+\begin_layout Paragraph*
+Sobolevův prostor
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega\subset\mathbb{R}^{d}$
+\end_inset
+
+ otevřená, 
+\begin_inset Formula $k\in\mathbb{N},p\in[1,\infty]$
+\end_inset
+
+, definujeme 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{k,p}(\Omega):=\{u\in L^{p}(\Omega),\forall|\alpha|\leq k:\, D^{\alpha}u\in L^{p}(\Omega)\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+S normou pro 
+\begin_inset Formula $p<\infty$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||u||_{k,p}=(\sum_{|\alpha|\leq k}||D^{\alpha}u||_{p}^{p})^{1/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a pro 
+\begin_inset Formula $p=\infty$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||u||_{k,\infty}=\sum_{|\alpha|\leq k}||D^{\alpha}u||_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+ je normovaný lineární prostor.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+ je Banachův prostor
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+ je Separabilní 
+\begin_inset Formula $\Leftrightarrow p\in[1,\infty)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+ je Reflexivní 
+\begin_inset Formula $\Leftrightarrow p\in(1,\infty)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{k,2}(\Omega)$
+\end_inset
+
+ je Hilbertův 
+\begin_inset Formula $\Leftrightarrow p=2$
+\end_inset
+
+, 
+\begin_inset Formula $(u,v)_{k,2}=\sum_{|\alpha|\leq k}\int_{\Omega}D^{\alpha}u\, D^{\alpha}v\, dx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Holderovsky spojité funkce
+\end_layout
+
+\begin_layout Standard
+Funkce je 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-holderovsky spojitá, na uzávěru otevřené 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C^{0,\lambda}(\bar{\Omega})\,:=\{u\in C(\bar{\Omega}),\exists c>0\,:\,\forall x,y\in\Omega,\, x\neq y:\,\frac{|u(x)-u(y)|}{|x-y|^{\lambda}}\leq c\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+S normou:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u||_{C^{0,\lambda}}=||u||_{C}+\sup_{x\neq y}\frac{|u(x)-u(y)|}{|x-y|^{\lambda}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Arzela-Ascoli: 
+\begin_inset Formula $C^{0,\alpha}\hookrightarrow\hookrightarrow C^{0,\beta}$
+\end_inset
+
+ pro 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+větší do menšího
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pozor na to, že 
+\begin_inset Formula $x\neq y$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\Omega}$
+\end_inset
+
+ uzávěr!
+\end_layout
+
+\begin_layout Subsection*
+Funkce třídy 
+\begin_inset Formula $C^{k,\lambda}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a\in C^{k,\lambda}(\bar{\Omega})\iff a\in C^{k}(\bar{\Omega})\,\&\,\forall|\beta|\leq k\, D^{\beta}u\in C^{0,\lambda}(\bar{\Omega})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Spojitá ...
+ 
+\begin_inset Formula $C^{0,0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Lipschitzovská ...
+ 
+\begin_inset Formula $C^{0,1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Množina třídy 
+\begin_inset Formula $C^{k,\lambda}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otevřená omezená 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ je třídy 
+\begin_inset Formula $C^{k,\lambda}$
+\end_inset
+
+, 
+\begin_inset Formula $k\in\mathbb{N}_{0},\lambda\in[0,1]$
+\end_inset
+
+, právě tehdy, když existuje 
+\begin_inset Formula $M\in\mathbb{N}$
+\end_inset
+
+ koordinátových systémů a čísla 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}^{+}$
+\end_inset
+
+, a funkce 
+\begin_inset Formula $a_{n}:\,(-\alpha,\alpha)^{d-1}\rightarrow\mathbb{R},\, a_{n}\in C^{k,\lambda},\, n=1...M$
+\end_inset
+
+, že platí při značení 
+\begin_inset Formula $x=(x_{1}...x_{d})=(x',x_{d})$
+\end_inset
+
+ následující:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Omega_{n}^{+}:=\{x,|x'|<\alpha,a_{n}(x')<x_{d}<a_{n}(x')+\beta\}\subset\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Omega_{n}^{-}:=\{x,|x'|<\alpha,a_{n}(x')-\beta<x_{d}<a_{n}(x')\}\subset(\mathbb{R}^{d}\backslash\bar{\Omega})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta_{n}\Omega:=\{x,|x'|<\alpha,a_{n}(x')=x_{d}\}\subset\delta\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bigcup_{n=1}^{M}\delta_{n}\Omega=\delta\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Nezapomenout z jakých prostorů jsou 
+\begin_inset Formula $k,\lambda,\alpha,\beta$
+\end_inset
+
+ a na def.
+ obor 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Lokální aproximace
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p\in[1,\infty)$
+\end_inset
+
+, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{d}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ otevřená: 
+\begin_inset Formula $\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\Omega)$
+\end_inset
+
+, že pro každou 
+\begin_inset Formula $\Omega'\subset\subset\Omega$
+\end_inset
+
+ posloupnost 
+\begin_inset Formula $u^{n}\longrightarrow u$
+\end_inset
+
+ konverguje ve 
+\begin_inset Formula $W^{k,p}(\Omega')$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dokonce bude platit 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u^{n}\in C^{\infty}(\mathbb{R}^{d})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Zapisuje se také jako 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $u^{n}\longrightarrow u$
+\end_inset
+
+ konverguje ve 
+\begin_inset Formula $W_{loc}^{k,p}(\Omega)$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Vlastnosti konvolučního zhlazení
+\end_layout
+
+\begin_layout Standard
+Fakt - konvolučně zhlazená funkce - pro 
+\begin_inset Formula $u\in L^{p}(\mathbb{R}^{d})$
+\end_inset
+
+ máme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{\epsilon}:=\rho_{\epsilon}*u=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)u(y)\, dy$
+\end_inset
+
+ a ta jde k původní funkci - 
+\begin_inset Formula $||u_{\epsilon}-u||_{L^{p}(\mathbb{R}^{d})}\rightarrow0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Konvoluční zhlazení navíc zvětší o 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ nosič, tedy je potřeba volit dostatečně malé, abychom v důkazech nevybočili
+ z množin.
+\end_layout
+
+\begin_layout Standard
+Často při konvolučním zhlazení potřebujeme funkci definovat mimo množinu,
+ kde je definvoaná původně, dodefinováváme tedy nulou.
+ Zhlazení pak zhladí funkci, která je nespojitá se skokem na hranici na
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $C^{\infty}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ funkci.
+\end_layout
+
+\begin_layout Subsubsection*
+Lemma o záměně zhlazení a 
+\begin_inset Formula $D^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Omega\subset\mathbb{R}^{d}$
+\end_inset
+
+ otevřená, pak pro každé 
+\begin_inset Formula $u\in W_{(loc)}^{k,1}(\Omega)$
+\end_inset
+
+ platí skoro všude v 
+\begin_inset Formula $\Omega_{\epsilon}:=\{x\in\Omega,dist(x,\delta\Omega)>\epsilon\}$
+\end_inset
+
+ rovnost 
+\begin_inset Formula $D^{\alpha}(u{}_{\epsilon})=(D^{\alpha}u)_{\epsilon}$
+\end_inset
+
+, tu čteme (dokážeme) tak, že slabá derivace 
+\begin_inset Formula $u{}_{\epsilon}$
+\end_inset
+
+ na levé straně je pravá strana.
+\end_layout
+
+\begin_layout Paragraph*
+Důkaz 
+\end_layout
+
+\begin_layout Standard
+- přehodíme pomocí perpartes a fubiniho derivaci z 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ přez zhlazovací jádro na 
+\begin_inset Formula $u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\int_{\Omega}u_{\epsilon}(x)D^{\alpha}\varphi(x)\, dx=\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)u(y)\, dy\, D^{\alpha}\varphi(x)\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+...a fubi:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)D^{\alpha}\varphi(x)\, dx\, u(y)\, dy=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+...perpartes pro dvě hladké funkce s kompaktním nosičem (proto žádné okrajové
+ členy):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}D_{x}^{\alpha}\rho_{\epsilon}(x-y)\varphi(x)\, dx\, u(y)\, dy=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...fubi:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}D_{x}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=
+\]
+
+\end_inset
+
+...protože je 
+\begin_inset Formula $\rho_{\epsilon}$
+\end_inset
+
+ symetrická, je to jako derivovat dle y:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=(-1)^{2|\alpha|}\int_{\Omega}\int_{\Omega}D_{y}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ vyřešíme sudý exponent a pak použijeme znovu perparets, čímž se přenese
+ derivace k 
+\begin_inset Formula $u$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\int_{\Omega}\int_{\Omega}D_{y}^{\alpha}\rho_{\epsilon}(x-y)u(y)\, dy\,\varphi(x)\, dx=(-1)^{|\alpha|}\int_{\Omega}\int_{\Omega}\rho_{\epsilon}(x-y)D_{y}^{\alpha}u(y)\, dy\,\varphi(x)\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=(-1)^{|\alpha|}\int_{\Omega}(D^{\alpha}u)_{\epsilon}(x)\varphi(x)\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy lze zaměnit derivace a zhlazení.
+\end_layout
+
+\begin_layout Paragraph*
+Jak to použijeme v důkazu?
+\end_layout
+
+\begin_layout Standard
+Máme zadáno
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $u\in W^{k,p}(\Omega)$
+\end_inset
+
+, položíme 
+\begin_inset Formula $u(x)=0$
+\end_inset
+
+ mimo 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Posloupnost zkonstruujeme jako 
+\begin_inset Formula $u_{\epsilon}=\rho_{\epsilon}*u\,\in C^{\infty}(\mathbb{R}^{d})$
+\end_inset
+
+ (pro nějaké 
+\begin_inset Formula $\epsilon=\epsilon_{n}\rightarrow0_{+}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Platí skutečně požadovaná konvergence? Zafixujeme 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega'\subset\subset\Omega$
+\end_inset
+
+ a najdeme 
+\begin_inset Formula $\epsilon_{0}>0$
+\end_inset
+
+ takové, aby 
+\begin_inset Formula $\forall x'\in\Omega':\, B_{\epsilon_{0}}(x')\subseteq\Omega$
+\end_inset
+
+ (tzn zhlazené budou od tohoto 
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+ kompaktně supportem v 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, to je předpoklad lemmatu, proto to děláme).
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Volbou 
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+ odstraníme maximálně konečně členů posloupnosti, což neovlivní konvergenci.
+\end_layout
+
+\begin_layout Standard
+Pak v posloupnosti dokážu pro všechny členy 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\epsilon<\epsilon_{0}$
+\end_inset
+
+, že 
+\begin_inset Formula $||u_{\epsilon}-u||_{k,p(\Omega')}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}0$
+\end_inset
+
+ - to je definice konvergence ve 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $W^{k,p}(\Omega')$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nu a to bude splněno, pokud normy všech derivací půjdou k nule:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Leftrightarrow\forall|\alpha|\leq k:\,||D^{\alpha}(u_{\epsilon})-D^{\alpha}u||_{L^{p}(\Omega')}\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...použijeme lemma a tím přetvoříme ekvivalenci:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Leftrightarrow\forall|\alpha|\leq k:\,||(D^{\alpha}u)_{\epsilon}-D^{\alpha}u||_{L^{p}(\Omega')}\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A dostali jsme známý fakt pro zhlazené funkce 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $D^{\alpha}u$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Globální aproximace s 
+\begin_inset Formula $C^{\infty}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p\in[1,\infty),\,\Omega\subseteq\mathbb{R}^{d}$
+\end_inset
+
+ otevřená:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\Omega)\cap W^{k,p}(\Omega)$
+\end_inset
+
+, že posloupnost 
+\begin_inset Formula $u^{n}\longrightarrow u$
+\end_inset
+
+ konverguje ve 
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Důkaz
+\end_layout
+
+\begin_layout Standard
+Celou dobu budeme mít na zřeteli cíl, tedy najít posloupnost 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u^{\delta}\in C^{\infty}(\Omega)$
+\end_inset
+
+, aby platilo
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $||u^{\delta}-u||_{k,p(V)}\leq\delta$
+\end_inset
+
+ pro libovolné 
+\begin_inset Formula $V\subset\subset\Omega$
+\end_inset
+
+.
+ Toto je ekvivalentní s tvrzením věty, protože norma lze rozepsat na supréma
+ přez 
+\begin_inset Formula $V\subset\subset\Omega$
+\end_inset
+
+ a to díky spojité závislosti na oboru integrace, tedy 
+\begin_inset Formula $||u^{\delta}-u||_{k,p(\Omega)}=\sup_{V\subset\subset\Omega}||u^{\delta}-u||_{k,p(V)}$
+\end_inset
+
+.
+ Mějme tedy zadané 
+\begin_inset Formula $\delta$
+\end_inset
+
+ libovolné, ale pevné.
+\end_layout
+
+\begin_layout Standard
+Nejprve zkonstruujeme otevřené pokrytí množiny takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+i\in\mathbb{N}:\,\Omega_{i}=\{x\in\Omega,dist(x,\delta\Omega)>1/i\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $U_{i}=\Omega_{i+5}-\bar{\Omega}_{i}$
+\end_inset
+
+ budou pásy zhušťující se k hranici.
+\end_layout
+
+\begin_layout Standard
+Dodefinujeme 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $U_{0}$
+\end_inset
+
+ otevřenou, aby platilo 
+\begin_inset Formula $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Použijeme rozklad jedničky 
+\begin_inset Formula $\xi_{j}$
+\end_inset
+
+ vzhledem k 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $U_{j}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, můžeme, protože 
+\begin_inset Formula $U$
+\end_inset
+
+ mají konečné počty průniků.
+ Dostaneme také 
+\begin_inset Formula $\forall x\in\Omega\,\exists j,\,\xi_{j}(x)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Díky úvahám výše máme nástroje na nalezení posloupnosti 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u^{\delta}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ od 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ Nejprve rozložíme zadané 
+\begin_inset Formula $u$
+\end_inset
+
+ rozkladem jednotky:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i}:=u*\xi_{i}$
+\end_inset
+
+.
+ Nutno říct, že platí 
+\begin_inset Formula $u(x):=\sum u_{i}(x)$
+\end_inset
+
+, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ jsou teď funkce, jejichž nosič se přibližuje hranici omegy.
+\end_layout
+
+\begin_layout Standard
+Teď každou 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ zhladíme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}$
+\end_inset
+
+, jsme dost blízko hranice a proto volíme 
+\begin_inset Formula $\epsilon\leq1/(i+5)$
+\end_inset
+
+.
+ Protože máme 
+\begin_inset Formula $u_{i}^{\epsilon}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}u$
+\end_inset
+
+, nalezneme
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $\epsilon(\delta,i)$
+\end_inset
+
+, aby 
+\begin_inset Formula $||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(U_{i})}\leq\delta/2^{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Přesně položíme 
+\begin_inset Formula $u^{\delta}:=\sum_{i=0}^{\infty}u_{i}^{\epsilon(\delta,i)}\left(=\sum_{i=0}^{\infty}\rho_{\epsilon(\delta,i)}u_{i}=\sum_{i=0}^{\infty}\rho_{\epsilon(\delta,i)}(u\xi_{i})\right)$
+\end_inset
+
+, no a konstruovali jsme to tak, aby 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u^{\delta}\in C^{\infty}(\Omega)$
+\end_inset
+
+ (mimochodem ale neplatí 
+\begin_inset Formula $u^{\delta}\in C^{\infty}(\bar{\Omega})$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Ověříme, že posloupnost splňuje požadavek 
+\begin_inset Formula $||u^{\delta}-u||_{k,p(V)}\leq\delta$
+\end_inset
+
+ (tzn že konverguje k zadané 
+\begin_inset Formula $u$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u^{\delta}-u||_{k,p(V)}\leq||\sum_{i=0}^{\infty}u_{i}^{\epsilon(\delta,i)}-\sum_{i=0}^{\infty}u_{i}||_{k,p(V)}=
+\]
+
+\end_inset
+
+ ...Důvod proč jsme dělali rozklad jednotky, je, že teď na 
+\begin_inset Formula $V$
+\end_inset
+
+ bude nenulový jen konečný počet 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ (a tedy i 
+\begin_inset Formula $u_{i}^{\epsilon(\delta,i)}$
+\end_inset
+
+), na konečný počet funguje trojůhelníková nerovnost:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=||\sum_{i=0}^{M}u_{i}^{\epsilon(\delta,i)}-\sum_{i=0}^{M}u_{i}||_{k,p(V)}\leq\sum_{i=0}^{M}||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(V)}=
+\]
+
+\end_inset
+
+...Teď máme normy funkcí, co mají nenulový nosič pouze na 
+\begin_inset Formula $U_{i}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\sum_{i=0}^{M}(||u_{i}^{\epsilon(\delta,i)}-u_{i}||_{k,p(U_{i})})\leq\sum_{i=0}^{M}\frac{\delta}{2^{i+1}}\leq\delta
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+...Přesně dle volby 
+\begin_inset Formula $\epsilon(\delta,i)$
+\end_inset
+
+ a zvětšením na součet nekonečné sumy.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Globální aproximace s 
+\begin_inset Formula $C^{\infty}(\bar{\Omega})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p\in[1,\infty),\,\Omega\in C^{0,0}$
+\end_inset
+
+ otevřená:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\bar{\Omega})$
+\end_inset
+
+, že posloupnost 
+\begin_inset Formula $u^{n}\longrightarrow u$
+\end_inset
+
+ konverguje ve 
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Z definice 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $C^{0,0}$
+\end_inset
+
+ máme krabice 
+\begin_inset Formula $\Omega_{r}=\Omega_{r}^{+}\cup\Omega_{r}^{-}\cup\delta_{n}\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $r=1...M$
+\end_inset
+
+, otevřené, pokrývají okolí hranice.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Dodefinujeme 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega_{0}\subset\subset\Omega$
+\end_inset
+
+ otevřenou, aby platilo 
+\begin_inset Formula $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$
+\end_inset
+
+.
+ Mám pokrytou 
+\begin_inset Formula $\mbox{\Omega}$
+\end_inset
+
+ otevřenými množinami, najdu rozklad jedničky
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ - 
+\begin_inset Formula $u_{i}:=u\xi_{i}$
+\end_inset
+
+, pak 
+\begin_inset Formula $u(x):=\sum u_{i}(x)$
+\end_inset
+
+.
+ Proto 
+\begin_inset Formula $||u_{i}||_{k,p(\Omega_{i})}\leq||u||_{k,p(\Omega)}$
+\end_inset
+
+ a tedy stačí aproximovat jen 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ - chceme najít 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u_{i}^{n}\in C^{\infty}(\bar{\Omega})$
+\end_inset
+
+, 
+\begin_inset Formula $u_{i}^{n}\rightarrow u$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ve 
+\begin_inset Formula $W^{k,p}(\Omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Na 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Najdeme 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\epsilon_{0}=dist(\delta\Omega_{0},\delta\Omega)$
+\end_inset
+
+ a 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\forall\epsilon<\epsilon_{0}:\, u_{0}^{\epsilon}:=\rho_{\epsilon}*u_{0}\in C^{\infty}(\bar{\Omega})$
+\end_inset
+
+, potom 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||u_{0}^{\epsilon}-u_{0}||_{k,p(\Omega_{i})}\rightarrow0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Na 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega_{i>0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Budeme konvolutit posunutou funkci! 
+\begin_inset Formula $u_{i}^{\delta}(x):=u_{i}(x',x_{d}+\delta)$
+\end_inset
+
+.
+ Posunuli jsme jí aby přečnívala mimo 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (Značíme 
+\begin_inset Formula $x=(x_{1}...x_{d})=(x',x_{d})$
+\end_inset
+
+ jako v definici.)
+\end_layout
+
+\begin_layout Standard
+Hledaná posloupnost je 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}^{\delta}\in C^{\infty}(\bar{\Omega})$
+\end_inset
+
+, platí požadované 
+\begin_inset Formula $||u_{i}^{\epsilon}-u_{0}||_{k,p(\Omega)}\rightarrow0$
+\end_inset
+
+, protože 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}\overset{\delta\rightarrow0_{+}}{\rightarrow}0$
+\end_inset
+
+ ...protože je to jen posunutí, které se pro 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+ rovná původní funkci a
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $||\rho_{\epsilon}*u_{i}^{\delta}-u_{i}^{\delta}||_{k,p(\Omega)}\overset{\epsilon\rightarrow0_{+}}{\rightarrow}0$
+\end_inset
+
+ ...což je vlastnost zhlazení (od jistého 
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon\leq\epsilon_{0}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Dohromady tedy trojúhelníková nerovnost dává:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u_{i}^{\epsilon}-u_{i}||_{k,p(\Omega)}\leq||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}+||\rho_{\epsilon}*u_{i}^{\delta}-u_{i}^{\delta}||_{k,p(\Omega)}\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Co by se pokazilo
+\end_layout
+
+\begin_layout Standard
+kdyby nebyl splněn nějaký předpoklad? TODOD
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Charakterizace soboleva diferenčními kvocienty (characterization of Sobolev
+ spaces with the help of dierence quotients)
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{d}$
+\end_inset
+
+ otevřenou a 
+\begin_inset Formula $u\in L^{p}(\Omega)$
+\end_inset
+
+ definujeme (
+\begin_inset Quotes eld
+\end_inset
+
+seminormu na 
+\begin_inset Formula $W^{1,p}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u|_{p}:=\sup_{V\subset\subset\Omega}\,\sup_{i=1...d}\,\sup_{0<h<1/4\mathrm{dist}(V,\delta\Omega)}||\frac{u(x+he_{i})-u(x)}{h}||_{L^{p}(x\in V)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí věta pro 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{d}$
+\end_inset
+
+ otevřená a omezená - pak:
+\end_layout
+
+\begin_layout Enumerate
+Pokud 
+\begin_inset Formula $p\in[1,\infty)$
+\end_inset
+
+, pak 
+\begin_inset Formula $u\in W^{1,p}(\Omega)\Rightarrow|u|_{p}<\infty$
+\end_inset
+
+, dokonce 
+\begin_inset Formula $|u|_{p}\leq c||u||_{1,p,\Omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pokud 
+\begin_inset Formula $p\in(1,\infty]$
+\end_inset
+
+, pak 
+\begin_inset Formula $|u|_{p}<\infty\Rightarrow u\in W^{1,p}(\Omega)$
+\end_inset
+
+, dokonce 
+\begin_inset Formula $||u||_{1,p,\Omega}\leq c(|u|_{p}+||u||_{p})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Zapamatovat si 
+\begin_inset Formula $p<\infty$
+\end_inset
+
+ u 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\leq c||u||_{1,p,\Omega}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size footnotesize
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, ptže to vyžadují aproximační věty.
+\end_layout
+
+\begin_layout Paragraph*
+Důkaz
+\end_layout
+
+\begin_layout Standard
+1.
+ Dokážeme na lib.
+ fixním 
+\begin_inset Formula $V\subset\subset\Omega$
+\end_inset
+
+ nerovnost 
+\begin_inset Formula $\int_{V}\frac{u(x+he_{i})-u(x)}{h}dx\leq c||u||_{1,p,\Omega}$
+\end_inset
+
+ pro aproximující posloupnost hladkých funkcí, nerovnost bude zachovaná
+ pro limitní přechod.
+ Aproximujeme, protože pro hladké umíme dělat operace, co je potřeba v důkazu.
+ Proto je 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $p<\infty$
+\end_inset
+
+, vyžadují to aproximační věty.
+\end_layout
+
+\begin_layout Standard
+Rozepíšeme hladkou funkci jako integrál z derivace (výraz má smysl, protože
+ 
+\begin_inset Formula $h$
+\end_inset
+
+ má omezenou vzdálenost k hranici): 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u^{n}(x+he_{i})-u^{n}(x)|=|\int_{0}^{h}\frac{d}{dt}u^{n}(x+te_{i})\, dt|=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zderivováním, trojůhelníkovou nerovností a zvětšením na normu gradientu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=|\int_{0}^{h}\frac{\partial u^{n}(x+te_{i})}{\partial x_{i}}\, dt|\leq\int_{0}^{h}|\nabla u^{n}(x+te_{i})|\cdot1\, dt\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...Holderovou nerovností (jednička je z 
+\begin_inset Formula $p'$
+\end_inset
+
+, gradient z předpokladu z 
+\begin_inset Formula $p$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq(\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt)^{1/p}\cdot h^{1/p'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Díky tomu se 
+\begin_inset Formula $h$
+\end_inset
+
+ v čitateli diferenčního kvocientu zkrátí takto (
+\begin_inset Formula $p/p'-p=-1$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|\frac{u^{n}(x+he_{i})-u^{n}(x)}{h}|^{p}\leq\frac{h^{p/p'}}{h^{p}}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt=\frac{1}{h}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A konečně lze tedy odhadnout přímo integrál z diferenčního kvocientu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{V}|\frac{u^{n}(x+he_{i})-u^{n}(x)}{h}|^{p}\leq\frac{1}{h}\int_{V}\int_{0}^{h}|\nabla u^{n}(x+te_{i})|^{p}\, dt\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...záměnou integrálů a zvětšním na celé omega (lze, protože funkce má kompaktní
+ nosič ve 
+\begin_inset Formula $V$
+\end_inset
+
+) dostaneme odhad normy gradientu v 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+ (který je odhadlý normou):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{h}\int_{0}^{h}\int_{V}|\nabla u^{n}(x+te_{i})|^{p}\, dx\, dt\leq\frac{1}{h}\int_{0}^{h}\int_{\Omega}|\nabla u^{n}(x)|^{p}\, dx\, dt\leq||\nabla u^{n}||_{p}^{p}\,(\leq||u^{n}||_{1,p}^{p})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dokázali jsme potřebnou nerovnost pro každý člen posloupnosti aproximujících
+ funkcí, tedy limitou se nerovnost přenese na limitní funkci.
+\end_layout
+
+\begin_layout Standard
+2.
+ Víme 
+\begin_inset Formula $||\frac{u(x+he_{i})-u(x)}{h}||_{L^{p}(x\in V)}\leq|u|_{p}$
+\end_inset
+
+ (pro všechny 
+\begin_inset Formula $V,h,i$
+\end_inset
+
+), označíme 
+\begin_inset Formula $v_{i}^{h}:=\frac{u(x+he_{i})-u(x)}{h}$
+\end_inset
+
+, budeme chtít ukázat, že 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $v_{i}^{h}$
+\end_inset
+
+ má limitu a že ta limita se rovná parciálním derivacím 
+\begin_inset Formula $u$
+\end_inset
+
+, pak budou tyto parciální derivace omezené a bude platit znění věty.
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $1<p<\infty$
+\end_inset
+
+ máme z reflexivity slabě konvergující podposloupnost, protože 
+\begin_inset Formula $v$
+\end_inset
+
+ je omezená:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{i}^{h_{n}}\overset{h_{n}\rightarrow0}{\rightharpoonup}v_{i}\textrm{ v }L^{p}(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p=\infty$
+\end_inset
+
+ máme jen 
+\begin_inset Formula $w*$
+\end_inset
+
+ konvergující podposloupnost:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{i}^{h_{n}}\overset{h_{n}\rightarrow0}{\rightharpoonup^{\star}}v_{i}\textrm{ v }L^{\infty}(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+V obou případech ale platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||v_{i}||_{p}\leq\liminf_{h_{n}\rightarrow0}||v_{i}^{h_{n}}||_{p}\leq|u|_{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Když dokážeme, že 
+\begin_inset Formula $v_{i}=\frac{\partial u}{\partial x_{i}}$
+\end_inset
+
+ ve 
+\begin_inset Formula $V$
+\end_inset
+
+, budeme hotovi.
+ Ukážeme že je přímo slabou derivací, protože díky slabým konvergencím budeme
+ moct přejít k limitám v integrálech (integrál tu hraje roli lineárního
+ funkcionálu pro slabou konvergenci):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall\varphi\in\mathcal{D}(V):\,\int_{V}v_{i}\varphi\, dx=\lim_{h\rightarrow0}\int_{V}v_{i}^{h}(x)\varphi(x)\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...lze přejít k integrálu přez 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+, protože 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ má kompaktní support pouze ve 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Děláme to proto, že chceme přehodit derivační podíl z 
+\begin_inset Formula $u$
+\end_inset
+
+ na 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a to ve dvou krocích - nejprve substitucí (s jednotkovým jakobiánem a neměnící
+ nekonečné meze) 
+\begin_inset Formula $x_{new}=x_{old}-he_{i}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{u(x+he_{i})-u(x)}{h}\varphi(x)\, dx=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{u(x)-u(x-he_{i})}{h}\varphi(x-he_{i})\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ druhým krokem bude rozdělení (aritmetikou limit a integrálů) na dva integrály,
+ zpětnou substitucí na jednom z nich a zpětném sečtení:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\lim_{h\rightarrow0}\frac{1}{h}\int_{\mathbb{R}^{d}}u(x)\varphi(x-he_{i})-u(x-he_{i})\varphi(x-he_{i})\, dx=\lim_{h\rightarrow0}\frac{1}{h}\int_{\mathbb{R}^{d}}u(x)\varphi(x-he_{i})-u(x)\varphi(x)\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...což vyústilo ve faktické prohození role 
+\begin_inset Formula $u$
+\end_inset
+
+ a 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ (bez přechodu k 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ by to mimochodem nebylo možné):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\lim_{h\rightarrow0}\int_{\mathbb{R}^{d}}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...nakonec zaměníme limitu a integrál -tím získáme derivaci- a přejdeme zpět
+ k oblasti 
+\begin_inset Formula $V$
+\end_inset
+
+ (což stále lze, protože mimo ní je vše nulové):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=-\int_{\Omega}\lim_{h\rightarrow0}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=-\int_{\Omega}\frac{\partial\varphi(x)}{\partial x_{i}}u(x)\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hotovo, ověřený vztah pro slabou derivaci (platí na každé 
+\begin_inset Formula $V\subset\subset\Omega$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Extension Theorem
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{d}$
+\end_inset
+
+ otevřená omezená 
+\begin_inset Formula $C^{0,1}$
+\end_inset
+
+ lipschitzovská.
+ Pak existuje 
+\begin_inset Formula $\Omega\subseteq\Omega'\subseteq\mathbb{R}^{d}$
+\end_inset
+
+, že 
+\begin_inset Formula $\forall p\in[1,\infty)\,\exists E:\, W^{1,p}(\Omega)\rightarrow W^{1,p}(\mathbb{R}^{d})$
+\end_inset
+
+, které je lineární, omezené spojité, že 
+\begin_inset Formula $Eu(x)=u(x)$
+\end_inset
+
+ s.v v 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ a 
+\begin_inset Formula $Eu(x)=0$
+\end_inset
+
+ s.v.
+ v 
+\begin_inset Formula $\mathbb{R}^{d}\backslash\Omega'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Gagliardo-Nirenberg inequality
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset Formula 
+\[
+\forall u\in\mathcal{D}(\mathbb{R}^{d}):\,||u||_{L^{\frac{d}{d-1}}(\mathbb{R}^{d})}\leq||\triangledown u||_{L^{1}(\mathbb{R}^{d})}
+\]
+
+\end_inset
+
+D
+\end_layout
+
+\begin_layout Standard
+Protože je 
+\begin_inset Formula $u$
+\end_inset
+
+ hladká funkce s kompaktním supportem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall i=0...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u(x)|\leq|\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds|\leq\int_{-\infty}^{x_{i}}|\nabla u(x)|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{i}(x_{1}...x_{i-1},x_{i+1}...x_{d}):=\int_{-\infty}^{\infty}|\nabla u(x)|\, dx_{i}...\Rightarrow|u(x)|\leq U_{i}(x_{1}...x_{d})\,(\forall i)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Rightarrow|u(x)|^{1/(d-1)}\leq U_{i}^{1/(d-1)}\Rightarrow|u(x)|^{d/(d-1)}\leq\prod_{i=1}^{d}U_{i}^{1/(d-1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zintegrujeme nerovnost 
+\begin_inset Formula $dx_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}|u(x)|^{d/(d-1)}\, dx_{1}\leq\int_{-\infty}^{\infty}\prod_{i=1}^{d}U_{i}^{1/(d-1)}\, dx_{1}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...a protože 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+ nezávisí na 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=U_{1}^{1/(d-1)}\int_{-\infty}^{\infty}\prod_{i=2}^{d}U_{i}^{1/(d-1)}\, dx_{1}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zavedeme 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $i=2...d$
+\end_inset
+
+, aby 
+\begin_inset Formula $\sum_{i=2}^{d}1/p_{i}=1$
+\end_inset
+
+, potom Holderem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}^{p_{i}/(d-1)}\, dx_{1})^{1/p_{i}}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zvolíme 
+\begin_inset Formula $p_{i}=d-1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...dostali jsme novou nerovnost, znovu zintegrujeme dle 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}|u(x)|^{d/(d-1)}\, dx_{1}\, dx_{2}\leq\int_{-\infty}^{\infty}U_{1}^{1/(d-1)}\prod_{i=2}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}\, dx_{2}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\begin_inset Formula $U_{2}$
+\end_inset
+
+ nezávisí na 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=(\int_{-\infty}^{\infty}U_{2}\, dx_{1})^{1/(d-1)}\int_{-\infty}^{\infty}U_{1}^{1/(d-1)}\prod_{i=3}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1})^{1/(d-1)}\, dx_{2}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...a zase Holdera na 
+\begin_inset Formula $d-2$
+\end_inset
+
+ členů (ano, i na člen s 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq(\int_{-\infty}^{\infty}U_{2}\, dx_{1})^{1/(d-1)}(\int_{-\infty}^{\infty}U_{1}\, dx_{2})^{1/(d-1)}\prod_{i=3}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1}\, dx_{2})^{1/(d-1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Opakováním, indukcí:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\int_{\mathbb{R}^{d}}|u(x)|^{d/(d-1)}\, dx\leq\prod_{i=1}^{d}(\int_{\mathbb{R}^{d-1}}U_{i}dx_{1}...dx_{i-1}dx_{i+1}...dx_{d})^{1/(d-1)}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...protože jde o součin těch samých čísel:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\prod_{i=1}^{d}(\int_{\mathbb{R}^{d-1}}\int_{\mathbb{R}}|\nabla u(x)|\, dx)^{1/(d-1)}=||\nabla u||_{L^{1}(\mathbb{R}^{d})}^{d/(d-1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Morrey lemma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall u\in\mathcal{D}(\mathbb{R}^{d}):\,|u(x)-u(y)|\leq\frac{c(d)}{\alpha}|x-y|^{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u|}{R^{d-1+\alpha}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Budeme směřovat k cíli cestou tohoto odhadu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u(x)-u(y)|\leq|u(x)-\fintop_{B_{R}(0)}u(z)\, dz|+|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Soustavu souřadnou si BÚNO volíme tak, aby úsečka 
+\begin_inset Formula $xy$
+\end_inset
+
+ ležela na bázovém vektoru 
+\begin_inset Formula $e_{d}$
+\end_inset
+
+, střed 
+\begin_inset Formula $xy$
+\end_inset
+
+ byl v počátku a 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $R$
+\end_inset
+
+ voleno jako vzdálenost bodu 
+\begin_inset Formula $y$
+\end_inset
+
+ od počátku.
+\end_layout
+
+\begin_layout Standard
+Odvodíme nerovnost pro jeden člen 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|$
+\end_inset
+
+, druhá bude kvůli symetrickým podmínkám stejná.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Zapíšeme rozdíl pomocí rovnosti, která platí pro spojité funkce díky primitivní
+m funkcím:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+u(y)-\fintop_{B_{R}(0)}u(z)\, dz=-\int_{0}^{R}\frac{d}{dr}\fintop_{B_{r}((R-r)e_{d})}u(z)\, dz\, dr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+zbavíme se průměrového integrálu,
+\begin_inset Formula $\kappa^{d}$
+\end_inset
+
+ je míra jednotkové koule v 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{d}{dr}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}u(z)\, dz\, dr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...pomocí substituce 
+\begin_inset Formula $z=rx+(R-r)e_{d}\Rightarrow rx=z-(R-r)e_{d}$
+\end_inset
+
+, 
+\begin_inset Formula $J=r^{d}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{d}{dr}\int_{B_{1}(0)}u(rx+(R-r)e_{d})\, dx\, dr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...teď množina nezávisí na 
+\begin_inset Formula $r$
+\end_inset
+
+, můžeme derivovat:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\int_{B_{1}(0)}\frac{\partial u(rx+(R-r)e_{d})}{\partial x_{i}}(x_{i}-\delta_{id})\, dx\, dr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...teď zpět substituci.
+ 
+\begin_inset Formula $e_{d}$
+\end_inset
+
+ se změní na 
+\begin_inset Formula $\delta_{i,d}$
+\end_inset
+
+, protože uděláme operaci po složkách:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}\sum_{i=1}^{d}\frac{\partial u(z)}{\partial z_{i}}(\frac{z_{i}-(R-r)\delta_{id}}{r}-\delta_{id})\, dz\, dr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\frac{-1}{\kappa^{d}}\int_{0}^{R}\frac{1}{r^{d}}\int_{B_{r}((R-r)e_{d})}\sum_{i=1}^{d}\frac{\partial u(z)}{\partial z_{i}}(\frac{z_{i}-R\delta_{id}}{r})\, dz\, dr
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Odhadem absolutních hodnot, sečtením parciálních derivací na gradient a
+ využitím faktu, že člen 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $(\frac{z_{i}-R\delta_{id}}{r})$
+\end_inset
+
+ lze schovat do konstanty,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ dostáváme nerovnost:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+|u(y)-\fintop_{B_{R}(0)}u(z)\, dz|\leq2c(d)\int_{0}^{R}\frac{r^{d-1+\alpha}}{r^{d}}\int_{B_{r}((R-r)e_{d})}\frac{|\nabla u(z)|}{r^{d-1+\alpha}}\, dz\, dr\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...kde stačí přejít k suprému integrandu (suprému přez všechny koule a všechny
+ počátky), čímž se stane z hlediska integrálu 
+\begin_inset Formula $dr$
+\end_inset
+
+ konstantou a lze vytknout mimo tento integrál:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq2c(d)\int_{0}^{R}r^{\alpha-1}\, dr\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u(z)|}{R^{d-1+\alpha}}\, dz=\frac{2c(d)}{\alpha}R^{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u(z)|}{R^{d-1+\alpha}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Výslednou nerovnost aplikujeme na oba dva členy a to tak, že posuneme problém
+ aby 
+\begin_inset Formula $x$
+\end_inset
+
+ a 
+\begin_inset Formula $y$
+\end_inset
+
+ bylo vystředěné do počátku soustavy souřadné, kde použijeme společný poloměr
+ 
+\begin_inset Formula $R=\frac{|x-y|}{2}$
+\end_inset
+
+.
+ (Je to jednodušší postup, než se v nerovnostech a odvození nahoře tahat
+ s jiným počátkem než nulou.) Dostaneme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u(x)-u(y)|\leq|u(x)-\fintop_{B_{R'}(0)}u(z)dz|+|u(y)-\fintop_{B_{R}(0)}u(z)dz|\leq\frac{4c(d)}{\alpha}R^{\alpha}S\leq\frac{c(d)}{\alpha}S|x-y|^{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Continuous and compact embedding of Sobolev spaces into Lebesgue spaces
+ or into Hoder spaces
+\end_layout
+
+\begin_layout Paragraph*
+Spojité vnoření
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $X\hookrightarrow Y\Leftrightarrow X\subset Y\,\&\&\,\exists c>0:\,\forall u\in X\,||u||_{Y}\leq c||u||_{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Kompaktní vnoření
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X\hookrightarrow\hookrightarrow M$
+\end_inset
+
+ banachových prostorů: 
+\begin_inset Formula $\{x_{n}\}_{n=1}^{\infty},||x_{n}||_{X}\leq c\Rightarrow\exists\{u_{m}\}_{m=1}^{\infty}\subseteq\{x_{n}\}_{n=1}^{\infty}:\, u_{n}\rightarrow u$
+\end_inset
+
+ v 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Věta vnoření
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\Omega\in C^{0,1}$
+\end_inset
+
+ (Lipschitzovská):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{1,p}(\Omega)\hookrightarrow L^{p*}(\Omega),\, p^{\star}=\frac{dp}{d-p}\,...\, p<d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{1,p}(\Omega)\hookrightarrow L^{p*}(\Omega),\, p^{\star}\in(1,\infty)\,...\, p=d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{1,p}(\Omega)\hookrightarrow C^{0,\alpha}(\bar{\Omega}),\,\alpha=1-d/p\,...\, p>d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pokud bychom chtěli 
+\begin_inset Formula $\Omega=\mathbb{R}^{d}$
+\end_inset
+
+, musíme se v uvedených vztazích omezit na prostor 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $W_{0}^{1,p}(\mathbb{R}^{d})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph*
+Navíc platí Kompaktní vnoření pro ostré nerovnosti:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{1,p}(\Omega)\hookrightarrow\hookrightarrow L^{q}(\Omega),\,\forall q<p^{\star}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{1,p}(\Omega)\hookrightarrow C^{0,\beta}(\bar{\Omega}),\,\forall0\leq\beta<\alpha=1-d/p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pozor na 
+\begin_inset Formula $\bar{\Omega}$
+\end_inset
+
+ a Lipschitzovskost kvůli rozšíření.
+\end_layout
+
+\begin_layout Paragraph*
+Důkaz
+\end_layout
+
+\begin_layout Standard
+Protože je 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ lipschitzovská, lze každá funkce 
+\begin_inset Formula $u$
+\end_inset
+
+ z 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $W^{1,p}(\Omega)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ rozšířit na 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ (se zachováním normy až na násobek konstanty) aby měla rozšířená 
+\begin_inset Formula $Eu$
+\end_inset
+
+ kompaktní nosič v 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+.
+ V takovém prostoru jsou husté hladké funkce s kompaktním nosičem, takže
+ stačí jen pro tyto funkce dokázat následující nerovnost, která omezuje
+ velikost norem v cílovém prostoru vnoření.
+ Protože lze tato nerovnost dokázat pro funkce s kompaktním nosičem 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\forall u\in\mathcal{D}(\mathbb{R}^{d})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, platí vnoření i pro
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $W_{0}^{1,p}(\mathbb{R}^{d})$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Chci dokázat:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\exists c(p,d),\,||u||_{L^{p^{\star}}(\mathbb{R}^{d})}\leq c(p,d)||\nabla u||_{L^{p}(\mathbb{R}^{d})}\forall u\in\mathcal{D}(\mathbb{R}^{d})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pokud je 
+\begin_inset Formula $p=1$
+\end_inset
+
+, je to přímo Gagliardo Niranberg, pro větší 
+\begin_inset Formula $p$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\mathbb{R}^{d}}|u|^{p^{\star}}dx=\int_{\mathbb{R}^{d}}\left(|u|^{\frac{p^{\star}(d-1)}{d}}\right)^{\frac{d}{d-1}}dx=||\,|u|^{\frac{p^{\star}(d-1)}{d}}||_{\frac{d}{d-1}}^{d/(d-1)}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...dle Gagliardo Nirenberga máme teď ve tvaru kdy lze použít odhad:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq\left(\int_{\mathbb{R}^{d}}|\,\nabla|u|^{\frac{p^{\star}(d-1)}{d}}|dx\right)^{\frac{d}{d-1}}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...derivujeme slouženou funkci 
+\begin_inset Formula $\nabla|u|$
+\end_inset
+
+ umocněnou.
+ Konstanta vyskočí derivováním mocniny 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $c(p,d)=\frac{p^{\star}(d-1)}{d}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq c(p,d)\left(\int_{\mathbb{R}^{d}}|u|^{\frac{p^{\star}(d-1)}{d}-1}|\nabla u|dx\right)^{\frac{d}{d-1}}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...Holderova nerovnost! První násobitel v integrálu je 
+\begin_inset Formula $L^{p'}$
+\end_inset
+
+ (duál), druhý je 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq c(p,d)||\nabla u||_{p}^{d/(d-1)}\left(\int_{\mathbb{R}^{d}}|u|^{\frac{p^{\star}(d-1)-d}{d}\frac{p}{p-1}}dx\right)^{\frac{p-1}{p}\frac{d}{d-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dostali jsme jistou nerovnost, kterou upravíme - jednak z levé strany uděláme
+ normu v 
+\begin_inset Formula $L^{p^{\star}}$
+\end_inset
+
+ prostoru odmocněním obou stran a pravou stranu také upravíme na normu 
+\begin_inset Formula $L^{p^{\star}}$
+\end_inset
+
+, protože 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{p^{\star}(d-1)-d}{d}\frac{p}{p-1}=p^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Druhý koeficient lze také upravit do tvaru, ve kterém bude lépe vidět co
+ se stane v následujícím kroku 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{p-1}{p}\frac{d}{d-1}\frac{1}{p^{\star}}=1-\frac{d}{(d-1)p^{\star}}$
+\end_inset
+
+ (je to přesně 
+\begin_inset Formula $1$
+\end_inset
+
+ mínus koeficient u durhého členu pravé strany)...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||u||_{L^{p^{\star}}}\leq c(p,d)||\nabla u||_{p}^{\frac{1}{p^{\star}}\frac{d}{d-1}}||u||_{L^{p^{\star}}}^{1-\frac{d}{(d-1)p^{\star}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...protože teď rovnost vydělíme, převedeme normu 
+\begin_inset Formula $L^{p^{\star}}$
+\end_inset
+
+ na levou stranu a odmocníme:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u||_{L^{p^{\star}}}\leq c(p,d)||\nabla u||_{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Případ 
+\begin_inset Formula $C^{0,\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dle Morayova lemmatu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{|u(x)-u(y)|}{|x-y|^{\alpha}}\leq\frac{c(d)}{\alpha}S=\frac{c(d)}{\alpha}\sup_{B_{R}(x_{0})}\int_{B_{R}(x_{0})}\frac{|\triangledown u|\cdot1}{R^{d-1+\alpha}}dx\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...použitím Holderovy nerovnosti na integrál (proto jsme si tam připravili
+ 
+\begin_inset Formula $1$
+\end_inset
+
+, ta bude z 
+\begin_inset Formula $L^{p'}$
+\end_inset
+
+, gradient z 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq\frac{c(d)}{\alpha}\sup_{B_{R}(x_{0})}\frac{1}{R^{d-1+\alpha}}\left(\int_{B_{R}(x_{0})}|\triangledown u|\, dx\right)^{1/p}\cdot|B_{R}(x_{0})|^{1/p'}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...upravíme oba členy: člen 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $B_{R}(x_{0})$
+\end_inset
+
+ je roven objemu jednotkové koule (vytkneme ze supréma do konstanty) krát
+ zvětšení dané objemem v prostoru 
+\begin_inset Formula $R^{\frac{d}{p'}}$
+\end_inset
+
+ (necháme v suprému), člen s gradientem zvětšíme na normu 
+\begin_inset Formula $W^{1,p}$
+\end_inset
+
+ přez celý prostor - tím se zbaví závislosti na 
+\begin_inset Formula $R$
+\end_inset
+
+ a lze dát pryč ze supréma.
+ Co zbyde:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq\frac{c(d,\alpha)}{\alpha}||u||_{1,p}\sup_{R}\frac{R^{\frac{d}{p'}}}{R^{d-1+\alpha}}\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...vzpomeneme, že 
+\begin_inset Formula $p'=p/(p-1)$
+\end_inset
+
+ a 
+\begin_inset Formula $\alpha=1-d/p$
+\end_inset
+
+ a dosadíme.
+ Vyjde přesně exponent nula, tedy suprémum má vždy hodnotu jedna:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq\frac{c(d,\alpha)}{\alpha}||u||_{1,p}\sup_{R}R^{\frac{d(p-1)}{p}-(d-1+1-d/p)}=\frac{c(d,\alpha)}{\alpha}||u||_{1,p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy Holderovská norma je kontrolovaná Sobolevovskou normou, což dokazuje
+ spojité vnoření.
+\end_layout
+
+\begin_layout Paragraph*
+Proč kompaktní?
+\end_layout
+
+\begin_layout Standard
+Případ 
+\begin_inset Formula $C^{0,\alpha}$
+\end_inset
+
+ - protože Arzela-Ascoli: 
+\begin_inset Formula $C^{0,\alpha}\hookrightarrow\hookrightarrow C^{0,\beta}$
+\end_inset
+
+ pro 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Případ 
+\begin_inset Formula $L^{q}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Subparagraph*
+Krok 1
+\end_layout
+
+\begin_layout Standard
+Chceme dokázat 
+\begin_inset Formula $W^{1,1}(\Omega)\hookrightarrow\hookrightarrow L^{1}(\Omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Víme 
+\begin_inset Formula $W^{1,1}\hookrightarrow L^{d/(d-1)}$
+\end_inset
+
+, což je reflexivní prostor, tedy pro zadanou 
+\begin_inset Formula $u^{n}\in W^{1,p}(\Omega),\,||u^{n}||_{1,1}\leq c$
+\end_inset
+
+ máme ze spojitého vnoření 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||u^{n}||_{L^{d/(d-1)}}\leq c$
+\end_inset
+
+, kde zas máme z reflexivity 
+\begin_inset Formula $u^{n}\rightharpoonup u\textrm{ v }L^{d/(d-1)}(\Omega)$
+\end_inset
+
+ (búno s přechodem k podposloupnosti).
+ Protože je 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ omezená, konverguje 
+\begin_inset Formula $u^{n}$
+\end_inset
+
+ slabě i v 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Teď ukážeme, že 
+\begin_inset Formula $||u^{n}-u||_{1}\leq\epsilon$
+\end_inset
+
+, což potvrdí kompaktní vnoření.
+ Ukážeme to odhadnutím této normy pro fixní libovolné 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u^{n}-u||_{1}\leq||u^{n}-\rho_{\epsilon}*u^{n}||_{1}+||\rho_{\epsilon}*(u^{n}-u)||_{1}+||u-\rho_{\epsilon}*u||_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...třetí člen upravíme do podoby limity díky slabé zdola polospojitosti normy
+ 
+\begin_inset Formula $||u-\rho_{\epsilon}*u||_{1}\leq\lim||u^{n}-\rho_{\epsilon}*u^{n}||_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u^{n}-u||_{1}\leq2||u^{n}-\rho_{\epsilon}*u^{n}||_{1}+||\rho_{\epsilon}*(u^{n}-u)||_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+První člen 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(
+\begin_inset Formula $u^{n}-\rho_{\epsilon}*u^{n}=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u^{n}(y))\, dy$
+\end_inset
+
+).
+ Pro jeho odhad v 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+ normě platí: 
+\begin_inset Formula 
+\[
+||u^{n}-\rho_{\epsilon}*u^{n}||_{1}\leq\int_{\mathbb{R}^{d}}\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u^{n}(y))\, dy\, dx=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...substitucí 
+\begin_inset Formula $x-y=z$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\int_{\mathbb{R}^{d}}\int_{\mathbb{R}^{d}}|z|\rho_{\epsilon}(z)\frac{(u^{n}(y+z)-u^{n}(y))}{|z|}\, dy\, dz\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zlomek lze odhadnout 
+\begin_inset Formula $W^{1,1}$
+\end_inset
+
+ normou (věta o diferenčních kvocientech):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=||u^{n}||_{1,1}\int_{\mathbb{R}^{d}}|z|\rho_{\epsilon}(z)\, dz\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...protože zmenšováním 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ se zmenšuje i nosič 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $|z|$
+\end_inset
+
+, který lze odhadnout přímo 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, zatímco tam zbyde integrál ze zhlazovací funkce, který je roven jedné,
+ lze integrál vzít libovolně malý:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq||u^{n}||_{1,1}\epsilon\int_{\mathbb{R}^{d}}\rho_{\epsilon}(z)\, dz\leq\epsilon||u^{n}||_{1,1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Druhý člen 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(
+\begin_inset Formula $\rho_{\epsilon}*(u^{n}-u)=\int_{\mathbb{R}^{d}}\rho_{\epsilon}(x-y)(u^{n}(x)-u(y))\, dy$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Protože 
+\begin_inset Formula $u^{n}-u$
+\end_inset
+
+ jde slabě k nule a násobí se jen omezenou funkcí, tak celek jde k nule.
+ 
+\end_layout
+
+\begin_layout Standard
+Tedy celkově 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||u^{n}-u||_{1}\rightarrow0$
+\end_inset
+
+, protože pravá strana nerovnosti jde k nule.
+\end_layout
+
+\begin_layout Subparagraph*
+Krok 2
+\end_layout
+
+\begin_layout Standard
+Máme 
+\begin_inset Formula $W^{1,p}(\Omega)\hookrightarrow L^{p^{\star}}(\Omega)\,\&\&\, W^{1,1}(\Omega)\hookrightarrow\hookrightarrow L^{1}(\Omega)$
+\end_inset
+
+.
+ Vezměme posloupnost 
+\begin_inset Formula $u^{n}\in W^{1,p}(\Omega),\,||u^{n}||_{1,p}\leq c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Díky tomu platí:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $||u^{n}||_{1,1}\leq c$
+\end_inset
+
+ ...
+ protože je 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ omezená
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $||u^{n}||_{L^{p^{\star}}}\leq c$
+\end_inset
+
+ ...
+ ze spojitého vnoření
+\end_layout
+
+\begin_layout Itemize
+máme i podposloupnost 
+\begin_inset Formula $u^{m}\subseteq u^{n},\, u^{m}\rightharpoonup u\textrm{ v }L^{p^{\star}}$
+\end_inset
+
+ (slabě), protože máme reflexivní prostor.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u^{m}\rightarrow u\textrm{ v }L^{1}$
+\end_inset
+
+ ...
+ kvůli kompaktnímu vnoření
+\end_layout
+
+\begin_layout Standard
+Teď lze použít interpolační nerovnost pro důkaz kompaktního vnoření:
+\end_layout
+
+\begin_layout Subparagraph*
+Interpolační nerovnost
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||u||_{L^{q}}\leq||u||_{L^{p}}^{\alpha}\,||u||_{L^{r}}^{1-\alpha}\textrm{ pro }p\leq q\leq r\textrm{, kde }1/q=\alpha/p+(1-\alpha)/r
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+(Dokazuje se 
+\begin_inset Formula $\int|u|^{q}=\int|u|^{q\gamma}|u|^{(1-\gamma)q}$
+\end_inset
+
+ a pak Holdera)
+\end_layout
+
+\begin_layout Paragraph*
+Aplikujeme 
+\end_layout
+
+\begin_layout Standard
+ji na náš případ, tzn 
+\begin_inset Formula $p=1\leq q\leq r=p^{\star}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+||u^{n}-u||_{L^{q}}\leq||u^{n}-u||_{L^{1}}^{\alpha}\,||u^{n}-u||_{L^{p^{\star}}}^{1-\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na pravé straně máme díky odvozeným konvergenčním a slabě konvergenčním
+ vztahům součin nulová krát omezená (v tomto pořadí), tedy levá strana jde
+ k nule, což je tvrzení silné konvergence z kompaktního vnoření.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Komentář
+\end_layout
+
+\begin_layout Standard
+Umím to pro 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+, platí to i tam, kde hladké fce 
+\begin_inset Formula $u$
+\end_inset
+
+ jsou hladké, například v W01,1.
+ Obecně pro W01,1(Omega) ne - musím extension theorem.
+ Pokud neni 0 ve W01,1, tak tam uz fce nejsou husté, proto chci aby omega
+ byla C0, pak uz kazda sobolevovska fubkce lze natahnout na cele Rn a normy
+ jsou ekvivalentni.
+\end_layout
+
+\begin_layout Standard
+Ten odhad co mam pouziju na rozsirenou funkci ktera je nula mimo Omega0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Trace theorem
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\Omega\in C^{0,1}$
+\end_inset
+
+ (lipschitzovská), pak existuje spojitý lineární operátor 
+\begin_inset Formula $T$
+\end_inset
+
+: 
+\begin_inset Formula $W^{1,p}(\Omega)\rightarrow L^{q}(\delta\Omega)$
+\end_inset
+
+, (resp.
+ do 
+\begin_inset Formula $C(\delta\Omega)$
+\end_inset
+
+), takový že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\forall u\in W^{1,p}(\Omega)\cap C^{\infty}(\bar{\Omega}):\textrm{ }Tu=u|_{\delta\Omega}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p\in[1,d)$
+\end_inset
+
+ je 
+\begin_inset Formula $q\leq p^{\#}$
+\end_inset
+
+, 
+\begin_inset Formula $p^{\#}=\frac{dp-p}{d-p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p=d$
+\end_inset
+
+ je 
+\begin_inset Formula $q\in[1,\infty)$
+\end_inset
+
+ libovolné
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $p>d$
+\end_inset
+
+ je 
+\begin_inset Formula $q\in[1,\infty)$
+\end_inset
+
+ libovolné, dokonce máme vnoření 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $W^{1,p}(\Omega)\hookrightarrow C^{0,\alpha}(\bar{\Omega})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Paragraph*
+BÚNA
+\end_layout
+
+\begin_layout Standard
+Případ 
+\begin_inset Formula $p>d$
+\end_inset
+
+ je jasný dokonce z vnoření do spojitých funkcí.
+ Případ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $p=d$
+\end_inset
+
+ má stejný důkaz jako 
+\begin_inset Formula $p<d$
+\end_inset
+
+, stačí tedy dokázat jen tento.
+\end_layout
+
+\begin_layout Standard
+BÚNO stačí uvažovat 
+\begin_inset Formula $q=p^{\#}$
+\end_inset
+
+, protože z předpokladu konečnosti hranice máme vnoření prostorů do sebe.
+\end_layout
+
+\begin_layout Paragraph*
+Jak operátor zadefinujeme
+\end_layout
+
+\begin_layout Standard
+Zadanou funkci můžeme větou Globální aproximace až do hranice aproximovat
+ pomocí 
+\begin_inset Formula $u_{n}\rightarrow u\textrm{, }u_{n}\in W^{1,p}(\Omega)\cap C^{\infty}(\bar{\Omega})$
+\end_inset
+
+.
+ Kdybychom uměli ukázat Cauchyovskost posloupnosti 
+\begin_inset Formula $u_{n}|_{\delta\Omega}$
+\end_inset
+
+ v prostoru 
+\begin_inset Formula $L^{p^{\#}}(\delta\Omega)$
+\end_inset
+
+, měla by posloupnost 
+\begin_inset Formula $u_{n}|_{\delta\Omega}$
+\end_inset
+
+ limitu a tu bychom zadefinovali jako výsledek působení operátoru na zadanou
+ funkci 
+\begin_inset Formula $Tu:=\lim_{n\rightarrow\infty}u_{n}|_{\delta\Omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Z cauchyovskosti by pak také plynulo, že je nezávislá na aproximující posloupnos
+ti.
+\end_layout
+
+\begin_layout Standard
+Cauchyovskost v prostoru 
+\begin_inset Formula $L^{p^{\#}}(\delta\Omega)$
+\end_inset
+
+ dostaneme, pokud ukážeme nerovnost (ta přenese cauchyovskost 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ na 
+\begin_inset Formula $u_{n}|_{\delta\Omega}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall v\in C^{\infty}(\bar{\Omega})\textrm{: }||v||_{L^{p^{\#}}(\delta\Omega)}\leq c(p,\Omega)||v||_{W^{1,p}(\Omega)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Redukce na krabičky
+\end_layout
+
+\begin_layout Standard
+Díky lipschitzovskosti hranice, stačí dokázat tuhle nerovnost na libovolném
+ okolí hranice.
+ Proč - z 
+\begin_inset Formula $\Omega\in C^{0,1}$
+\end_inset
+
+ existuje totiž pokrytí hranice, danou funkci 
+\begin_inset Formula $v$
+\end_inset
+
+ lze rozložit rozkladem jednotky a pokud bude tahle nerovnost platit pro
+ libovolnou komponentu rozložené funkce, sečte se příslušný (konečný) počet
+ nerovností na celý prostor.
+ 
+\end_layout
+
+\begin_layout Standard
+Mějme tedy z definice (ve správných souřadnicích) okolí hranice 
+\begin_inset Formula $\Omega^{+}$
+\end_inset
+
+, funkci 
+\begin_inset Formula $a$
+\end_inset
+
+, tloušťku 
+\begin_inset Formula $\beta$
+\end_inset
+
+, šířku 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ definičního oboru 
+\begin_inset Formula $\triangle=\{x',|x'|<\alpha\}$
+\end_inset
+
+ funkce 
+\begin_inset Formula $a$
+\end_inset
+
+ a zadanou funkci 
+\begin_inset Formula $v$
+\end_inset
+
+ s nosičem kompaktně uvnitř 
+\begin_inset Formula $\Omega^{+}$
+\end_inset
+
+ (z rozkladu jednotky):
+\end_layout
+
+\begin_layout Standard
+Napíšeme si funkci proměnné 
+\begin_inset Formula $x'=(x_{1}...x_{d-1})$
+\end_inset
+
+, která je hladká a tedy lze zapsat jako integrál z derivace:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u(x',a(x'))|^{\frac{dp-p}{d-p}}=-\int_{a(x')}^{a(x')+\beta}\frac{\partial}{\partial\eta}\left(|u(x',\eta)|^{\frac{dp-p}{d-p}}\right)d\eta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...dalším rozderivováním (konstanta bude koeficient z derivování mociny, všimněme
+ si i změny exponentu odečtením jedničky) a zvětšením 
+\begin_inset Formula $|\partial u/\partial\eta|\leq|\nabla u|$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)\int_{a(x')}^{a(x')+\beta}|\nabla u(x',\eta)|\,|u(x',\eta)|^{\frac{dp-d}{d-p}}d\eta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...zintegrujeme přez 
+\begin_inset Formula $\triangle$
+\end_inset
+
+, tím dostaneme integraci přez celou d-dimenzionální oblast (díky už existujícím
+u integrálu 
+\begin_inset Formula $d\eta$
+\end_inset
+
+) a použijeme Holderovu nerovnost (TODOD?? jak???): 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\int_{\triangle}|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)||\nabla u(x',\eta)||_{L^{p}(\Omega^{+})}||u||_{L^{\frac{dp}{d-p}}(\Omega^{+})}^{\frac{d(p-1)}{d-p}}d\eta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...pravou stranu upravíme na normu 
+\begin_inset Formula $W^{1,p}$
+\end_inset
+
+.
+ Toho docílíme odhadem gradientu na pravé straně 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||\nabla u||_{L^{p}(\Omega^{+})}\leq||u||_{W^{1,p}(\Omega^{+})}$
+\end_inset
+
+ a 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+větou o vnoření na člen 
+\begin_inset Formula $||u||_{L^{\frac{dp}{d-p}}(\Omega^{+})}^{\frac{d(p-1)}{d-p}}\leq c||u||_{W^{1,p}}^{\frac{d(p-1)}{d-p}}$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\triangle}|u(x',a(x'))|^{\frac{dp-p}{d-p}}\leq c(p,d)||u||_{W^{1,p}(\Omega^{+})}^{1+\frac{d(p-1)}{d-p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...levou stranu upravíme na normu 
+\begin_inset Formula $L^{...}$
+\end_inset
+
+ , toho docílíme odmocněním celé rovnice (kvůli normě vlevo).
+ To se hodí i kvůli pravé straně, exponent u 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||u||_{W^{1,p}(\Omega^{+})}$
+\end_inset
+
+ je totiž přímo roven 
+\begin_inset Formula $1+\frac{d(p-1)}{d-p}=\frac{p(d-1)}{d-1}$
+\end_inset
+
+, což je přesně hodnota, kterou celou rovnici odmocňujeme.
+ Zůstane tedy mocnina 
+\begin_inset Formula $1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||u||_{L^{\frac{dp-p}{d-p}}(\delta\Omega^{+})}\leq c(p,d)||u||_{W^{1,p}(\Omega^{+})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Což je nerovnost kterou jsme chtěli na příslušné části hranice.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Linear and nonlinear Lax-Milgram lemma
+\end_layout
+
+\begin_layout Paragraph*
+Lineární LaxMilgram
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $V$
+\end_inset
+
+ je 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+-Hilbertprostor.
+ Nechť 
+\begin_inset Formula $B$
+\end_inset
+
+ je bilineární forma 
+\begin_inset Formula $V\times V\rightarrow\mathbb{R}$
+\end_inset
+
+, která je navíc
+\end_layout
+
+\begin_layout Itemize
+V-Omezená 
+\begin_inset Formula $\exists M>0:\,\forall x,y\in V:\,|B(x,y)|\leq M||x||\,||y||$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+V-Eliptická 
+\begin_inset Formula $\exists\alpha>0:\,\forall x\in V:\, B(x,x)\geq\alpha||x||^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pak pro každou 
+\begin_inset Formula $F\in V^{\star}$
+\end_inset
+
+ existuje 
+\begin_inset Formula $u\in V$
+\end_inset
+
+, že 
+\begin_inset Formula $B(u,v)=<F,v>\,(\forall v\in V)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Navíc platí apriorní odhad 
+\begin_inset Formula $||u||_{V}\leq1/\alpha\,||f||_{V^{\star}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Přiřazení 
+\begin_inset Formula $u\rightarrow B(u,.)$
+\end_inset
+
+ dává pevnému 
+\begin_inset Formula $u$
+\end_inset
+
+ lineární spojité zobrazení na 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ To je Rieszovou větou o reprezentaci reprezentováno nějakým prvkem prostoru
+ 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Tento prvek označíme 
+\begin_inset Formula $A(u)$
+\end_inset
+
+, protože záleží na volbě 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ Tedy z Riesze máme 
+\begin_inset Formula $(A(u),v)=B(u,v)\,\forall v\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Když dokážeme, že operátor 
+\begin_inset Formula $A$
+\end_inset
+
+ je lineární, omezený a na 
+\begin_inset Formula $V$
+\end_inset
+
+, pak umíme pro každé zadané 
+\begin_inset Formula $F\in V^{\star}$
+\end_inset
+
+ najít Rieszem nejprve 
+\begin_inset Formula $f\in V,\,<F,v>=(f,v)\,\forall v\in V$
+\end_inset
+
+ a pak hledané 
+\begin_inset Formula $u$
+\end_inset
+
+ je přesně vzor při zobrazení 
+\begin_inset Formula $A$
+\end_inset
+
+ - 
+\begin_inset Formula $Au=f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Linearita 
+\begin_inset Formula $A$
+\end_inset
+
+ - dokážeme linearitu na skalárních součinech se všemi 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, bude A lineární:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(A(\alpha u_{1}+\beta u_{2}),v)=B(\alpha u_{1}+\beta u_{2},v)=\alpha B(u_{1},v)+\beta B(u_{2},v)=\alpha A(u_{1},v)+\beta A(u_{2},v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Omezenost 
+\begin_inset Formula $A$
+\end_inset
+
+ - dostaneme použitím V-Omezenosti 
+\begin_inset Formula $B$
+\end_inset
+
+ a vydělením následující rovnosti:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||Au||^{2}=B(u,Au)\leq M||u||\,||Au||
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Surjektivnost 
+\begin_inset Formula $A$
+\end_inset
+
+ ve dvou krocích.
+ Nejprve ukážeme, že Range 
+\begin_inset Formula $A$
+\end_inset
+
+ je uzavřený a následně, že na range je kolmá jen 
+\begin_inset Formula $0\in V$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Máme tedy konvergentní posloupnost prvků range 
+\begin_inset Formula $Au^{n}\rightarrow v$
+\end_inset
+
+ a chceme ukázat, že 
+\begin_inset Formula $v\in Rng\, A\Leftrightarrow\exists u:\, Au=v$
+\end_inset
+
+.
+ Dokážeme Cauchyovskost vzorů 
+\begin_inset Formula $u^{n}$
+\end_inset
+
+ pomocí V-elipticity:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha||u^{n}-u^{m}||^{2}\leq B(u^{n}-u^{m},u^{n}-u^{m})=(A(u^{n}-u^{m}),u^{n}-u^{m})\leq M||u^{n}-u^{m}||\,||Au^{n}-Au^{m}||
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vydělíme a máme normu omezenou normou 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $||Au^{n}-Au^{m}||\rightarrow0$
+\end_inset
+
+, ta
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ konverguje k nule, z předpokladu.
+\end_layout
+
+\begin_layout Standard
+Máme Cauchyovskost, takže existuje 
+\begin_inset Formula $\exists u:\, u^{n}\rightarrow u$
+\end_inset
+
+.
+ Protože je 
+\begin_inset Formula $A$
+\end_inset
+
+ spojitá a z předpokladu platí 
+\begin_inset Formula $Au^{n}\rightarrow v$
+\end_inset
+
+, máme rovnost 
+\begin_inset Formula $Au=v$
+\end_inset
+
+, Range je tudíž uzavřený.
+\end_layout
+
+\begin_layout Standard
+Poslední krok - kdyby existoval nenulový prvek 
+\begin_inset Formula $v$
+\end_inset
+
+, který je kolmý na celý range:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\exists v\in V:\,\forall u\in V:\,0=(Au,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tak by šlo zvolit 
+\begin_inset Formula $u=v$
+\end_inset
+
+ a dostali bychom spor s elipticitou:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+0=(Av,v)\geq\alpha||v||^{2}>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na Range je kolmá tedy pouze vektorová nula.
+ Což dokončuje důkaz surjektivity 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Nelineární LaxMilgram
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $V$
+\end_inset
+
+ je 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+-Hilbertprostor.
+ Nechť 
+\begin_inset Formula $B$
+\end_inset
+
+ je spojité zobrazení 
+\begin_inset Formula $V\times V\rightarrow\mathbb{R}$
+\end_inset
+
+, lineární v druhé složce (testovacích funkcích), které je navíc:
+\end_layout
+
+\begin_layout Itemize
+Lipschitzovsky spojité (v 1.
+ složce) 
+\begin_inset Formula $\exists M>0:\,\forall u_{1},u_{2},v\in V:\,|B(u_{1},v)-B(u_{2},v)|\leq M||u_{1}-u_{2}||_{V}\,||v||_{V}$
+\end_inset
+
+ (...za omezenost)
+\end_layout
+
+\begin_layout Itemize
+Uniformě monotónní (v 2.
+ složce) 
+\begin_inset Formula $\exists\alpha>0:\,\forall u_{1},u_{2}\in V:\, B(u_{1},u_{1}-u_{2})-B(u_{2},u_{1}-u_{2})\geq\alpha||u_{1}-u_{2}||_{V}^{2}$
+\end_inset
+
+ (...za elipticitu)
+\end_layout
+
+\begin_layout Standard
+Pak pro každou 
+\begin_inset Formula $F\in V^{\star}$
+\end_inset
+
+ existuje 
+\begin_inset Formula $u\in V$
+\end_inset
+
+, že 
+\begin_inset Formula $B(u,v)=<F,v>\,(\forall v\in V)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+V obou požadavcích je 
+\begin_inset Formula $u_{1},u_{2}$
+\end_inset
+
+ v první složce, protože v druhé složce je záležitost lineární.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Caratheodory mapping
+\end_layout
+
+\begin_layout Paragraph*
+Caratheodoryova 
+\begin_inset Formula $f\textrm{ : }\Omega\times\mathbb{R}^{L}\rightarrow\mathbb{R}\Leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(.,u)$
+\end_inset
+
+ je měřitelná v 1.
+ složce 
+\begin_inset Formula $x$
+\end_inset
+
+ pro 
+\begin_inset Formula $\forall u\in\mathbb{R}^{L}$
+\end_inset
+
+ (v případě tříargumentové funkce je 
+\begin_inset Formula $u$
+\end_inset
+
+ poslední dva argumenty)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(x,.)$
+\end_inset
+
+ je spojitá v 2.
+ složce 
+\begin_inset Formula $u$
+\end_inset
+
+ pro s.v 
+\begin_inset Formula $x\in\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Fundamental theorem of the calculus of variations
+\end_layout
+
+\begin_layout Paragraph*
+Zadání:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Omega\in C^{0,1}\textrm{(lipschitzovská), }u_{0}\in W^{1,p}(\Omega,\mathbb{R}^{L})\textrm{, }f\in(W_{0}^{1,p}(\Omega,\mathbb{R}^{L}))^{\star}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F\textrm{: }\Omega\times\mathbb{R}^{L}\times\mathbb{R}^{d\times L}\rightarrow\mathbb{R}$
+\end_inset
+
+ Caratheodoryova
+\end_layout
+
+\begin_layout Paragraph*
+Variační problém:
+\end_layout
+
+\begin_layout Standard
+Najít 
+\begin_inset Formula $u,\, u-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$
+\end_inset
+
+ které minimalizuje funkcionál (na zmíněné zadané množině 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $v-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J(u):=\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Respektive - najít 
+\begin_inset Formula $u,\, u-u_{0}\in W_{0}^{1,p}(\Omega,\mathbb{R}^{L})$
+\end_inset
+
+ , že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}F(x,u,\nabla u)\leq\int_{\Omega}F(x,v,\nabla v)-<f,v-u>\,\forall v\in W^{1,p}(\Omega,\mathbb{R}^{L}),\, v|_{\delta\Omega}=u_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Minimální požadavky:
+\end_layout
+
+\begin_layout Enumerate
+P-koercivita 
+\begin_inset Formula $F(x,u,\eta)\geq\alpha|\eta|^{p}+g(x)$
+\end_inset
+
+, 
+\begin_inset Formula $g\in L^{1}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+P-růst 
+\begin_inset Formula $|F(x,u,\eta)|\leq c|\eta|^{p}+g(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pozor, koercivita nemá abs.
+ hodnotu! Pamatovat si třeba podle třídy ekvivalence s polynomem p.
+ Napsat existenci konstant! TODOD je to to samy p co v definici zadani?
+\end_layout
+
+\begin_layout Paragraph*
+Slabá zdola polospojitost
+\end_layout
+
+\begin_layout Standard
+Pro operátor splňující minimální požadavky definujeme slabou zdola polospojitost
+: 
+\begin_inset Formula 
+\[
+\Leftrightarrow\forall u^{n}\rightharpoonup u\textrm{ v }W^{1,p}(\Omega,\mathbb{R}^{L})\textrm{ platí }\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\geq\int_{\Omega}F(.,u,\nabla u)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Proč liminf větší? Protože polospojitost, kdyby celá spojitost, je omezené
+ i limsup.
+\end_layout
+
+\begin_layout Paragraph*
+Základní věta variačního kalkulu
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $F$
+\end_inset
+
+ ze zadání splňuje minimální požadavky a je slabě zdola polospojitá.
+\end_layout
+
+\begin_layout Standard
+Pak existuje 
+\begin_inset Formula $u$
+\end_inset
+
+ řešící variační problém s daným zadáním.
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Vezmeme variační problém a přičteme nulu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}F(x,u,\nabla u)-<f,u-u_{0}>\leq\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+definujeme 
+\begin_inset Formula 
+\[
+J(v):=\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+tím je vidět, že obě formulace jsou totožné, mějme tedy 
+\begin_inset Formula $I=\inf_{v\in W^{1,p}(\Omega,\mathbb{R}^{L}),v|_{\delta\Omega}=u_{0}}J(v)$
+\end_inset
+
+.
+ Budeme chtít ukázat, že infimum se nabývá a ověřit variační nerovnost.
+\end_layout
+
+\begin_layout Standard
+Z koercivity plyne, že infimum není 
+\begin_inset Formula $-\infty$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J(v)\geq\alpha||\nabla v||_{p}^{p}-c-||f||\,||\nabla v-\nabla u_{0}||_{p}\geq\alpha||\nabla v||_{p}^{p-1}(||\nabla v||_{p}-c)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Z existence infima 
+\begin_inset Formula $I$
+\end_inset
+
+ máme posloupnost 
+\begin_inset Formula $u^{n},\, I=\lim_{n\rightarrow\infty}J(u^{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Protože jsem v infimu, porovnám s prvkem prostoru, např 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+.
+ Pak zmizí část s 
+\begin_inset Formula $f$
+\end_inset
+
+ a díky p-růstu dostaneme následující nerovnost (druhou konstantu dostaneme
+ jako normu 
+\begin_inset Formula $g$
+\end_inset
+
+ a zvětšíme, abychom mohli konstantu vytknout):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I\leq J(u_{0})=\int_{\Omega}F(x,u_{0},\nabla u_{0})-0\leq c(1+||\nabla u_{0}||_{p}^{p})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...a na druhou stranu ta posloupnost k tomu infimu běží, tedy z koercivity:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I=\lim_{n\rightarrow\infty}J(u^{n})\geq\alpha\liminf_{n\rightarrow\infty}(||\nabla u^{n}||_{p}^{p}-c)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy se jedná o omezenou posloupnost:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||\nabla u^{n}||_{p}\leq c(f,u_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Protože stopa nulová, tak je omezená celá norma 
+\begin_inset Formula $||u^{n}||_{1,p}\leq c(f,u_{0},\Omega)$
+\end_inset
+
+.
+ (Je pak na sob.
+ prostoru se zafixovanou stopou ekvivalentní seminorma a norma.
+ Tedy máme li omezenou seminormu -což máme-, máme omezenou i sobolevovskou
+ normu.)
+\end_layout
+
+\begin_layout Standard
+Díky tomu z reflexivity dostaneme (búno s přechodem k podposloupnosti) 
+\begin_inset Formula $u^{n}\rightharpoonup u$
+\end_inset
+
+ ve 
+\begin_inset Formula $W^{1,p}(\Omega,\mathbb{R}^{L})$
+\end_inset
+
+.
+ Tohle 
+\begin_inset Formula $u$
+\end_inset
+
+ prohlásíme za řešení a ověříme, že tomu tak skutečně je.
+\end_layout
+
+\begin_layout Standard
+Protože je 
+\begin_inset Formula $I$
+\end_inset
+
+ infimum, tak pro každé 
+\begin_inset Formula $v$
+\end_inset
+
+ odhaduje funkcionál 
+\begin_inset Formula $I$
+\end_inset
+
+, který z infima dával posloupnost 
+\begin_inset Formula $u^{n}$
+\end_inset
+
+, tedy máme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}F(x,v,\nabla v)-<f,v-u_{0}>\ge I=\lim_{n\rightarrow\infty}J(u^{n})\geq\liminf_{n\rightarrow\infty}J(u^{n})=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...z definice funkcionálu pak rozepíšeme liminf a ze slabé konvergence a díky
+ předpokládáné slabé zdola polospojitosti dostaneme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\liminf_{n\rightarrow\infty}J(u^{n})=\liminf_{n\rightarrow\infty}\int_{\Omega}F(x,u^{n},\nabla u^{n})-<f,u^{n}-u_{0}>\geq\int_{\Omega}F(x,u,\nabla u)-<f,u-u_{0}>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ověřili jsme pro nalezené 
+\begin_inset Formula $u$
+\end_inset
+
+, že pro libovolné 
+\begin_inset Formula $v$
+\end_inset
+
+ je variační nerovnost splněna.
+\end_layout
+
+\begin_layout Subsection*
+weak lower-semicontinuity theorem for convex functions
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $F$
+\end_inset
+
+ splňuje minimální předpoklady.
+ Navíc, nechť 
+\begin_inset Formula $F$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+konvexní v poslední proměnné a
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{i}^{\nu}(.,u,\eta):=\frac{\partial F(.,u,\eta)}{\partial\eta_{i}^{\nu}}$
+\end_inset
+
+ je Caratheodoryho a
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $|A(.,u,\eta)|\leq c(g(x)+|\eta|^{p-1})$
+\end_inset
+
+ pro nějaké 
+\begin_inset Formula $g\in L^{p'}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pak F je slabě zdola polospojitá.
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Máme tedy 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u^{n}\rightharpoonup u$
+\end_inset
+
+ v 
+\begin_inset Formula $W^{1,p}(\Omega,\mathbb{R}^{L})$
+\end_inset
+
+ a chceme 
+\begin_inset Formula $\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\geq\int_{\Omega}F(.,u,\nabla u)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Nejprve odvodíme z konvexity nerovnost:
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+A_{i}^{\nu}(.,u,a)\cdot(b-a)\leq F(.,u,b)-F(.,u,a)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jak? Začneme definicí konvexity:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+F(u,\lambda b+(1-\lambda)a))-F(u,a)\leq\lambda(F(u,b)+(1-\lambda)F(u,a))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+F(u,a+\lambda(b-a))-F(u,a)\leq\lambda(F(u,b)-F(ua))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podělíme 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ a pošleme do nuly.
+ Pravá strana bude rovná pravé straně dokazované nerovnosti a levou ještě
+ trochu upravíme:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+1/\lambda\,(F(u,a+\lambda(b-a))-F(u,a))=1/\lambda\,\int_{0}^{1}\frac{d}{dt}F(u,a+t\lambda(b-a))\, dt=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...rozderivováním zmizí 
+\begin_inset Formula $\lambda$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+=\sum\int_{0}^{1}\frac{\partial F}{\partial\eta_{i}^{\nu}}(b_{i}^{\nu}-a_{i}^{\nu})\, dt=\sum\int_{0}^{1}A_{i}^{\nu}(b_{i}^{\nu}-a_{i}^{\nu})\, dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy nerovnost 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $1/\lambda\, F(u,a+\lambda(b-a))-F(u,a)\leq(F(u,b)-F(u,a))$
+\end_inset
+
+ přejde limitně k 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A(u,a)\cdot(b-a)\leq F(.,u,b)-F(.,u,a)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...což jsme chtěli dokázat.
+ (Anebo lze říct, že pro konvexní funkci je derivace neklesající, takže
+ derivace v bodě a je nejmenší z celého intervalu + věta o střední hodnotě?)
+\end_layout
+
+\begin_layout Standard
+Slabá zdola polospojitost teď vyjde z těchto úprav:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})\, dx=\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u^{n})-F(.,u^{n},\nabla u)\, dx+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u)\, dx\geq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...dle odvozené konvexní nerovnosti:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\geq\liminf_{n\rightarrow\infty}\int_{\Omega}A(.,u^{n},\nabla u^{n})\cdot(\nabla u^{n}-\nabla u)\, dx+\liminf_{n\rightarrow\infty}\int_{\Omega}F(.,u^{n},\nabla u)\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Když v pravé straně této nerovnosti přejdeme k limitě, pak první člen půjde
+ k nule (protože 
+\begin_inset Formula $\nabla u^{n}-\nabla u$
+\end_inset
+
+ jde z předpokladu slabě k nule v 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+) a druhý člen jde k 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\int_{\Omega}F(.,u,\nabla u)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+TODOD můžu takhle beztrestně jít k limitě jen na jedný straně nerovnosti?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Věta Nemytskii operator
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $f:\,\Omega\times\mathbb{R}^{L}\rightarrow\mathbb{R}$
+\end_inset
+
+ je Caratheodoryova a předpokládáme, že pro nějaké 
+\begin_inset Formula $1\leq q_{1},...,q_{L},p<\infty$
+\end_inset
+
+ platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|f(x,u)|\leq g(x)+\sum_{i=1}^{L}|u_{i}|^{q_{i}/p}\textrm{ s }g\in L^{p}(\Omega)\textrm{ pro s.v. }x\textrm{ a }\forall u\in\mathbb{R}^{L}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pak zobrazení 
+\begin_inset Formula $(u_{1}(x)...u_{L}(x))\rightarrow f(x,u(x))$
+\end_inset
+
+ je spojité z 
+\begin_inset Formula $L^{q_{1}}(\Omega)\times...\times L^{q_{L}}(\Omega)\rightarrow L^{p}(\Omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+(Na první řádce je 
+\begin_inset Formula $u$
+\end_inset
+
+ proměnná, pak je to funkce.
+ Nezapomenout na předpoklady rovnosti.)
+\end_layout
+
+\begin_layout Paragraph*
+D
+\end_layout
+
+\begin_layout Standard
+Zobrazení 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f(x,u(x))$
+\end_inset
+
+ bude měřitelné v 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, jako složení spojité a měřitelné.
+\end_layout
+
+\begin_layout Subparagraph*
+Norma
+\end_layout
+
+\begin_layout Standard
+Dále chceme ukázat, že bude mít konečnou 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+ normu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}|f(x,u(x))|^{p}\leq\int_{\Omega}|g(x)+\sum_{i=1}^{L}|u_{i}|^{q_{i}/p}\,|^{p}\, dx\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ všechny členy po roznásobení lze schovat do konstantního násobku členů
+ s největšími exponenty:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\leq c(p)(\int_{\Omega}|g(x)|^{p}+\sum_{i=1}^{L}|u_{i}|^{q_{i}}\, dx)\leq c(p)(||g(x)||_{p}^{p}+\sum_{i=1}^{L}||u_{i}||_{q_{i}}^{q_{i}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Spojitost
+\end_layout
+
+\begin_layout Standard
+Poslední věc, která zbývá je spojitost.
+ Budeme chtít pro 
+\begin_inset Formula $u_{i}^{n}\rightarrow u\textrm{ v }L^{q_{i}}(\Omega)$
+\end_inset
+
+ aby 
+\begin_inset Formula $0=\limsup_{n\rightarrow\infty}\int_{\Omega}|f(x,u^{n}(x))-f(x,u(x))|^{p}$
+\end_inset
+
+.
+ Cíl tedy bude najít podposloupnost, kde se limsup nabývá.
+\end_layout
+
+\begin_layout Standard
+Použijeme Lemma: Pokud 
+\begin_inset Formula $g^{n}\rightarrow g$
+\end_inset
+
+ v 
+\begin_inset Formula $L^{s}(\Omega)$
+\end_inset
+
+, pak existuje podposloupnost 
+\begin_inset Formula $g^{n_{k}}$
+\end_inset
+
+ a 
+\begin_inset Formula $M\in L^{s}$
+\end_inset
+
+, že 
+\begin_inset Formula $|g^{n_{k}}|+|g|\leq M$
+\end_inset
+
+ s.v.
+ v 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Tohle lemma nám dá takto omezenou podposloupnost.
+ Tu využijeme k nalezení majoranty, která Lebegovou větou ospravedlní záměnu
+ limsup a integrálu, čímž bude dokázáno, že limsup se nabývá.
+\end_layout
+
+\begin_layout Standard
+Máme tedy 
+\begin_inset Formula $u_{i}^{n}\rightarrow u\textrm{ v }L^{q_{i}}(\Omega),\,|u_{i}^{n}|+|u_{i}|\leq M_{i}\in L^{q_{i}}$
+\end_inset
+
+(búno s přechodem k podposloupnosti).
+\end_layout
+
+\begin_layout Standard
+Odhad majorantou:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|f(x,u^{n}(x))-f(x,u(x))|^{p}\leq c(|f(x,u^{n}(x))|^{p}+|f(x,u(x))|^{p})\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...podobně jako výše při odhadu normy:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq c(|g(x)|^{p}+\sum_{i=1}^{L}(|u_{i}^{n}|^{q_{i}}+|u_{i}|^{q_{i}})\leq
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...což je dle lemmatu (s nerovností na dva sčítance s exponentem):
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\leq c(|g(x)|^{p}+\sum_{i=1}^{L}(|M_{i}(x)|^{q_{i}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...a to platí skoro všude.
+ Tedy celý výsledek je v 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+ a je tedy integrovatelnou majorantou, lze zaměnit v naší podposloupnosti
+ limsup a integrál a tedy se suprémum nabývá a záležitost je spojitá.
+\end_layout
+
+\begin_layout Subsection*
+Strictly (+nonstrictly) monotone mapping, Minty method
+\end_layout
+
+\begin_layout Standard
+Řekneme, že 
+\begin_inset Formula $A:\,\Omega\times\mathbb{R}^{L}\times\mathbb{R}^{L\times d}\rightarrow\mathbb{R}^{L\times d}$
+\end_inset
+
+ je 
+\end_layout
+
+\begin_layout Enumerate
+monotónní vzhledem k třetí proměnné 
+\begin_inset Formula $\eta$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ pro s.v.
+ 
+\begin_inset Formula $x\in\Omega\,\forall u\in\mathbb{R}^{L},\,\forall\eta_{1},\eta_{2}\in\mathbb{R}^{L\times d}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+(A(x,u,\eta_{1})-A(x,u,\eta_{2}))\cdot(\eta_{1}-\eta_{2})\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+striktně monotónní vzhledem k třetí proměnné 
+\begin_inset Formula $\eta$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ pro s.v.
+ 
+\begin_inset Formula $x\in\Omega\,\forall u\in\mathbb{R}^{L},\,\forall\eta_{1},\eta_{2}\in\mathbb{R}^{L\times d}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+|A(x,u,\eta_{1})-A(x,u,\eta_{2})|\,|\eta_{1}-\eta_{2}|>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Trik s mátou:
+\end_layout
+
+\begin_layout Standard
+Máme operátor 
+\begin_inset Formula $A$
+\end_inset
+
+, operátor 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+, který splňuje slabou formulaci a víme z apriorních odhadů, že pro všechny
+ 
+\begin_inset Formula $w$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0\leq\int_{\Omega}(\overline{A}-A)(.,u,\nabla w)\cdot(\nabla u-\nabla w)\,\forall w\in W^{1,p}(\Omega,\mathbb{R}^{L})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Když to platí pro všechny, tak volíme speciální volbu 
+\begin_inset Formula $w=u\pm\lambda v,\, v\in W^{1,p}(\Omega,\mathbb{R}^{L}),\,\lambda>0$
+\end_inset
+
+.
+ Pak:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0\leq\pm\lambda\int_{\Omega}(\overline{A}-A)(.,u,\nabla u+\lambda\nabla v)\cdot\nabla v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ podělím 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ a jdu s 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ k nule:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+0\leq\pm\int_{\Omega}(\overline{A}-A)(.,u,\nabla u)\cdot\nabla v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ze spojitosti Nimického operátoru a lebegovy konvergenční věty (a 
+\begin_inset Formula $\pm$
+\end_inset
+
+) plyne, že se rovná nule 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $0=\int_{\Omega}(\overline{A}-A)(.,u,\nabla u)\cdot\nabla v$
+\end_inset
+
+, že se operátory rovnají.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Dodatky
+\end_layout
+
+\begin_layout Paragraph*
+Poznámka, nelinearity:
+\end_layout
+
+\begin_layout Standard
+0) napíšu si rovnici 
+\begin_inset Formula $-div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) Vidim, že přímo s tim nic nejde, aproximativní řešení.
+ Galerkinova aproximace.
+ u ma být W1,p to je složité, místo toho část W1,p aby nakonec sjednocení
+ částí W1,p.
+ Použiju řešení žijící v linobalu w1...wn, složí celé W1,p protože budou hustý.
+ A argument - to je pevný bod 
+\begin_inset Quotes eld
+\end_inset
+
+f(a)*a" un je řešení na uzávěru linobalu w1...wn.
+\end_layout
+
+\begin_layout Standard
+2) Mam un, mají limitu? Z omezen0 posloupnosti v reflexivním lze vzít slabě
+ konvergentní.
+ Musím dokázat, že un omezené v Reflex pr.
+ Dokážu to ve W1,p.
+ Proto apriorní odhady - un omezená ve W1,p.
+ Tedy un slabě k u v W1,p.
+\end_layout
+
+\begin_layout Standard
+3) Ptáme se, jestli rovnice splněná slabě 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-
+\begin_inset Formula $div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int A(\nabla u)\nabla v=\int f\nabla v\,\forall v\in W^{1,p}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ale nevim jak e to pro moje u chová, to A grad u.
+ Co s tim? nevim jestli je to pslneny.
+\end_layout
+
+\begin_layout Standard
+Ale z apriornich odhadu dokazu vykoukat nejen un omez, ale i A(nabla u_n)
+ omezena pro vsechny n, v Lp', to je zase reflexivni prostor, takze lze
+ predpokladat, ze A grad un jde slabe k A s pruhem.
+ A vim pouze ze A s pruhem lezi v Lp' a ze slaby konvergence vim, ze slaba
+ formulace je splnena pro A s pruhem.
+\end_layout
+
+\begin_layout Standard
+Chci tam ale misto A s pruhem primo A! Pointa bodu 3 je dokazat A=A s pruhem.
+\end_layout
+
+\begin_layout Standard
+A k dukazu mintyho trik.
+ Monotonie a spojitost A.
+ Pomoci mintyho triku a jakmile to mam, mam vsechno.
+\end_layout
+
+\begin_layout Subsection*
+Povídání, účel, todo
+\end_layout
+
+\begin_layout Standard
+Účel není udělat skripta, ze kterých to člověk pochopí, účel byl udělat
+ text, kterej pomůže (mě a zbytku ročníku) se věci naučit přesně do puntíku
+ na zkoušku s odvozením/odůvodněním každýho jednotlivýho kroku.
+\end_layout
+
+\begin_layout Standard
+Proto jsou tu i povídání malým fontem na co nezapomínat u věcí, u kterých
+ se může stát, že je někdo zapomene (důležitý říct i proč je ten přepoklad
+ důležitý).
+ A proto jsou tu taky popřený sázecí pravidla, jenom proto, aby věc byla
+ pochopitelnější (např.
+ rovnost na konci řádku, pokud se bude v úpravě pokračovat a tři tečky,
+ pokud vysvětluju úpravu, která probíhá).
+ Častý používání návěští v důkazech má usnadnit zapamatování si kroků důkazu
+ (a aby si každý mohl jednoduše udělat mindmapu).
+ Název je volený speciálně tak, aby nepřipomínal klasický skripta a vyhodil
+ čtenáře z denní rutiny při prvním přečtení.
+\end_layout
+
+\begin_layout Standard
+Pokud se ma tenhle textik seriozne pouzivat i jinde, nez v ZS2014, tak zbyva
+ udelat:
+\end_layout
+
+\begin_layout Standard
+-k cemu jsou minimalni predpoklady, caratheodoryovskost a omezenost shora
+ u Konvexni=> slabe zdola polospojita?
+\end_layout
+
+\begin_layout Standard
+-Staci tam to odvozeni? Lze k nerovnosti z konvexniho pouzit ze prostek
+ onvexni ma neklesavou derivac ia vetu o stradni hodnote?
+\end_layout
+
+\begin_layout Standard
+-sbirku uloh s kucharkama, aproximativnima kucharkama a navodama jak co
+ resit.
+\end_layout
+
+\begin_layout Standard
+Holi.
+\end_layout
+
+\end_body
+\end_document
