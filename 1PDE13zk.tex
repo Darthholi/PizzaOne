@@ -380,13 +380,13 @@ k hranici.
 Dodefinujeme $U_{0}$ otev\v{r}enou, aby platilo $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$.
 
 Pou¸ijeme rozklad jedni\v{c}ky $\xi_{j}$ vzhledem k $U_{j}$, m\r{u}¸eme,
-proto¸e $U$ mají kone\v{c}né po\v{c}ty pr\r{u}nik\r{u}. Dostaneme
+proto¸e $U_{i}$ mají kone\v{c}né po\v{c}ty pr\r{u}nik\r{u}. Dostaneme
 také $\forall x\in\Omega\,\exists j,\,\xi_{j}(x)=1$.
 
 Díky úvahám vý¨e máme nástroje na nalezení posloupnosti $u^{\delta}$
 od $u$. Nejprve rozlo¸íme zadané $u$ rozkladem jednotky:
 
-$u_{i}:=u*\xi_{i}$. Nutno \v{r}íct, ¸e platí $u(x):=\sum u_{i}(x)$,
+$u_{i}:=u\xi_{i}$. Nutno \v{r}íct, ¸e platí $u(x):=\sum u_{i}(x)$,
 $u_{i}$ jsou te\v{d} funkce, jejich¸ nosi\v{c} se p\v{r}ibli¸uje
 hranici omegy.
 
@@ -439,12 +439,12 @@ $\forall u\in W^{k,p}(\Omega)\,\exists u^{n}\in C^{\infty}(\bar{\Omega})$,
 
 Z definice $C^{0,0}$ máme krabice $\Omega_{r}=\Omega_{r}^{+}\cup\Omega_{r}^{-}\cup\delta_{n}\Omega$,
 $r=1...M$, otev\v{r}ené, pokrývají okolí hranice. Dodefinujeme $\Omega_{0}\subset\subset\Omega$
-otev\v{r}enou, aby platilo $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$.
+otev\v{r}enou, aby platilo $\bigcup_{i=0}^{M}\Omega_{i}\supseteq\Omega$.
 Mám pokrytou $\mbox{\ensuremath{\Omega}}$ otev\v{r}enými mno¸inami,
 najdu rozklad jedni\v{c}ky - $u_{i}:=u\xi_{i}$, pak $u(x):=\sum u_{i}(x)$.
 Proto $||u_{i}||_{k,p(\Omega_{i})}\leq||u||_{k,p(\Omega)}$ a tedy
 sta\v{c}í aproximovat jen $u_{i}$ - chceme najít $u_{i}^{n}\in C^{\infty}(\bar{\Omega})$,
-$u_{i}^{n}\rightarrow u$ ve $W^{k,p}(\Omega)$.
+$u_{i}^{n}\rightarrow u_{i}$ ve $W^{k,p}(\Omega)$.
 
 
 \paragraph*{Na \textmd{$\Omega_{0}$:}}
@@ -460,7 +460,9 @@ Posunuli jsme jí aby p\v{r}e\v{c}nívala mimo $\Omega$ (Zna\v{c}íme
 $x=(x_{1}...x_{d})=(x',x_{d})$ jako v definici.)
 
 Hledaná posloupnost je $u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}^{\delta}\in C^{\infty}(\bar{\Omega})$,
-platí po¸adované $||u_{i}^{\epsilon}-u_{0}||_{k,p(\Omega)}\rightarrow0$,
+z hlediska limity je také nutno \v{r}íct, ¸e volíme $\epsilon\sim\delta$.
+
+Platí po¸adované $||u_{i}^{\epsilon}-u_{0}||_{k,p(\Omega)}\rightarrow0$,
 proto¸e 
 \begin{itemize}
 \item $||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}\overset{\delta\rightarrow0_{+}}{\rightarrow}0$
@@ -475,6 +477,11 @@ Dohromady tedy trojúhelníková nerovnost dává:
 ||u_{i}^{\epsilon}-u_{i}||_{k,p(\Omega)}\leq||u_{i}^{\delta}-u_{i}||_{k,p(\Omega)}+||\rho_{\epsilon}*u_{i}^{\delta}-u_{i}^{\delta}||_{k,p(\Omega)}\rightarrow0
 \]
 
+
+
+\paragraph*{Co by se pokazilo}
+
+kdyby nebyl spln\v{e}n n\v{e}jaký p\v{r}edpoklad? TODOD
 
 
 \subsection*{\pagebreak{}}
@@ -635,7 +642,7 @@ p\v{r}ejdeme zp\v{e}t k oblasti $V$ (co¸ stále lze, proto¸e mimo
 ní je v¨e nulové):
 
 \[
-=\int_{\Omega}\lim_{h\rightarrow0}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=\int_{\Omega}\frac{\partial\varphi(x)}{\partial x_{i}}u(x)\, dx
+=-\int_{\Omega}\lim_{h\rightarrow0}\frac{\varphi(x-he_{i})-\varphi(x)}{h}u(x)\, dx=-\int_{\Omega}\frac{\partial\varphi(x)}{\partial x_{i}}u(x)\, dx
 \]
 
 
@@ -669,7 +676,7 @@ D}
 Proto¸e je $u$ hladká funkce s kompaktním supportem:
 
 \[
-\forall i=0...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
+\forall i=1...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
 \]
 
 
@@ -731,7 +738,8 @@ potom Holderem:
 \]
 
 
-...a zase Holdera na $d-2$ \v{c}len\r{u} (ano, i na \v{c}len s $U_{1}$):
+...a zase Holdera na $d-1$ \v{c}len\r{u} (ano, i na \v{c}len s $U_{1}$
+a ne na \v{c}len s $U_{2}$):
 
 \[
 \leq(\int_{-\infty}^{\infty}U_{2}\, dx_{1})^{1/(d-1)}(\int_{-\infty}^{\infty}U_{1}\, dx_{2})^{1/(d-1)}\prod_{i=3}^{d}(\int_{-\infty}^{\infty}U_{i}\, dx_{1}\, dx_{2})^{1/(d-1)}
@@ -1762,6 +1770,9 @@ Ze spojitosti Nimického operátoru a lebegovy konvergen\v{c}ní v\v{e}ty
 \pagebreak{}
 
 
+\subsection*{Dodatky}
+
+
 \paragraph*{Poznámka, nelinearity:}
 
 0) napí¨u si rovnici $-div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
@@ -1798,11 +1809,36 @@ A k dukazu mintyho trik. Monotonie a spojitost A. Pomoci mintyho triku
 a jakmile to mam, mam vsechno.
 
 
-\subsection*{Todo}
+\subsection*{Povídání, ú\v{c}el, todo}
+
+Ú\v{c}el není ud\v{e}lat skripta, ze kterých to \v{c}lov\v{e}k pochopí,
+ú\v{c}el byl ud\v{e}lat text, kterej pom\r{u}¸e (m\v{e} a zbytku ro\v{c}níku)
+se v\v{e}ci nau\v{c}it p\v{r}esn\v{e} do puntíku na zkou¨ku s odvozením/od\r{u}vodn\v{e}ním
+ka¸dýho jednotlivýho kroku.
+
+Proto jsou tu i povídání malým fontem na co nezapomínat u v\v{e}cí,
+u kterých se m\r{u}¸e stát, ¸e je n\v{e}kdo zapomene (d\r{u}le¸itý
+\v{r}íct i pro\v{c} je ten p\v{r}epoklad d\r{u}le¸itý). A proto jsou
+tu taky pop\v{r}ený sázecí pravidla, jenom proto, aby v\v{e}c byla
+pochopiteln\v{e}j¨í (nap\v{r}. rovnost na konci \v{r}ádku, pokud se
+bude v úprav\v{e} pokra\v{c}ovat a t\v{r}i te\v{c}ky, pokud vysv\v{e}tluju
+úpravu, která probíhá). \v{C}astý pou¸ívání náv\v{e}¨tí v d\r{u}kazech
+má usnadnit zapamatování si krok\r{u} d\r{u}kazu (a aby si ka¸dý mohl
+jednodu¨e ud\v{e}lat mindmapu). Název je volený speciáln\v{e} tak,
+aby nep\v{r}ipomínal klasický skripta a vyhodil \v{c}tená\v{r}e z
+denní rutiny p\v{r}i prvním p\v{r}e\v{c}tení.
+
+Pokud se ma tenhle textik seriozne pouzivat i jinde, nez v ZS2014,
+tak zbyva udelat:
 
 -k cemu jsou minimalni predpoklady, caratheodoryovskost a omezenost
 shora u Konvexni=\textgreater{} slabe zdola polospojita?
 
-Staci tam to odvozeni? Lze k nerovnosti z konvexniho pouzit ze prostek
+-Staci tam to odvozeni? Lze k nerovnosti z konvexniho pouzit ze prostek
 onvexni ma neklesavou derivac ia vetu o stradni hodnote?
+
+-sbirku uloh s kucharkama, aproximativnima kucharkama a navodama jak
+co resit.
+
+Holi.
 \end{document}
