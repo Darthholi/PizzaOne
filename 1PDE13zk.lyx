@@ -1471,7 +1471,7 @@ Použijeme rozklad jedničky
 \noun default
 \color inherit
 , můžeme, protože 
-\begin_inset Formula $U$
+\begin_inset Formula $U_{i}$
 \end_inset
 
  mají konečné počty průniků.
@@ -1524,7 +1524,7 @@ Díky úvahám výše máme nástroje na nalezení posloupnosti
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $u_{i}:=u*\xi_{i}$
+\begin_inset Formula $u_{i}:=u\xi_{i}$
 \end_inset
 
 .
@@ -1821,7 +1821,7 @@ Dodefinujeme
 \end_inset
 
  otevřenou, aby platilo 
-\begin_inset Formula $\bigcup_{i=0}^{M}\Omega_{i}=\Omega$
+\begin_inset Formula $\bigcup_{i=0}^{M}\Omega_{i}\supseteq\Omega$
 \end_inset
 
 .
@@ -1875,7 +1875,7 @@ Dodefinujeme
 \end_inset
 
 , 
-\begin_inset Formula $u_{i}^{n}\rightarrow u$
+\begin_inset Formula $u_{i}^{n}\rightarrow u_{i}$
 \end_inset
 
  
@@ -2023,7 +2023,27 @@ Hledaná posloupnost je
 \begin_inset Formula $u_{i}^{\epsilon}:=\rho_{\epsilon}*u_{i}^{\delta}\in C^{\infty}(\bar{\Omega})$
 \end_inset
 
-, platí požadované 
+, z hlediska limity je také nutno říct, že volíme 
+\begin_inset Formula $\epsilon\sim\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Platí požadované 
 \begin_inset Formula $||u_{i}^{\epsilon}-u_{0}||_{k,p(\Omega)}\rightarrow0$
 \end_inset
 
@@ -2757,7 +2777,7 @@ Protože je
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\forall i=0...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
+\forall i=1...d:\, u(x)=\int_{-\infty}^{x_{i}}\frac{\partial u}{\partial s}(x_{1}...x_{i-1},s,x_{i+1}...x_{d})\, ds
 \]
 
 \end_inset
@@ -2978,11 +2998,15 @@ U_{i}(x_{1}...x_{i-1},x_{i+1}...x_{d}):=\int_{-\infty}^{\infty}|\nabla u(x)|\, d
 
 \begin_layout Standard
 ...a zase Holdera na 
-\begin_inset Formula $d-2$
+\begin_inset Formula $d-1$
 \end_inset
 
  členů (ano, i na člen s 
 \begin_inset Formula $U_{1}$
+\end_inset
+
+ a ne na člen s 
+\begin_inset Formula $U_{2}$
 \end_inset
 
 ):
