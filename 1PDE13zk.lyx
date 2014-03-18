@@ -6735,6 +6735,227 @@ Ze spojitosti Nimického operátoru a lebegovy konvergenční věty (a
 Dodatky
 \end_layout
 
+\begin_layout Subsection*
+Tabulky
+\end_layout
+
+\begin_layout Standard
+Gauss-green-ostrogradsky-per-partes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int u(x)v'(x)\, dx=u(x)\, v(x)-\int u'(x)\, v(x)\, dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}\frac{\partial u}{\partial x_{i}}v\, d\Omega=\int_{\Gamma}u\, v\, n_{i}\, d\Gamma-\int_{\Omega}u(x)\frac{\partial v}{\partial x_{i}}\, d\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}\nabla u\cdot v\, d\Omega=\int_{\Gamma}u(v\cdot n)\, d\Gamma-\int_{\Omega}u\nabla\cdot v\, d\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...pro 
+\begin_inset Formula $u=1$
+\end_inset
+
+ dostaneme Gausse (
+\begin_inset Formula $\nabla\cdot v=div\, v$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}v\cdot n\, d\Gamma=\int_{\Omega}\nabla\cdot v\, d\Omega-\int_{\Omega}\nabla\cdot v\, d\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Omega}\nabla u\cdot\nabla v\, d\Omega=\int_{\Gamma}u\nabla v\cdot n\, d\Gamma-\int_{\Omega}u\nabla^{2}v\, d\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Green-Gauss:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\int_{\Omega}\triangle u\cdot v\, dx=\int_{\Omega}\nabla u\nabla v\, d\Omega-\int_{\delta\Omega}v\nabla u\cdot n\, d\delta\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Triky
+\end_layout
+
+\begin_layout Standard
+Elipticita s dirichletem OK (Friedrichsova ekviv.
+ norma), Neumann s členem 
+\begin_inset Formula $+u$
+\end_inset
+
+ vyjde, bez členu nutno přidat 
+\begin_inset Formula $\int_{\Omega}u=0$
+\end_inset
+
+.
+ Ze ekvivalentni normy 
+\begin_inset Formula $|u|=0=>u=0$
+\end_inset
+
+ tou podmínkou 
+\begin_inset Formula $\int_{\Omega}u=0$
+\end_inset
+
+, jinak jen 
+\begin_inset Formula $\nabla u=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Věta o stopách na členy 
+\begin_inset Formula $u(0)v(0)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Friedrichsova nerovnost ekvivalence pri dirichletovi.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int_{\Omega}xv_{x}v_{y}\geq-\int_{\Omega}|xv_{x}v_{y}|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eliptické odhady 
+\begin_inset Formula $b\geq-|b|$
+\end_inset
+
+, vše pak s mínusem.
+ Konkrétně z 
+\begin_inset Formula $a+b\geq a-|b|$
+\end_inset
+
+ a doufám, že se odečte míň.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $||u||_{2}^{2}\leq1/2||u'||_{2}^{2}$
+\end_inset
+
+ pro 
+\begin_inset Formula $L^{2}(0,1)$
+\end_inset
+
+ Gagliardo Nirenberg.
+\end_layout
+
+\begin_layout Standard
+Základní věta kalkulu trik 
+\begin_inset Formula $u=\int u'$
+\end_inset
+
+, 
+\begin_inset Formula $u(x)=\int_{0}^{x}u'\, dy$
+\end_inset
+
+, 
+\begin_inset Formula $\int_{0}^{x}|a|\leq\int_{0}^{\infty/1...}|a|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Holder 
+\begin_inset Formula $||fg||_{1}\leq||f||_{p}||g||_{q}$
+\end_inset
+
+, 
+\begin_inset Formula $1/p+1/q=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $uu'=(u^{2}/2)'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ab\leq\frac{a^{2}}{2\epsilon}+\frac{\epsilon b^{2}}{2}$
+\end_inset
+
+ 
+\begin_inset Formula $ab\leq\frac{a^{p}}{p}+\frac{b^{q}}{q}$
+\end_inset
+
+ Youngova nerovnost 
+\begin_inset Formula $1/p+1/q=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph*
 Poznámka, nelinearity:
 \end_layout

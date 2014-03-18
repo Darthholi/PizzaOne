@@ -1773,6 +1773,77 @@ Ze spojitosti Nimického operátoru a lebegovy konvergen\v{c}ní v\v{e}ty
 \subsection*{Dodatky}
 
 
+\subsection*{Tabulky}
+
+Gauss-green-ostrogradsky-per-partes:
+
+\[
+\int u(x)v'(x)\, dx=u(x)\, v(x)-\int u'(x)\, v(x)\, dx
+\]
+
+
+\[
+\int_{\Omega}\frac{\partial u}{\partial x_{i}}v\, d\Omega=\int_{\Gamma}u\, v\, n_{i}\, d\Gamma-\int_{\Omega}u(x)\frac{\partial v}{\partial x_{i}}\, d\Omega
+\]
+
+
+\[
+\int_{\Omega}\nabla u\cdot v\, d\Omega=\int_{\Gamma}u(v\cdot n)\, d\Gamma-\int_{\Omega}u\nabla\cdot v\, d\Omega
+\]
+
+
+...pro $u=1$ dostaneme Gausse ($\nabla\cdot v=div\, v$):
+
+\[
+\int_{\Omega}v\cdot n\, d\Gamma=\int_{\Omega}\nabla\cdot v\, d\Omega-\int_{\Omega}\nabla\cdot v\, d\Omega
+\]
+
+
+\[
+\int_{\Omega}\nabla u\cdot\nabla v\, d\Omega=\int_{\Gamma}u\nabla v\cdot n\, d\Gamma-\int_{\Omega}u\nabla^{2}v\, d\Omega
+\]
+
+
+Green-Gauss:
+
+\[
+-\int_{\Omega}\triangle u\cdot v\, dx=\int_{\Omega}\nabla u\nabla v\, d\Omega-\int_{\delta\Omega}v\nabla u\cdot n\, d\delta\Omega
+\]
+
+
+
+\paragraph*{Triky}
+
+Elipticita s dirichletem OK (Friedrichsova ekviv. norma), Neumann
+s \v{c}lenem $+u$ vyjde, bez \v{c}lenu nutno p\v{r}idat $\int_{\Omega}u=0$.
+Ze ekvivalentni normy $|u|=0=>u=0$ tou podmínkou $\int_{\Omega}u=0$,
+jinak jen $\nabla u=0$.
+
+V\v{e}ta o stopách na \v{c}leny $u(0)v(0)$. 
+
+Friedrichsova nerovnost ekvivalence pri dirichletovi.
+
+$\int_{\Omega}xv_{x}v_{y}\geq-\int_{\Omega}|xv_{x}v_{y}|$
+
+Eliptické odhady $b\geq-|b|$, v¨e pak s mínusem. Konkrétn\v{e} z
+$a+b\geq a-|b|$ a doufám, ¸e se ode\v{c}te mí\v{n}.
+
+$||u||_{2}^{2}\leq1/2||u'||_{2}^{2}$ pro $L^{2}(0,1)$ Gagliardo
+Nirenberg.
+
+Základní v\v{e}ta kalkulu trik $u=\int u'$, $u(x)=\int_{0}^{x}u'\, dy$,
+$\int_{0}^{x}|a|\leq\int_{0}^{\infty/1...}|a|$.
+
+Holder $||fg||_{1}\leq||f||_{p}||g||_{q}$, $1/p+1/q=1$.
+
+$uu'=(u^{2}/2)'$
+
+$ab\leq\frac{a^{2}}{2\epsilon}+\frac{\epsilon b^{2}}{2}$ $ab\leq\frac{a^{p}}{p}+\frac{b^{q}}{q}$
+Youngova nerovnost $1/p+1/q=1$
+
+\pagebreak{}
+
+
 \paragraph*{Poznámka, nelinearity:}
 
 0) napí¨u si rovnici $-div\, A(\nabla u)=f,\, u|_{\delta u}=u_{0}$
